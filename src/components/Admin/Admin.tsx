@@ -3,7 +3,9 @@ import "./admin.scss";
 
 class Admin extends React.Component<{}, {}> {
   public render() {
-    return <React.Fragment></React.Fragment>;
+    return <React.Fragment>
+        <h1>Admin</h1>
+    </React.Fragment>;
   }
 }
 
