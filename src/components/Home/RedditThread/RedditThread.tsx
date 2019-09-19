@@ -1,5 +1,5 @@
 import React from "react";
-import "/.redditThread.scss";
+import "./redditThread.scss";
 
 class RedditThread extends React.Component<{}, {}> {
   public render() {
