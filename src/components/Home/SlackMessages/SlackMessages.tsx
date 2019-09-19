@@ -1,5 +1,5 @@
 import React from "react";
-import "/.slackMessages.scss";
+import "./slackMessages.scss";
 
 class SlackMessages extends React.Component<{}, {}> {
   public render() {

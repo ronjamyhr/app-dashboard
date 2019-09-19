@@ -1,6 +1,6 @@
 import React from "react";
-import "/.spotifyMusic.scss";
-// import axios? const?
+import "./spotifyMusic.scss";
+
 
 class SpotifyMusic extends React.Component<{}, {}> {
   public render() {
