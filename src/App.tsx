@@ -3,8 +3,9 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.scss';
 import Navbar from './components/Navbar/Navbar';
 import Home from './components/Home/Home';
-import Admin from './components/Admin/Admin';
 import NotFound from './components/NotFound/NotFound';
+import Login from './components/Login/Login';
+//import fire from './config/Fire';
 
 
 
@@ -18,8 +19,8 @@ class App extends React.Component<{}, {}> {
             <BrowserRouter>
 				<Navbar />
                     <Switch>
-                        <Route path="/" component={Home} exact />
-                        <Route path="/admin" component={Admin} />
+                        <Route path="/" component={Login} exact />
+                        <Route path="/home" component={Home} />
                         <Route component={NotFound}/>
                     </Switch>
             </BrowserRouter>

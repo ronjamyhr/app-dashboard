@@ -1,5 +1,6 @@
 import React from "react";
 import "./home.scss";
+//import fire from './../../config/Fire';
 
 class Home extends React.Component<{}, {}> {
   public render() {
