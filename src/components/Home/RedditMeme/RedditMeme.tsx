@@ -1,5 +1,5 @@
 import React from "react";
-import "/.redditMeme.scss";
+import "./redditMeme.scss";
 
 class RedditMeme extends React.Component<{}, {}> {
   public render() {

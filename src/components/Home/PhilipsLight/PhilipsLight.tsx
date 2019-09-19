@@ -1,5 +1,5 @@
 import React from "react";
-import "/.philipsLight.scss";
+import "./philipsLight.scss";
 
 class PhilipsLight extends React.Component<{}, {}> {
   public render() {
