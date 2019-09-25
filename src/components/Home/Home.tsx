@@ -1,71 +1,76 @@
 import React from "react";
-import "./home.scss";
-import Message from "./Message/Message";
+import { connect } from "react-redux";
+import { startRemovePost } from "../../actions/posts";
+import { IPost } from "../../types/Post";
+import { AppState } from "../../store/configStore";
+import { Dispatch, bindActionCreators } from "redux";
+import { AppActions } from "../../types/actions";
+import { ThunkDispatch } from "redux-thunk";
 import MessageForm from "./MessageForm/MessageForm";
-// import { firebaseConfig } from "./../../config/Fire";
-// import firebase from "firebase/app";
+import { firestoreConnect } from 'react-redux-firebase';
+import { compose } from 'redux';
 
-interface IState {
-  messages: IStateMessages[];
-//   app: firebase.app.App;
+interface IHomeProps {
+  id?: string;
 }
 
-interface IStateMessages {
-  id: number;
-  messageContent: string;
-}
+interface IHomePageState {}
 
-class Home extends React.Component<{}, IState> {
-    
-  constructor(props: any) {
-    super(props);
+type Props = IHomeProps & LinkStateProps & LinkDispatchProps;
 
-    // this.app : firebase.app.App = firebase.initializeApp(firebaseConfig);
-    // this.database = this.app.database().ref().child(messages);
+export class Home extends React.Component<Props, IHomePageState> {
+  onRemove = (id: string) => {
+    this.props.startRemovePost(id);
+  };
 
-    this.state = {
-      messages: [],
-    //   app: firebase.initializeApp(firebaseConfig),
-      //referera till child location in the database, där vi har en lista
-      // som heter messages där vi sparar vår meddelanden:
-      //db: this.state.app.database().ref().child('messages')
-    }
-
-    // this.addMessage = this.addMessage.bind(this);
-  }
-
-//   addMessage(message: any) {
-//     const previousMessage = this.state.messages;
-//     previousMessage.push({
-//       id: previousMessage.length + 1,
-//       messageContent: message
-//     });
-
-//     this.setState({
-//       messages: previousMessage
-//     });
-
-//     console.log('previous message: ', previousMessage);
-//   }
-
-  public render() {
+  render() {
+    console.log("this props innehåller :", this.props);
+    const { posts } = this.props;
     return (
-      <React.Fragment>
-        <h1>Home</h1>
-        {/* {this.state.messages.map(message => {
-          return (
-            <Message
-            //   messageContent={message.messageContent}
-            //   messageId={message.id}
-              key={message.id}
-            />
-          );
-        })} */}
-        <Message />
-        <MessageForm />
-      </React.Fragment>
+      <div>
+        <h1>Post Page</h1>
+        <div>
+          <MessageForm />
+          <ul>
+            {posts && posts.map(post => (
+              <li key={post.id}>
+                <p>{post.name}</p>
+                <p>{post.message}</p>
+
+                <button onClick={() => this.onRemove(post.id)}>
+                  Remove post
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
     );
   }
 }
 
-export default Home;
+interface LinkStateProps {
+  posts: IPost[];
+}
+interface LinkDispatchProps {
+  startRemovePost: (id: string) => void;
+}
+
+// Map our state from the store to the props in this component
+const mapStateToProps = (state: AppState, ownProps: Home): LinkStateProps => ({
+  posts: state.posts
+});
+
+const mapDispatchToProps = (
+  dispatch: ThunkDispatch<any, any, AppActions>,
+  ownProps: Home
+): LinkDispatchProps => ({
+  startRemovePost: bindActionCreators(startRemovePost, dispatch)
+});
+
+export default compose<any>(
+  connect(mapStateToProps, mapDispatchToProps)
+  // firestoreConnect([
+  //   { collection: 'posts' }
+  // ])
+)(Home);

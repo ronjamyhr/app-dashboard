@@ -1,64 +1,80 @@
-import React from "react";
-import firebase from "./../../../config/Fire";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { startCreatePost } from '../../../actions/posts';
 
-interface IState {
-  newMessageContent: string;
+interface IProps {
+  startCreatePost: (postData: any) => void;
 }
 
-// interface IProps {
-//   addMessage: any;
-// }
+interface IState {
+  name: string;
+  message: string;
+  [key: string]: any;
+}
 
-class MessageForm extends React.Component<{}, IState> {
-  constructor(props: any) {
+class PostForm extends Component<IProps, IState> {
+  constructor(props: IProps) {
     super(props);
 
     this.state = {
-      newMessageContent: ""
+      name: '',
+      message: ''
     };
 
-    this.handleMessageInput = this.handleMessageInput.bind(this);
-    this.writeMessage = this.writeMessage.bind(this);
+    this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
-  handleMessageInput(e: any) {
-    this.setState({
-      newMessageContent: e.target.value
+  onChange(e: any) {
+    this.setState({ 
+      [e.target.name]: e.target.value 
     });
   }
 
-  writeMessage(e: any) {
+  onSubmit(e: any) {
     e.preventDefault();
-    const itemsRef = firebase.database().ref("messages");
-    const item = {
-      message: this.state.newMessageContent
-    };
 
-    itemsRef.push(item);
+    // const post = {
+    //   name: this.state.name,
+    //   message: this.state.message
+    // };
 
-    // this.props.addMessage(this.state.newMessageContent);
+    // this.props.startCreatePost(post);
 
-    this.setState({
-      newMessageContent: ""
-    });
+    this.props.startCreatePost(this.state);
   }
 
-  public render() {
-
-    //console.log('vad är? ', this.props.addMessage);
+  render() {
     return (
-      <React.Fragment>
-        <form>
-          <input
-            onChange={this.handleMessageInput}
-            placeholder="Skriv ett nytt meddelande..."
-            value={this.state.newMessageContent}
-          />
-          <button onClick={this.writeMessage}>Lägg till</button>
+      <div>
+        <h1>Add Post</h1>
+        <form onSubmit={this.onSubmit}>
+          <div>
+            <label>Name: </label>
+            <br />
+            <input
+              type="text"
+              name="name"
+              onChange={this.onChange}
+              value={this.state.name}
+            />
+          </div>
+          <br />
+          <div>
+            <label>Message: </label>
+            <br />
+            <textarea
+              name="message"
+              onChange={this.onChange}
+              value={this.state.message}
+            />
+          </div>
+          <br />
+          <button type="submit">Submit</button>
         </form>
-      </React.Fragment>
+      </div>
     );
   }
 }
 
-export default MessageForm;
+export default connect(null, { startCreatePost })(PostForm);
