@@ -1,6 +1,6 @@
 import React from "react";
 import "./login.scss";
-import fire from './../../config/Fire';
+// import fire from './../../config/Fire';
  
 
 class Login extends React.Component<{}, {}> {
