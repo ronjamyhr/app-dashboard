@@ -4,9 +4,10 @@ import MessageForm from './MessageForm/MessageForm'
 
 class Home extends React.Component {
 	render(){
+
 		return(
 			<div className="container">
-      <h1>Post page</h1>
+      <h1>Dashboard</h1>
 				<MessageForm />
 				<Message />			
 			</div>

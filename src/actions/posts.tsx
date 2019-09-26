@@ -3,6 +3,7 @@ import { IPost } from "./../types/Post";
 import { CREATE_POST, AppActions, REMOVE_POST } from "../types/actions";
 import { Dispatch } from "redux";
 import { AppState } from "./../../src/index";
+// import firebase from "firebase";
 
 export const createPost = (post: IPost): AppActions => ({
   type: CREATE_POST,
@@ -26,13 +27,15 @@ export const startCreatePost = (postData: { name?: string; message?: string; }) 
     const { name = '', message = '' } = postData;
     const post = { name, message };
     const id = '';
+    const date = new Date();
+    
 
     const firestore = getFirestore();
 
     firestore.collection('posts').add({
       ...postData
     }).then(() => {
-      return dispatch(createPost({ id, ...post }));
+      return dispatch(createPost({ id, date, ...post }));
     }).catch((err: any) => {
       console.log(err);
     })
