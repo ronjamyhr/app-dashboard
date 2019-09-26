@@ -2,7 +2,7 @@
 import { IPost } from "./../types/Post";
 import { CREATE_POST, AppActions, REMOVE_POST, FETCH_POSTS } from "../types/actions";
 import { Dispatch } from "redux";
-import { AppState } from "../store/configStore";
+import { AppState } from "./../../src/index";
 
 export const createPost = (post: IPost): AppActions => ({
   type: CREATE_POST,
@@ -21,7 +21,7 @@ export const fetchPosts = (posts: IPost[]): AppActions => ({
 
 
 export const startCreatePost = (postData: {name?: string; message?: string;}) => {
-  return (dispatch: Dispatch<AppActions>, getState: () => AppState, { getFirebase, getFirestore }: any) => {
+  return (dispatch: Dispatch<AppActions>, getState: () => AppState, { getFirestore }: any) => {
     
     const { name = '', message = '' } = postData;
     const post = { name, message };

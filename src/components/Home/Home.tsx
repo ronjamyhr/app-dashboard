@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { startRemovePost } from "../../actions/posts";
 import { IPost } from "../../types/Post";
-import { AppState } from "../../store/configStore";
+import { AppState } from "./../../index";
 import { Dispatch, bindActionCreators } from "redux";
 import { AppActions } from "../../types/actions";
 import { ThunkDispatch } from "redux-thunk";
@@ -57,20 +57,23 @@ interface LinkDispatchProps {
 }
 
 // Map our state from the store to the props in this component
-const mapStateToProps = (state: AppState, ownProps: Home): LinkStateProps => ({
-  posts: state.posts
-});
+const mapStateToProps = (state: AppState, ownProps: Home): LinkStateProps => {
+  console.log('state: ', state);
+  return {
+    //posts from firestore
+    posts: state.firestore.ordered.posts
+  } 
+}
 
-const mapDispatchToProps = (
-  dispatch: ThunkDispatch<any, any, AppActions>,
-  ownProps: Home
-): LinkDispatchProps => ({
-  startRemovePost: bindActionCreators(startRemovePost, dispatch)
-});
+const mapDispatchToProps = (dispatch: ThunkDispatch<any, any, AppActions>, ownProps: Home): LinkDispatchProps => {
+  return {
+    startRemovePost: bindActionCreators(startRemovePost, dispatch)
+  }
+};
 
 export default compose<any>(
-  connect(mapStateToProps, mapDispatchToProps)
-  // firestoreConnect([
-  //   { collection: 'posts' }
-  // ])
+  connect(mapStateToProps, mapDispatchToProps),
+  firestoreConnect([
+    { collection: 'posts' }
+  ])
 )(Home);

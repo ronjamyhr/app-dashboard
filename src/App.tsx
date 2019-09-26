@@ -13,21 +13,13 @@ class App extends React.Component<{}, {}> {
 
   render() {
     return (
-      // Provider component surround our app and pass the
-      // store into the application (so the application have access to the store)
       <BrowserRouter>
         <Navbar />
-                            
         <Switch>
-                                  
           <Route path="/" component={Login} exact />
-                                  
           <Route path="/home" component={Home} />
-                                  
           <Route component={NotFound} />
-                              
         </Switch>
-               
       </BrowserRouter>
     );
   }
