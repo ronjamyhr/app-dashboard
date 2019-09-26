@@ -13,16 +13,18 @@ import { rootReducer } from './reducers/rootReducer';
 import Fire, { firebaseConfig } from './config/Fire';
 import { createFirestoreInstance, getFirestore, reduxFirestore } from 'redux-firestore';
 import { ReactReduxFirebaseProvider, useFirebase } from 'react-redux-firebase';
-
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 
 export type AppState = ReturnType<typeof rootReducer>;
 
+// Store 
 export const store = createStore(
     rootReducer,
     compose(
-        applyMiddleware(thunk.withExtraArgument({ useFirebase, getFirestore }) as ThunkMiddleware<AppState, AppActions>),
+        composeWithDevTools(
+        applyMiddleware(thunk.withExtraArgument({ useFirebase, getFirestore }) as ThunkMiddleware<AppState, AppActions>)
+        ),
         reduxFirestore(Fire),
     )
 );

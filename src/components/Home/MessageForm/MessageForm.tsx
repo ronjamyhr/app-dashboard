@@ -10,6 +10,7 @@ interface IState {
   name: string;
   message: string;
   [key: string]: any;
+  date: Date;
 }
 
 class PostForm extends Component<IProps, IState> {
@@ -18,7 +19,8 @@ class PostForm extends Component<IProps, IState> {
 
     this.state = {
       name: '',
-      message: ''
+      message: '',
+      date: new Date(),
     };
 
     this.onChange = this.onChange.bind(this);
@@ -34,20 +36,17 @@ class PostForm extends Component<IProps, IState> {
   onSubmit(e: any) {
     e.preventDefault();
 
-    // const post = {
-    //   name: this.state.name,
-    //   message: this.state.message
-    // };
-
-    // this.props.startCreatePost(post);
-
     this.props.startCreatePost(this.state);
+
+    this.setState({
+      name: '',
+      message: ''
+    });
   }
 
   render() {
     return (
-      <div>
-        <h2>Message Form component:</h2>
+      <div className="message-form-container">
         <form onSubmit={this.onSubmit}>
           <div>
             <label>Name: </label>

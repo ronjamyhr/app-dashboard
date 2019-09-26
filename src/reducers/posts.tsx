@@ -3,7 +3,6 @@ import { PostActionTypes } from "../types/actions";
 
 const postsReducerDefaultState: IPost[] = [];
 
-
 const postReducer = (state = postsReducerDefaultState, action: PostActionTypes): IPost[] => {
   switch (action.type) {
     case "CREATE_POST":
@@ -12,9 +11,9 @@ const postReducer = (state = postsReducerDefaultState, action: PostActionTypes):
     case "REMOVE_POST":
       console.log('remove post ', action.type);
       return state.filter(({ id }) => id !== action.id);
-    case "FETCH_POSTS":
-      console.log('fetch post ', action.type);
-      return action.posts;
+    // case "FETCH_POSTS":
+    //   console.log('fetch post ', action.type);
+    //   return action.posts;
     default:
       return state;
   }
