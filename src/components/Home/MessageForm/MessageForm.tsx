@@ -34,14 +34,12 @@ class PostForm extends Component<IProps, IState> {
   onSubmit(e: any) {
     e.preventDefault();
 
-    // const post = {
-    //   name: this.state.name,
-    //   message: this.state.message
-    // };
-
-    // this.props.startCreatePost(post);
-
     this.props.startCreatePost(this.state);
+
+    this.setState({
+      name: '',
+      message: ''
+    });
   }
 
   render() {

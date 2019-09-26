@@ -1,6 +1,6 @@
 // import uuid from "uuid";
 import { IPost } from "./../types/Post";
-import { CREATE_POST, AppActions, REMOVE_POST, FETCH_POSTS } from "../types/actions";
+import { CREATE_POST, AppActions, REMOVE_POST } from "../types/actions";
 import { Dispatch } from "redux";
 import { AppState } from "./../../src/index";
 
@@ -14,10 +14,10 @@ export const removePost = (id: string): AppActions => ({
   id
 });
 
-export const fetchPosts = (posts: IPost[]): AppActions => ({
-  type: FETCH_POSTS,
-  posts
-});
+// export const fetchPosts = (posts: IPost[]): AppActions => ({
+//   type: FETCH_POSTS,
+//   posts
+// });
 
 
 export const startCreatePost = (postData: { name?: string; message?: string; }) => {
@@ -56,8 +56,8 @@ export const startRemovePost = (id: string) => {
   };
 };
 
-export const startFetchPosts = (posts: IPost[]) => {
-  return (dispatch: Dispatch<AppActions>, getState: () => AppState) => {
-    dispatch(fetchPosts(posts));
-  };
-};
+// export const startFetchPosts = (posts: IPost[]) => {
+//   return (dispatch: Dispatch<AppActions>, getState: () => AppState) => {
+//     dispatch(fetchPosts(posts));
+//   };
+// };
