@@ -26,8 +26,8 @@ class PostForm extends Component<IProps, IState> {
   }
 
   onChange(e: any) {
-    this.setState({ 
-      [e.target.name]: e.target.value 
+    this.setState({
+      [e.target.name]: e.target.value
     });
   }
 
@@ -47,7 +47,7 @@ class PostForm extends Component<IProps, IState> {
   render() {
     return (
       <div>
-        <h1>Add Post</h1>
+        <h2>Message Form component:</h2>
         <form onSubmit={this.onSubmit}>
           <div>
             <label>Name: </label>
