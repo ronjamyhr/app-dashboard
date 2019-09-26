@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { startCreatePost } from '../../../actions/posts';
+import './messageForm.scss';
 
 interface IProps {
   startCreatePost: (postData: any) => void;

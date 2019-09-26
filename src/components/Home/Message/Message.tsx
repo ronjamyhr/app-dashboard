@@ -8,6 +8,7 @@ import { AppActions } from '../../../types/actions';
 import { ThunkDispatch } from 'redux-thunk';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
+import './message.scss';
 
 interface IMessageProps {
   // id?: string;
