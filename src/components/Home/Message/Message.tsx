@@ -8,10 +8,13 @@ import { AppActions } from '../../../types/actions';
 import { ThunkDispatch } from 'redux-thunk';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
+import moment from 'moment';
 import './message.scss';
 
 interface IMessageProps {
-  // id?: string;
+  id: string;
+  name: number;
+  message: string;
 }
 
 interface IMessageState {
@@ -26,8 +29,7 @@ export class Message extends React.Component<Props, IMessageState> {
   };
 
   render() {
-    console.log('this.props innehåller :', this.props);
-
+    // console.log('this.props innehåller :', this.props);
     const { posts } = this.props;
     return (
       <div className='message-container'>
@@ -37,7 +39,7 @@ export class Message extends React.Component<Props, IMessageState> {
               <li key={post.id}>
                 <p>{post.name}</p>
                 <p>{post.message}</p>
-
+                <p>{moment(post.date.toDate()).format("LLLL")}</p>
                 <button onClick={() => this.onRemove(post.id)}>Remove post</button>
               </li>
             ))}
@@ -75,6 +77,6 @@ const mapDispatchToProps = (dispatch: ThunkDispatch<any, any, AppActions>, ownPr
 export default compose<any>(
   connect(mapStateToProps, mapDispatchToProps),
   firestoreConnect([
-    { collection: 'posts' }
+    { collection: 'posts', orderBy: ['date', 'desc']}
   ])
 )(Message);

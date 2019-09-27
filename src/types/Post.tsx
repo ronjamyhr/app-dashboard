@@ -1,6 +1,6 @@
 export interface IPost {
     id: string;
-    date: Date;
+    date: any;
     name: string;
     message: string;
 }

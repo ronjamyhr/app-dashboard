@@ -3,6 +3,7 @@ import { PostActionTypes } from "../types/actions";
 
 const postsReducerDefaultState: IPost[] = [];
 
+
 const postReducer = (state = postsReducerDefaultState, action: PostActionTypes): IPost[] => {
   switch (action.type) {
     case "CREATE_POST":
