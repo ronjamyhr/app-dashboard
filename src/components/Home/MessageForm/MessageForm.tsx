@@ -2,9 +2,15 @@ import React, { Component } from 'react';
 import './messageForm.scss';
 import { connect } from 'react-redux';
 import { startCreatePost } from '../../../actions/posts';
+import { ThunkDispatch } from 'redux-thunk';
+import { AppActions } from '../../../types/actions';
+import { bindActionCreators, compose } from 'redux';
 
-interface IProps {
-  startCreatePost: (postData: any) => void;
+//Behövs den? den används inte
+interface IMessageFormProps {
+  name: string;
+  message: string;
+  date: any;
 }
 
 interface IState {
@@ -14,7 +20,9 @@ interface IState {
   date: Date;
 }
 
-class PostForm extends Component<IProps, IState> {
+type IProps = IMessageFormProps & LinkDispatchProps;
+
+class MessageForm extends Component<IProps, IState> {
   constructor(props: IProps) {
     super(props);
 
@@ -77,4 +85,18 @@ class PostForm extends Component<IProps, IState> {
   }
 }
 
-export default connect(null, { startCreatePost })(PostForm);
+interface LinkDispatchProps {
+  startCreatePost: (postData: any) => void;
+}
+
+// Dispatch an action from the component.
+// Map dispatch to props.
+const mapDispatchToProps = (dispatch: ThunkDispatch<any, any, AppActions>, ownProps: MessageForm): LinkDispatchProps => {
+  return {
+    startCreatePost: bindActionCreators(startCreatePost, dispatch)
+  }
+};
+
+export default compose<any>(
+  connect(null, mapDispatchToProps)(MessageForm)
+);

@@ -11,15 +11,16 @@ import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 import moment from 'moment';
 
+//Behövs den? den används inte
 interface IMessageProps {
   id: string;
-  name: number;
+  name: string;
   message: string;
 }
 
-type Props = IMessageProps & LinkStateProps & LinkDispatchProps;
+type IProps = IMessageProps & LinkStateProps & LinkDispatchProps;
 
-export class Message extends React.Component<Props, {}> {
+export class Message extends React.Component<IProps, {}> {
 
   onRemove = (id: string) => {
     this.props.startRemovePost(id);
