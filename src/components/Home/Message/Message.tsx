@@ -1,4 +1,5 @@
 import React from 'react';
+import './message.scss';
 import { connect } from 'react-redux';
 import { startRemovePost } from '../../../actions/posts';
 import { IPost } from '../../../types/Post';
@@ -9,7 +10,6 @@ import { ThunkDispatch } from 'redux-thunk';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 import moment from 'moment';
-import './message.scss';
 
 interface IMessageProps {
   id: string;
@@ -17,12 +17,9 @@ interface IMessageProps {
   message: string;
 }
 
-interface IMessageState {
-}
-
 type Props = IMessageProps & LinkStateProps & LinkDispatchProps;
 
-export class Message extends React.Component<Props, IMessageState> {
+export class Message extends React.Component<Props, {}> {
 
   onRemove = (id: string) => {
     this.props.startRemovePost(id);
@@ -40,6 +37,8 @@ export class Message extends React.Component<Props, IMessageState> {
                 <p>{post.name}</p>
                 <p>{post.message}</p>
                 <p>{moment(post.date.toDate()).format("LLLL")}</p>
+                {/* if statement = if user is logged in show delete button, 
+                or if we want that just that user who write the post can delete it. */}
                 <button onClick={() => this.onRemove(post.id)}>Remove post</button>
               </li>
             ))}
@@ -67,7 +66,8 @@ const mapStateToProps = (state: AppState, ownProps: Message): LinkStateProps => 
   }
 }
 
-// It connects redux actions to react props.
+// Dispatch an action from the component.
+// Map dispatch to props.
 const mapDispatchToProps = (dispatch: ThunkDispatch<any, any, AppActions>, ownProps: Message): LinkDispatchProps => {
   return {
     startRemovePost: bindActionCreators(startRemovePost, dispatch)
@@ -77,6 +77,6 @@ const mapDispatchToProps = (dispatch: ThunkDispatch<any, any, AppActions>, ownPr
 export default compose<any>(
   connect(mapStateToProps, mapDispatchToProps),
   firestoreConnect([
-    { collection: 'posts', orderBy: ['date', 'desc']}
+    { collection: 'posts', orderBy: ['date', 'desc'] }
   ])
 )(Message);

@@ -1,9 +1,7 @@
-// import uuid from "uuid";
 import { IPost } from "./../types/Post";
 import { CREATE_POST, AppActions, REMOVE_POST } from "../types/actions";
 import { Dispatch } from "redux";
 import { AppState } from "./../../src/index";
-// import firebase from "firebase";
 
 export const createPost = (post: IPost): AppActions => ({
   type: CREATE_POST,
@@ -14,11 +12,6 @@ export const removePost = (id: string): AppActions => ({
   type: REMOVE_POST,
   id
 });
-
-// export const fetchPosts = (posts: IPost[]): AppActions => ({
-//   type: FETCH_POSTS,
-//   posts
-// });
 
 
 export const startCreatePost = (postData: { name?: string; message?: string; }) => {
@@ -58,9 +51,3 @@ export const startRemovePost = (id: string) => {
 
   };
 };
-
-// export const startFetchPosts = (posts: IPost[]) => {
-//   return (dispatch: Dispatch<AppActions>, getState: () => AppState) => {
-//     dispatch(fetchPosts(posts));
-//   };
-// };
