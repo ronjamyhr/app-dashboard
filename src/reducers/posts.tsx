@@ -10,6 +10,9 @@ const postReducer = (state = postsReducerDefaultState, action: PostActionTypes):
       return [...state, action.post];
     case "REMOVE_POST":
       // console.log('remove post ', action.type);
+      // filter method creates a new array, if we return true for that function
+      // then we keep that post in the new array
+	    // if we return false then we filter that post out of the new array.
       return state.filter(({ id }) => id !== action.id);
     default:
       return state;
