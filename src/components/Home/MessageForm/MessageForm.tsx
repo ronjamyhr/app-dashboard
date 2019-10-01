@@ -55,30 +55,29 @@ class MessageForm extends Component<IProps, IState> {
 
   render() {
     return (
-      <div className="message-form-container">
-        <form onSubmit={this.onSubmit}>
-          <div>
-            <label>Name: </label>
-            <br />
+      <div className="messageform-container">
+        <form className="messageform-form" onSubmit={this.onSubmit}>
+        
+            <label className="messageform-form-label-name"><i className="far fa-user-circle"></i> NAME</label>
             <input
+              className="messageform-form-input-name"
+              placeholder="enter name"
               type="text"
               name="name"
               onChange={this.onChange}
               value={this.state.name}
             />
-          </div>
-          <br />
-          <div>
-            <label>Message: </label>
-            <br />
+            
+            <label className="messageform-form-label-message"><i className="fas fa-pen"></i> MESSAGE</label>
             <textarea
+              className="messageform-form-textarea-message"
+              placeholder="enter message"
               name="message"
               onChange={this.onChange}
               value={this.state.message}
             />
-          </div>
-          <br />
-          <button type="submit">Submit</button>
+ 
+          <button className="messageform-form-button" type="submit">SUBMIT</button>
         </form>
       </div>
     );
