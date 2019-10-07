@@ -1,9 +1,9 @@
 import { IPost } from "./../types/Post";
-import { PostActionTypes } from "../types/actions";
+import { AppActions } from "../types/actions";
 
 const postsReducerDefaultState: IPost[] = [];
 
-const postReducer = (state = postsReducerDefaultState, action: PostActionTypes): IPost[] => {
+const postReducer = (state = postsReducerDefaultState, action: AppActions): IPost[] => {
     switch (action.type) {
         case "CREATE_POST":
             return [...state, action.post];
