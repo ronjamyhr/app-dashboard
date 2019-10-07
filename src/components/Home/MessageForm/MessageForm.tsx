@@ -6,13 +6,6 @@ import { ThunkDispatch } from 'redux-thunk';
 import { AppActions } from '../../../types/actions';
 import { bindActionCreators, compose } from 'redux';
 
-//Behövs den? den används inte
-interface IMessageFormProps {
-  name: string;
-  message: string;
-  date: any;
-}
-
 interface IState {
   name: string;
   message: string;
@@ -20,7 +13,7 @@ interface IState {
   date: Date;
 }
 
-type IProps = IMessageFormProps & LinkDispatchProps;
+type IProps = LinkDispatchProps;
 
 class MessageForm extends Component<IProps, IState> {
   constructor(props: IProps) {

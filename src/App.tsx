@@ -7,18 +7,18 @@ import Login from './components/Login/Login';
 
 class App extends React.Component<{}, {}> {
 
-  render() {
-    return (
-      <BrowserRouter>
-        <Navbar />
-        <Switch>
-          <Route path='/' component={Login} exact />
-          <Route path='/home' component={Home} />
-          <Route component={NotFound} />
-        </Switch>
-      </BrowserRouter>
-    );
-  }
+    render() {
+        return (
+            <BrowserRouter>
+                <Navbar />
+                <Switch>
+                    <Route path='/' component={Login} exact />
+                    <Route path='/home' component={Home} />
+                    <Route component={NotFound} />
+                </Switch>
+            </BrowserRouter>
+        );
+    }
 }
 
 export default App;

@@ -4,7 +4,7 @@ import "./spotifyMusic.scss";
 
 class SpotifyMusic extends React.Component<{}, {}> {
   public render() {
-    return <React.Fragment></React.Fragment>;
+    return <></>;
   }
 }
 

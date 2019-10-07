@@ -10,7 +10,7 @@ class Home extends React.Component {
 		return(
 			<div className="home-container">
       <h1>Dashboard</h1>
-        {/* messageForm = if user is logged in show, else null */}
+        {/* TODO: messageForm = if user is logged in show, else null */}
 				<MessageForm />
 				<Message />			
 			</div>

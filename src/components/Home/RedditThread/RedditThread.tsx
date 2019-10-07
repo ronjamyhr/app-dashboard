@@ -3,7 +3,7 @@ import "./redditThread.scss";
 
 class RedditThread extends React.Component<{}, {}> {
   public render() {
-    return <React.Fragment></React.Fragment>;
+    return <></>;
   }
 }
 

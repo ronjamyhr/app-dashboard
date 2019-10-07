@@ -11,14 +11,7 @@ import { firestoreConnect, isEmpty } from 'react-redux-firebase';
 import { compose } from 'redux';
 import moment from 'moment';
 
-//Behövs den? den används inte
-interface IMessageProps {
-    id: string;
-    name: string;
-    message: string;
-}
-
-type IProps = IMessageProps & LinkStateProps & LinkDispatchProps;
+type IProps = LinkStateProps & LinkDispatchProps;
 
 export class Message extends React.Component<IProps, {}> {
 
@@ -27,7 +20,6 @@ export class Message extends React.Component<IProps, {}> {
     };
 
     render() {
-        // console.log('this.props innehåller :', this.props);
         const { posts } = this.props;
         const postList = !isEmpty(posts) ? (
             <div className='message-card'>
@@ -37,7 +29,7 @@ export class Message extends React.Component<IProps, {}> {
                             <p className="message-message-text">{post.message}</p>
                             <p className="message-message-name">- {post.name}</p>
                             <p className="message-message-date">{moment(post.date.toDate()).format("LLLL")}</p>
-                            {/* if statement = if user is logged in show delete button, 
+                            {/* TODO: if statement = if user is logged in show delete button, 
                 or if we want that just that user who write the post can delete it. */}
                             <button className="message-message-button" onClick={() => this.onRemove(post.id)}><i className="message-message-button-icon fas fa-trash-alt"></i></button>
                         </li>
@@ -68,7 +60,6 @@ interface LinkDispatchProps {
 // It connects redux state to props of react component.
 // Map our state from the store to the props in this component.
 const mapStateToProps = (state: AppState, ownProps: Message): LinkStateProps => {
-    console.log('state: ', state);
     return {
         //posts from db firestore
         posts: state.firestore.ordered.posts

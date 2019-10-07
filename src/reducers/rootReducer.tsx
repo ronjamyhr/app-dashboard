@@ -7,4 +7,4 @@ export const rootReducer = combineReducers({
     //We name the postReducer as posts
     posts: postReducer,
     firestore: firestoreReducer
-  });
+});
