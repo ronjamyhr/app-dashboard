@@ -4,6 +4,9 @@
 .message-container {
     background-color: $primary-color-medium;
     width: 250px;
+    height: 200px;
+    overflow: scroll;
+
 
     .message-card {
         padding: 1em;
