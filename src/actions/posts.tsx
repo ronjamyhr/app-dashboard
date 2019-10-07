@@ -1,5 +1,6 @@
 import { IPost } from "./../types/Post";
-import { CREATE_POST, AppActions, REMOVE_POST } from "../types/actions";
+import { CREATE_POST, REMOVE_POST } from "../types/actions";
+import { AppActions } from "../types/actions";
 import { Dispatch } from "redux";
 import { AppState } from "./../../src/index";
 
