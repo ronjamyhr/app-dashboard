@@ -1,0 +1,86 @@
+@import "./../../../variables.scss";
+
+.messageform-container {
+    background-color: $primary-color-medium;
+    width: 250px;
+
+    .messageform-form {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 2em;
+
+        %messageform-form-label {
+            color: #ffffff;
+            font-family: $headers-font;
+            font-weight: 300;
+            margin-bottom: .5em;
+        }
+
+        .messageform-form-label-name {
+            @extend %messageform-form-label;
+
+        }
+
+        .messageform-form-label-message {
+            @extend %messageform-form-label;
+            margin-top: 1em;
+        }
+
+        .messageform-form-input-name {
+            border: 0;
+            outline: 0;
+            background: transparent;
+            color: $primary-color-medium;
+            border-bottom: 1px solid #4e4e4e;
+            width: 200px;
+            padding: 2px 0;
+        }
+
+        .messageform-form-textarea-message {
+            border: 1px solid #4e4e4e;
+            background: transparent;
+            outline: none;
+            width: 200px;
+            min-height: 80px;
+            resize: none;
+        }
+
+        .messageform-form-textarea-message,
+        select,
+        .messageform-form-input-name {
+            color: #ffffff;
+            font-weight: 200;
+            font-family: $body_font;
+        }
+
+        .messageform-form-input-name::placeholder,
+        .messageform-form-textarea-message::placeholder {
+            color: #646464;
+            font-family: $body_font;
+            font-weight: 200;
+        }
+
+        .messageform-form-input-name:focus,
+        .messageform-form-textarea-message:focus {
+            border: 1px solid $detail-color;
+            color: #ffffff;
+            font-weight: 200;
+            font-family: $body_font;
+        }
+
+        .messageform-form-button {
+            margin-top: 2em;
+            border: none;
+            border-radius: 20px;
+            width: 80px;
+            background-color: $detail-color;
+            padding: .7em 1em;
+            cursor: pointer;
+            font-family: $headers-font;
+            font-weight: 400;
+        }
+
+
+    }
+}

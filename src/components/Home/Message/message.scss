@@ -1,0 +1,73 @@
+@import "./../../../variables.scss";
+
+
+.message-container {
+    background-color: $primary-color-medium;
+    width: 250px;
+
+    .message-card {
+        padding: 1em;
+
+        ul {
+            list-style: none;
+            padding: 0;
+
+            li {
+                margin: 4em 0;
+            }
+        }
+
+        %message-text-style {
+            color: #ffffff;
+            font-weight: 100;
+            font-family: $body_font;
+        }
+
+        .message-message-text {
+            @extend %message-text-style;
+            font-size: 1rem;
+        }
+
+        .message-message-name {
+            @extend %message-text-style;
+            font-size: 0.8rem;
+            margin-bottom: 0;
+        }
+
+        .message-message-date {
+            @extend %message-text-style;
+            color: #646464;
+            font-size: 0.7rem;
+            margin-top: 0;
+        }
+
+        .message-message-button {
+            background: none;
+            border: none;
+
+            .message-message-button-icon {
+                cursor: pointer;
+                font-size: 1rem;
+                color: #646464;
+            }
+
+            .message-message-button-icon:hover {
+                opacity: .5;
+            }
+        }
+    }
+
+    .no-messages-card {
+        padding: 1em;
+
+        .message-message-no-text {
+            color: #646464;
+            font-weight: 100;
+            font-family: $body_font;
+            font-size: 1rem;
+        }
+    }
+
+
+
+}
