@@ -21,7 +21,7 @@ interface IState {
 
 type IProps = LinkDispatchProps;
 
-class MessageForm extends Component<IProps, IState> {
+export class MessageForm extends Component<IProps, IState> {
     constructor(props: IProps) {
         super(props);
 
