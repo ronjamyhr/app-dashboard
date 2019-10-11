@@ -1,13 +1,22 @@
 @import "./../../../variables.scss";
 
 .messageform-container {
-    background-color: $primary-color-medium;
-    width: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .messageform-heading {
+        color: #ffffff;
+        font-family: $headers-font;
+        font-weight: 300;
+        padding-top: 1em;
+        text-align: center;
+        font-size: 1.5rem;
+    }
 
     .messageform-form {
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
         padding: 2em;
 
         %messageform-form-label {
@@ -19,7 +28,6 @@
 
         .messageform-form-label-name {
             @extend %messageform-form-label;
-
         }
 
         .messageform-form-label-message {
@@ -70,6 +78,7 @@
         }
 
         .messageform-form-button {
+            outline: none;
             margin-top: 2em;
             border: none;
             border-radius: 20px;
@@ -79,6 +88,11 @@
             cursor: pointer;
             font-family: $headers-font;
             font-weight: 400;
+            transition-duration: 0.4s;
+        }
+
+        .messageform-form-button:hover {
+            background-color: lighten($detail-color, 10%);
         }
 
         .messageform-form-button:disabled {
@@ -86,6 +100,12 @@
             opacity: .5;
         }
 
-
+        .messageform-form-error-message {
+            color: $detail-color;
+            font-family: $body_font;
+            font-weight: 200;
+            font-size: .7rem;
+            opacity: .8;
+        }
     }
 }

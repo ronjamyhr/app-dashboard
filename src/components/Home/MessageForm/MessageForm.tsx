@@ -19,7 +19,11 @@ interface IState {
     }
 }
 
-type IProps = LinkDispatchProps;
+interface IPropsPopup {
+    closePopup(): void;
+}
+
+type IProps = IPropsPopup & LinkDispatchProps;
 
 export class MessageForm extends Component<IProps, IState> {
     constructor(props: IProps) {
@@ -135,11 +139,14 @@ export class MessageForm extends Component<IProps, IState> {
             name: '',
             message: ''
         });
+
+        this.props.closePopup();
     }
 
     render() {
         return (
             <div className="messageform-container">
+                <h1 className="messageform-heading">CREATE MESSAGE</h1>
                 <form className="messageform-form" onSubmit={this.onSubmit}>
 
                     <label className="messageform-form-label-name"><i className="far fa-user-circle"></i> NAME</label>
@@ -183,7 +190,6 @@ interface LinkDispatchProps {
 }
 
 // Dispatch an action from the component.
-// Map dispatch to props.
 const mapDispatchToProps = (dispatch: ThunkDispatch<any, any, AppActions>, ownProps: MessageForm): LinkDispatchProps => {
     return {
         startCreatePost: bindActionCreators(startCreatePost, dispatch)
