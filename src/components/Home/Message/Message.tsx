@@ -5,7 +5,7 @@ import { startRemovePost } from '../../../actions/posts';
 import { IPost } from '../../../types/Post';
 import { AppState } from './../../../index';
 import { bindActionCreators } from 'redux';
-import { AppActions } from '../../../types/actions';
+import { AppActions } from "../../../types/actions";
 import { ThunkDispatch } from 'redux-thunk';
 import { firestoreConnect, isEmpty, isLoaded } from 'react-redux-firebase';
 import { compose } from 'redux';

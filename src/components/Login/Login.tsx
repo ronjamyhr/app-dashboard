@@ -1,15 +1,15 @@
-import React from "react";
-import "./login.scss";
-// import fire from './../../config/Fire';
- 
+import React from 'react'
+import './login.scss'
+import LoginForm from './LoginForm'
 
-class Login extends React.Component<{}, {}> {
+export class Login extends React.Component<{}, {}> {
   public render() {
-    return <React.Fragment>
-    	<h1>Login page</h1>
-
-    </React.Fragment>;
+    return (<>
+      <h1>Login page</h1>
+      <LoginForm />
+    </>
+    );
   }
 }
 
-export default Login;
+export default Login

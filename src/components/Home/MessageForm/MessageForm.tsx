@@ -3,7 +3,7 @@ import './messageForm.scss';
 import { connect } from 'react-redux';
 import { startCreatePost } from '../../../actions/posts';
 import { ThunkDispatch } from 'redux-thunk';
-import { AppActions } from '../../../types/actions';
+import { AppActions } from "../../../types/actions";
 import { bindActionCreators, compose } from 'redux';
 
 interface IState {
