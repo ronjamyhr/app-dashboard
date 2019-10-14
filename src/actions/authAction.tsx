@@ -16,9 +16,11 @@ export const notLogged = (user: IUser): AppActions => ({
 });
 
 
-export const loggedOut = (): AppActions => ({
-    type: logOut,
-});
+export const loggedOut = (): AppActions => {
+    return ({
+        type: logOut
+    });
+};
 
 //authLogin is our action creater
 //use getFirebase to sign in user
@@ -34,15 +36,17 @@ export const authLogin = (user: IUser) => {
             //The actions will be handled in the reducer
         ).then(() => {
             dispatch(loggedUser(user))
+            console.log(loggedUser(user))
 
         }).catch((error: any) => {
             dispatch(notLogged(user))
+            console.log(notLogged(user))
         })
     }
 }
 
 //no need to pass in something in the function
-export const signOut = () => {
+export const signOut = (user: IUser) => {
 
     //use getFirebase to log out
     return (dispatch: Dispatch<AppActions>, getState: () => AppState, { getFirebase }: any) => {
@@ -51,6 +55,9 @@ export const signOut = () => {
         //.then takes a callback-function that dispatches the the action  
         firebase.auth().signOut().then(() => {
             dispatch(loggedOut())
-        });
+            console.log(loggedOut())
+        }).catch((error: any) => {
+        })
+
     }
 }
