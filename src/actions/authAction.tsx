@@ -26,7 +26,6 @@ export const authLogin = (user: IUser) => {
     return (dispatch: Dispatch<AppActions>, getState: () => AppState, { getFirebase }: any) => {
         //init the firebase 
         const firebase = getFirebase();
-
         firebase.auth().signInWithEmailAndPassword(
             //stores it, function uses promise, 
             user.email,

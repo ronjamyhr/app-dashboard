@@ -19,6 +19,7 @@ import 'firebase/firestore';
 export type AppState = ReturnType<typeof rootReducer>;
 
 firebase.initializeApp(firebaseConfig);
+firebase.firestore();
 
 // Store 
 export const store = createStore(
