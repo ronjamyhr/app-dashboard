@@ -1,6 +1,6 @@
 import { Dispatch } from 'redux';
 import { IUser } from '../types/authInterface'
-import { loginSuccess, loginError } from "../types/actions";
+import { loginSuccess, loginError, logOut } from "../types/actions";
 import { AppActions } from "../types/actions";
 import { AppState } from "./../../src/index";
 
@@ -15,13 +15,18 @@ export const notLogged = (user: IUser): AppActions => ({
     user
 });
 
+
+export const loggedOut = (): AppActions => ({
+    type: logOut,
+});
+
 //authLogin is our action creater
-//use {getFirebase} to sign in user
+//use getFirebase to sign in user
 export const authLogin = (user: IUser) => {
     return (dispatch: Dispatch<AppActions>, getState: () => AppState, { getFirebase }: any) => {
         //init the firebase 
         const firebase = getFirebase();
-        console.log(user.email, user.password)
+
         firebase.auth().signInWithEmailAndPassword(
             //stores it, function uses promise, 
             user.email,
@@ -30,11 +35,23 @@ export const authLogin = (user: IUser) => {
             //The actions will be handled in the reducer
         ).then(() => {
             dispatch(loggedUser(user))
+
         }).catch((error: any) => {
             dispatch(notLogged(user))
-            console.log('hej', error);
         })
     }
 }
 
+//no need to pass in something in the function
+export const signOut = () => {
 
+    //use getFirebase to log out
+    return (dispatch: Dispatch<AppActions>, getState: () => AppState, { getFirebase }: any) => {
+        const firebase = getFirebase();
+        //use the variable firebase.with the signout-method
+        //.then takes a callback-function that dispatches the the action  
+        firebase.auth().signOut().then(() => {
+            dispatch(loggedOut())
+        });
+    }
+}
