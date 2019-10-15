@@ -57,7 +57,7 @@ export class MessageForm extends Component<IProps, IState> {
         e.preventDefault();
 
         const { name, value } = e.target;
-        const regex = /^[a-zA-Z0-9åäöÅÄÖ ]+$/;
+        const regex = /^[a-zA-ZåäöÅÄÖ ]+$/;
         const isValid = regex.test(value);
 
         let nameInput = this.state.nameInputError;
@@ -71,7 +71,7 @@ export class MessageForm extends Component<IProps, IState> {
                 nameInput = 'name is empty or contains only spaces';
                 errors.name = true;
             }
-            if (!isValid) {
+            if (!isValid && value !== '') {
                 nameInput = 'name must only contain letters and whitespaces';
                 errors.name = true;
             }
