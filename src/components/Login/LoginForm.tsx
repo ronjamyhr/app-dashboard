@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { authLogin } from '../../actions/authAction';
 import { AppActions } from "../../types/actions";
-import { compose, bindActionCreators } from 'redux';
+import { bindActionCreators, compose } from 'redux';
 import { IUser } from '../../types/authInterface';
-import Home from '../Home/Home';
-import { auth } from 'firebase';
 import { ThunkDispatch } from 'redux-thunk';
+
+
 
 type IProps = ILinkStateProps & ILinkDispatchProps;
 
@@ -36,7 +36,7 @@ interface ILinkDispatchProps {
 }
 
 
-class LoginForm extends React.Component<IProps, ILoginFormState> {
+export class LoginForm extends React.Component<IProps, ILoginFormState> {
     constructor(props: IProps) {
         super(props)
         this.state = {
@@ -138,25 +138,29 @@ class LoginForm extends React.Component<IProps, ILoginFormState> {
 
     public render() {
         const { currentlyLogged } = this.props;
+        console.log("hejhej", currentlyLogged)
         return (<>
-            {!this.props.currentlyLogged ? null : (<Home />)}
-            <form onSubmit={this.handleSubmit} noValidate>
-                <label>Email</label>
-                <input type="text" name="username" id="email" onChange={this.handleEmailChange} placeholder="name@prototyp.se" required />
-                {this.state.errorMsgEmail.length > 0 ? (
-                    <p>{this.state.errorMsgEmail}</p>
-                ) : (
+            <div className="loginform-container">
+                <div className="loginform-img"></div>
+                <form className="loginform" onSubmit={this.handleSubmit}>
+                    <h1 className="loginform-title">LOGIN</h1>
+                    <label><i className="far fa-user-circle"></i>EMAIL</label>
+                    <input type="text" name="username" id="email" onChange={this.handleEmailChange} placeholder="name@prototyp.se" required />
+                    {this.state.errorMsgEmail.length > 0 ? (
+                        <p className="loginform-error">{this.state.errorMsgEmail}</p>
+                    ) : (
+                            null
+                        )}
+                    <label><i className="fas fa-lock"></i>PASSWORD</label>
+                    <input type="password" name="password" id="password" onChange={this.handlePasswordChange} placeholder="******" />
+                    <p className="loginform-error">{this.state.errorMsgPassword}</p>
+                    {!this.state.validatedForm ? (
                         null
-                    )}
-                <label>Password</label>
-                <input type="password" name="password" id="password" onChange={this.handlePasswordChange} placeholder="******" />
-                <p>{this.state.errorMsgPassword}</p>
-                {!this.state.validatedForm ? (
-                    null
-                ) : (
-                        <button type="submit">Login</button>
-                    )}
-            </form>
+                    ) : (
+                            <button className="loginform-button" type="submit">LOGIN<i className="far fa-arrow-alt-circle-right"></i></button>
+                        )}
+                </form>
+            </div>
         </>
         );
     }

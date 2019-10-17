@@ -1,0 +1,100 @@
+@import '../../variables.scss';
+
+body {
+    background-color: $primary-color-dark;
+
+    .loginform-container {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+
+        .loginform-img {
+            flex: 1;
+            background-image: url("../../assets/loginpic.png");
+            background-size: cover;
+            height: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .loginform {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            height: 70vh;
+            align-items: center;
+            justify-content: center;
+
+            %loginform-text {
+                color: $text-color-medium;
+                font-family: $headers-font;
+                font-weight: lighter;
+                font-size: 0.9em;
+            }
+
+            .loginform-title {
+                @extend %loginform-text;
+                margin-bottom: 2em;
+                font-size: 2em;
+            }
+
+            label {
+                @extend %loginform-text;
+                width: 200px;
+                padding: 1.7em;
+
+                i {
+                    margin-right: 0.5em;
+                }
+            }
+
+            input {
+                @extend %loginform-text;
+                font-size: 0.8em;
+                border: 0;
+                background: transparent;
+                outline: 0;
+                border-bottom: 1px solid #4e4e4e;
+                width: 200px;
+                padding: 1em 0;
+            }
+
+            input:-webkit-autofill,
+            input:-webkit-autofill:hover,
+            input:-webkit-autofill:focus,
+            input:-webkit-autofill:active {
+                -webkit-transition: "color 9999s ease-out, background-color 9999s ease-out";
+                -webkit-transition-delay: 9999s;
+            }
+
+            .loginform-error {
+                @extend %loginform-text;
+                font-weight: bold;
+                color: $detail-color;
+                font-size: 0.7em;
+                opacity: 0.8;
+            }
+
+            .loginform-button {
+                background-color: $detail-color;
+                border: none;
+                border-radius: 20px;
+                outline: none;
+                padding: .7em 1em;
+                font-family: $headers-font;
+                width: 80px;
+                transition-duration: 0.5s;
+
+                i {
+                    padding: 0.2em;
+                }
+            }
+
+            .loginform-button:hover {
+                background-color: lighten($detail-color, 10%);
+
+
+            }
+        }
+    }
+}
