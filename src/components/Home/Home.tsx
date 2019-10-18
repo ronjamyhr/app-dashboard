@@ -2,12 +2,10 @@ import React from 'react';
 import './home.scss';
 import Message from './Message/Message';
 import MessageForm from './MessageForm/MessageForm';
-import { compose, bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
 import Footer from './Footer/Footer';
 
 
-class Home extends React.Component {
+export class Home extends React.Component {
 
 
 	render() {
@@ -23,6 +21,4 @@ class Home extends React.Component {
 	}
 }
 
-export default compose<any>(
-	connect()(Home)
-);
+export default Home;

@@ -76,6 +76,7 @@ body {
             }
 
             .loginform-button {
+                margin-top: 2em;
                 background-color: $detail-color;
                 border: none;
                 border-radius: 20px;
@@ -92,8 +93,11 @@ body {
 
             .loginform-button:hover {
                 background-color: lighten($detail-color, 10%);
+            }
 
-
+            .loginform-button:disabled {
+                cursor: not-allowed;
+                opacity: 0.5;
             }
         }
     }

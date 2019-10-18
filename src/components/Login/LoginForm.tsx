@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { authLogin } from '../../actions/authAction';
 import { AppActions } from "../../types/actions";
-import { bindActionCreators, compose } from 'redux';
+import { bindActionCreators, compose, combineReducers } from 'redux';
 import { IUser } from '../../types/authInterface';
 import { ThunkDispatch } from 'redux-thunk';
 
@@ -63,11 +63,10 @@ export class LoginForm extends React.Component<IProps, ILoginFormState> {
         const validEmail = regexEmail.test(value)
         let errorMsgForMail = this.state.errorMsgEmail;
         let errors: any = this.state.hasErrors;
-
         //e.target.id === 'email'
         //this condition will always run as soon as user starts typing inside email-input
         if (id === 'email') {
-            errors.email = false;
+                errors.email = false;
             errorMsgForMail = '';
 
             if (!validEmail) {
@@ -138,7 +137,6 @@ export class LoginForm extends React.Component<IProps, ILoginFormState> {
 
     public render() {
         const { currentlyLogged } = this.props;
-        console.log("hejhej", currentlyLogged)
         return (<>
             <div className="loginform-container">
                 <div className="loginform-img"></div>
@@ -153,12 +151,15 @@ export class LoginForm extends React.Component<IProps, ILoginFormState> {
                         )}
                     <label><i className="fas fa-lock"></i>PASSWORD</label>
                     <input type="password" name="password" id="password" onChange={this.handlePasswordChange} placeholder="******" />
-                    <p className="loginform-error">{this.state.errorMsgPassword}</p>
-                    {!this.state.validatedForm ? (
-                        null
-                    ) : (
-                            <button className="loginform-button" type="submit">LOGIN<i className="far fa-arrow-alt-circle-right"></i></button>
-                        )}
+                     {this.state.errorMsgPassword.length > 0 ? (
+                        <p className="loginform-error">{this.state.errorMsgPassword}</p>
+                     ) : (
+                         null
+                     )}   
+                
+            
+                            <button disabled={!this.state.validatedForm} className="loginform-button" type="submit">LOGIN<i className="far fa-arrow-alt-circle-right"></i></button>
+                       
                 </form>
             </div>
         </>
