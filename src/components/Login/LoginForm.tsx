@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { authLogin } from '../../actions/authAction';
 import { AppActions } from "../../types/actions";
-import { bindActionCreators, compose, combineReducers } from 'redux';
+import { bindActionCreators, compose } from 'redux';
 import { IUser } from '../../types/authInterface';
 import { ThunkDispatch } from 'redux-thunk';
 
