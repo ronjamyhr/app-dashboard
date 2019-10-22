@@ -15,7 +15,6 @@ export class Navbar extends React.Component<{}, INavbarState> {
 
   showNavbar = (e: any) => {
     e.preventDefault();
-    console.log(this.state)
     this.setState({
       condition: !this.state.condition
     })
@@ -24,7 +23,7 @@ export class Navbar extends React.Component<{}, INavbarState> {
   public render() {
     return (<>
       <div className="navbar-container">
-
+        
         <div onClick={this.showNavbar} className={this.state.condition ? "hamburger" : "x"}>
           <div className="bar1"></div>
           <div className="bar2"></div>
