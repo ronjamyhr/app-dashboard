@@ -76,8 +76,7 @@ export class Message extends React.Component<IProps, IState> {
                                             <p className="message-message-name">- {post.name}</p>
                                             <p className="message-message-date">{moment(post.date.toDate()).format("LLLL")}</p>
                                         </div>
-                                        {/* TODO: if statement = if user is logged in show delete button, 
-                or if we want that just that user who write the post can delete it. */}
+                                        {/* TODO: if statement = that only show the trash icon on posts you did */}
                                         <div className="message-delete-wrapper">
                                             <button className="message-message-button" onClick={() => this.onRemove(post.id)}><i className="message-message-button-icon fas fa-trash-alt"></i></button>
                                         </div>

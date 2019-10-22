@@ -1,0 +1,77 @@
+@import "./../../../variables.scss";
+
+.slackmessage-container {
+    background-color: $primary-color-medium;
+    width: 300px;
+    height: 290px;
+
+    .slackmessage-pin-icon {
+        transform: rotate(-45deg);
+        font-size: 1.5rem;
+        position: absolute;
+    }
+
+    .slackmessage-posts-container {
+        height: 200px;
+        overflow: scroll;
+
+        ul {
+            list-style: none;
+            padding: 0;
+
+            li {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                margin-bottom: 2em;
+
+                .slackmessages-post-wrapper {
+                    width: 200px;
+
+                    %post-text-style {
+                        color: #ffffff;
+                        font-weight: 100;
+                        font-family: $body_font;
+                    }
+
+                    .slackmessages-post-text {
+                        @extend %post-text-style;
+                        font-size: 1rem;
+                    }
+
+                    .slackmessages-post-user {
+                        @extend %post-text-style;
+                        color: #646464;
+                        font-size: 0.8rem;
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+
+    .slackmessages-heading-container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        padding: 1em;
+
+        .slackmessages-heading-line {
+            width: 100px;
+            margin-right: 0;
+            border: 0;
+            height: 0;
+            border-bottom: 1px solid rgb(255, 255, 255);
+        }
+
+        .slackmessages-heading {
+            color: #ffffff;
+            font-family: $headers-font;
+            font-weight: 300;
+            font-size: 1.2rem;
+            margin: 0;
+            text-align: end;
+        }
+    }
+}

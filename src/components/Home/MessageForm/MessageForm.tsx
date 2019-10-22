@@ -133,7 +133,9 @@ export class MessageForm extends Component<IProps, IState> {
     onSubmit(e: any) {
         e.preventDefault();
 
-        this.props.startCreatePost(this.state);
+        const {name, message, date} = this.state;
+
+        this.props.startCreatePost({name, message, date});
 
         this.setState({
             name: '',
