@@ -6,6 +6,7 @@ import { compose, bindActionCreators } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
 
 
+
 interface ILinkDispatchProps {
     signOutUser: any
 }
@@ -17,7 +18,7 @@ class Footer extends React.Component<ILinkDispatchProps, {}> {
         return <>
             <ul className="footer-signout-link">
                 {/* when user clicks on the link, it fires the signOutUser function, which dispatches the actioncreator signOut*/}
-                <li><a onClick={this.props.signOutUser}>logout</a></li>
+                <li><div onClick={this.props.signOutUser}>logout</div></li>
             </ul>
 
         </>;

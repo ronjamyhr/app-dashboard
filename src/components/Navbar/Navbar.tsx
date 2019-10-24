@@ -36,7 +36,7 @@ export class Navbar extends React.Component<{}, INavbarState> {
             <p className="navbar-login-text">login</p>
             <div className="navlink-line"></div>
             <div className="navbar-footer">
-              <a href="www.prototyp.se">prototyp</a>
+              <a href="https://www.prototyp.se">prototyp</a>
               <div className="navlink-line"></div>
             </div>
           </div>
