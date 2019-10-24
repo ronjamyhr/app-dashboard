@@ -9,7 +9,7 @@ body {
         align-items: flex-start;
         position: absolute;
         min-height: 100vh;
-        width: 11vh;
+        width: 9vh;
         background-color: black;
 
         .hamburger {
@@ -67,7 +67,7 @@ body {
             background-color: #141414;
 
             .navbar-login-text {
-                margin: 32em 0em 0em 1em;
+                margin: 42em 0em 0em 1em;
                 color: white;
                 writing-mode: vertical-lr;
                 transform: rotate(-180deg);
@@ -85,7 +85,7 @@ body {
 
             a:link {
                 color: white;
-                margin: 3em 0em 0em 1em;
+                margin: 5em 0em 0em 1em;
                 text-decoration: none;
                 writing-mode: vertical-lr;
                 transform: rotate(-180deg);
@@ -107,7 +107,6 @@ body {
 
             .navbar-footer {
                 position: fixed;
-
                 bottom: 0;
                 height: 25vh;
                 width: 20vh;

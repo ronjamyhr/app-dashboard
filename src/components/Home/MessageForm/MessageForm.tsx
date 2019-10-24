@@ -5,6 +5,8 @@ import { startCreatePost } from '../../../actions/posts';
 import { ThunkDispatch } from 'redux-thunk';
 import { AppActions } from "../../../types/actions";
 import { bindActionCreators, compose } from 'redux';
+import SubmitButton from '../../SubmitButton/SubmitButton'
+
 
 interface IState {
     name: string;
@@ -180,7 +182,7 @@ export class MessageForm extends Component<IProps, IState> {
                             null
                         )}
 
-                    <button disabled={!this.state.isValid} className="messageform-form-button" type="submit">SUBMIT</button>
+                    <SubmitButton disabled={!this.state.isValid}>SUBMIT</SubmitButton>
                 </form>
             </div>
         );

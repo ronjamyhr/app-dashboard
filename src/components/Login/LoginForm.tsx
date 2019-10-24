@@ -5,6 +5,7 @@ import { AppActions } from "../../types/actions";
 import { bindActionCreators, compose } from 'redux';
 import { IUser } from '../../types/authInterface';
 import { ThunkDispatch } from 'redux-thunk';
+import SubmitButton from '../SubmitButton/SubmitButton'
 
 
 
@@ -158,7 +159,7 @@ export class LoginForm extends React.Component<IProps, ILoginFormState> {
                      )}   
                 
             
-                            <button disabled={!this.state.validatedForm} className="loginform-button" type="submit">LOGIN<i className="far fa-arrow-alt-circle-right"></i></button>
+                            <SubmitButton disabled={!this.state.validatedForm}>LOGIN<i className="far fa-arrow-alt-circle-right"></i></SubmitButton>
                        
                 </form>
             </div>

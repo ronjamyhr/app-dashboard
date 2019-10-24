@@ -77,28 +77,6 @@
             font-family: $body_font;
         }
 
-        .messageform-form-button {
-            outline: none;
-            margin-top: 2em;
-            border: none;
-            border-radius: 20px;
-            width: 80px;
-            background-color: $detail-color;
-            padding: .7em 1em;
-            cursor: pointer;
-            font-family: $headers-font;
-            font-weight: 400;
-            transition-duration: 0.4s;
-        }
-
-        .messageform-form-button:hover {
-            background-color: lighten($detail-color, 10%);
-        }
-
-        .messageform-form-button:disabled {
-            cursor: not-allowed;
-            opacity: .5;
-        }
 
         .messageform-form-error-message {
             color: $detail-color;

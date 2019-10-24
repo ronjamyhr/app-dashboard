@@ -75,30 +75,6 @@ body {
                 opacity: 0.8;
             }
 
-            .loginform-button {
-                margin-top: 2em;
-                background-color: $detail-color;
-                border: none;
-                border-radius: 20px;
-                outline: none;
-                padding: .7em 1em;
-                font-family: $headers-font;
-                width: 80px;
-                transition-duration: 0.5s;
-
-                i {
-                    padding: 0.2em;
-                }
-            }
-
-            .loginform-button:hover {
-                background-color: lighten($detail-color, 10%);
-            }
-
-            .loginform-button:disabled {
-                cursor: not-allowed;
-                opacity: 0.5;
-            }
-        }
+        }         
     }
 }
