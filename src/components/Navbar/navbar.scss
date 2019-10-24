@@ -1,0 +1,118 @@
+@import '../../variables.scss';
+
+body {
+
+    .navbar-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+        position: absolute;
+        min-height: 100vh;
+        width: 11vh;
+        background-color: black;
+
+        .hamburger {
+            margin: 6em 1em;
+            position: absolute;
+
+
+
+            .bar1 {
+                width: 45px;
+                height: 2px;
+                background-color: #ffffff;
+                margin: 6px 0;
+                transition: 0.4s;
+            }
+
+            .bar2 {
+                @extend .bar1;
+                width: 22px;
+            }
+
+            .bar3 {
+                @extend .bar1;
+                width: 35px;
+            }
+        }
+
+        .x {
+            
+            @extend .hamburger;
+            z-index: 1;
+
+
+           .bar1 {
+                -webkit-transform: scale(0.8) rotate(-45deg) translate(-9px, 4px);
+                transform: scale(0.8) rotate(-45deg) translate(-9px, 4px);
+            }
+    
+            .bar2 {
+                opacity: 0;
+            }
+    
+            .bar3 {
+                -webkit-transform: rotate(45deg) translate(-2px, -8px);
+                transform: rotate(45deg) translate(-2px, -8px);
+            }
+        }
+
+        
+
+        .navbar {
+            position: absolute;
+            min-height: 100vh;
+            width: 20vh;
+            background-color: #141414;
+
+            .navbar-login-text {
+                margin: 32em 0em 0em 1em;
+                color: white;
+                writing-mode: vertical-lr;
+                transform: rotate(-180deg);
+                font-family: $headers-font;
+                font-size: 0.8em;
+            }
+
+            .navlink-line {
+                color: white;
+                height: 35px;
+                border-left: .7px solid white;
+                margin: 1em;
+            }
+
+
+            a:link {
+                color: white;
+                margin: 3em 0em 0em 1em;
+                text-decoration: none;
+                writing-mode: vertical-lr;
+                transform: rotate(-180deg);
+                font-family: $headers-font;
+                font-size: 0.8em;
+                transition: 0.4s;
+            }
+
+            a:visited {
+                color: white;
+                text-decoration: none;
+            }
+
+            a:hover {
+                color: $detail-color;
+                font-weight: bolder;
+            }
+
+
+            .navbar-footer {
+                position: fixed;
+
+                bottom: 0;
+                height: 25vh;
+                width: 20vh;
+                background-color: black;
+            }
+        }
+    }
+}

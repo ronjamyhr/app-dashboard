@@ -9,13 +9,13 @@ const authReducer = (state = loginDeafultState, action: ActionTypes): IUser[] =>
     switch (action.type) {
         //if the action.type is equal to the function
         case 'LOGIN_SUCCESS':
-            console.log(state, "login success")
+            console.log("login success")
             return [...state, action.user];
         case 'LOGIN_ERROR':
             console.log("failed to login")
             return state;
         case 'SIGNOUT_SUCCESS':
-            console.log(state, "sign out success!")
+            console.log("sign out success!")
             //we don't need to add antyhing or remove antyhing to the state
             return [];
         //default case will run if none of the cases will match

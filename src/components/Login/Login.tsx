@@ -1,15 +1,21 @@
-import React from 'react'
-import './login.scss'
-import LoginForm from './LoginForm'
+import React from 'react';
+import './login.scss';
+import LoginForm from './LoginForm';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
 
 export class Login extends React.Component<{}, {}> {
   public render() {
     return (<>
-      <h1>Login page</h1>
       <LoginForm />
     </>
     );
   }
 }
 
-export default Login
+export default compose<any>(
+  connect(null,null)(Login)
+);
+
+
+

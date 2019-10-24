@@ -20,6 +20,4 @@ class Home extends React.Component {
 	}
 }
 
-export default compose<any>(
-	connect()(Home)
-);
+export default Home;
