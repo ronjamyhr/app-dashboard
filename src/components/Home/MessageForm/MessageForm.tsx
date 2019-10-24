@@ -95,12 +95,12 @@ export class MessageForm extends Component<IProps, IState> {
         let errors: any = this.state.hasErrors;
 
         if (name === 'message') {
-            errors.name = false;
+            errors.message = false;
             messageInput = '';
 
             if (this.isNullOrEmpty(value)) {
                 messageInput = 'message is empty or contains only spaces';
-                errors.name = true;
+                errors.message = true;
             }
         }
 
