@@ -5,9 +5,8 @@ import { AppActions } from "../../types/actions";
 import { bindActionCreators, compose } from 'redux';
 import { IUser } from '../../types/authInterface';
 import { ThunkDispatch } from 'redux-thunk';
-import SubmitButton from '../SubmitButton/SubmitButton'
-
-
+import SubmitButton from '../SubmitButton/SubmitButton';
+import ErrorMessage from '../ErrorMessage/ErrorMessage';
 
 type IProps = ILinkStateProps & ILinkDispatchProps;
 
@@ -72,7 +71,7 @@ export class LoginForm extends React.Component<IProps, ILoginFormState> {
 
             if (!validEmail) {
                 errors.email = true;
-                errorMsgForMail = 'Please enter a valid email address'
+                errorMsgForMail = 'please enter a valid email address'
             }
         }
 
@@ -100,7 +99,7 @@ export class LoginForm extends React.Component<IProps, ILoginFormState> {
 
             if (!validPassword) {
                 errors.password = true;
-                errorMsgForPassword = 'Password must be between 6 and 10 digits long and include at least one numeric digit.'
+                errorMsgForPassword = 'password must be between 6 and 10 digits long and include at least one numeric digit.'
             }
         }
 
@@ -146,14 +145,14 @@ export class LoginForm extends React.Component<IProps, ILoginFormState> {
                     <label><i className="far fa-user-circle"></i>EMAIL</label>
                     <input type="text" name="username" id="email" onChange={this.handleEmailChange} placeholder="name@prototyp.se" required />
                     {this.state.errorMsgEmail.length > 0 ? (
-                        <p className="loginform-error">{this.state.errorMsgEmail}</p>
+                        <ErrorMessage>{this.state.errorMsgEmail}</ErrorMessage>
                     ) : (
                             null
                         )}
                     <label><i className="fas fa-lock"></i>PASSWORD</label>
                     <input type="password" name="password" id="password" onChange={this.handlePasswordChange} placeholder="******" />
                      {this.state.errorMsgPassword.length > 0 ? (
-                        <p className="loginform-error">{this.state.errorMsgPassword}</p>
+                        <ErrorMessage>{this.state.errorMsgPassword}</ErrorMessage>
                      ) : (
                          null
                      )}   

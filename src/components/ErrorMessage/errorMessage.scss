@@ -1,0 +1,9 @@
+@import '../../variables.scss';
+
+.error-message {
+    color: $detail-color;
+    font-family: $body_font;
+    font-weight: 200;
+    font-size: .7rem;
+    opacity: .8;
+}

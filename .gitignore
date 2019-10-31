@@ -25,3 +25,4 @@ yarn-error.log*
 # files
 src/config/Fire.tsx
 src/tokenUrl.js
+src/philipsUrl.js

@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import {LoginForm} from './LoginForm';
 
 describe('LoginForm component', () => {
@@ -7,7 +7,7 @@ describe('LoginForm component', () => {
     it('should throw error if emailinput is not valid', () => {
 
         //render LoginForm component
-        const loginForm = shallow(<LoginForm />)
+        const loginForm = mount(<LoginForm />)
 
         //find correct html-element
         const input = loginForm.find('#email')
@@ -19,17 +19,17 @@ describe('LoginForm component', () => {
         loginForm.update()
 
          //find correct error message 
-        const error = loginForm.find('.loginform-error')
+        const error = loginForm.find('.error-message')
 
        //expect error message to show up in component
-       expect(error.text()).toEqual('Please enter a valid email address')
+       expect(error.text()).toEqual('please enter a valid email address')
 
    });
 
 
     it('should throw error if passwordinput is invalid', () => {
 
-        const loginForm = shallow(<LoginForm />) 
+        const loginForm = mount(<LoginForm />) 
         const input = loginForm.find('#password')
 
         //simulate an onChange where user types invalid password
@@ -39,9 +39,9 @@ describe('LoginForm component', () => {
         loginForm.update()
 
         //find correct html-element 
-        const error = loginForm.find('.loginform-error')
+        const error = loginForm.find('.error-message')
 
-        expect(error.text()).toEqual('Password must be between 6 and 10 digits long and include at least one numeric digit.')
+        expect(error.text()).toEqual('password must be between 6 and 10 digits long and include at least one numeric digit.')
 
     });
 
@@ -60,7 +60,7 @@ describe('LoginForm component', () => {
 
         loginForm.update()
 
-        const error = loginForm.find('.loginform-error')
+        const error = loginForm.find('.error-message')
 
         //epect no error messages
         expect(error.exists()).toBeFalsy()

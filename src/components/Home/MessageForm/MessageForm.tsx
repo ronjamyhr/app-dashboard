@@ -5,7 +5,8 @@ import { startCreatePost } from '../../../actions/posts';
 import { ThunkDispatch } from 'redux-thunk';
 import { AppActions } from "../../../types/actions";
 import { bindActionCreators, compose } from 'redux';
-import SubmitButton from '../../SubmitButton/SubmitButton'
+import SubmitButton from '../../SubmitButton/SubmitButton';
+import ErrorMessage from '../../ErrorMessage/ErrorMessage';
 
 
 interface IState {
@@ -163,7 +164,7 @@ export class MessageForm extends Component<IProps, IState> {
                         value={this.state.name}
                     />
                     {this.state.nameInputError.length > 0 ? (
-                        <p className="messageform-form-error-message">{this.state.nameInputError}</p>
+                        <ErrorMessage>{this.state.nameInputError}</ErrorMessage>
                     ) : (
                             null
                         )}
@@ -177,7 +178,7 @@ export class MessageForm extends Component<IProps, IState> {
                         value={this.state.message}
                     />
                     {this.state.messageInputError.length > 0 ? (
-                        <p className="messageform-form-error-message">{this.state.messageInputError}</p>
+                        <ErrorMessage>{this.state.messageInputError}</ErrorMessage>
                     ) : (
                             null
                         )}
