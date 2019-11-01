@@ -6,6 +6,7 @@ import NotFound from './components/NotFound/NotFound';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import Login from './components/Login/Login';
+import PhilipsLights from './components/PhilipsLights/PhilipsLights';
 
 interface IProps {
     currentlyLogged: boolean
@@ -20,6 +21,7 @@ class App extends React.Component<IProps, {}> {
                 <Navbar />
                 <Switch>
                     <Route exact path='/'> {this.props.currentlyLogged ? <Home /> : <Login />}</Route> 
+                    <Route path='/lights' component={PhilipsLights} />
                     <Route component={NotFound} />
                 </Switch>
             </BrowserRouter>

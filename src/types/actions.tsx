@@ -1,43 +1,43 @@
-import { IPost } from "./Post";
 import { IUser } from "./authInterface"
+import { ILights } from './Light';
 
-//define each action as an variable and set it to whatever the action-type is 
-export const CREATE_POST = "CREATE_POST";
-export const REMOVE_POST = "REMOVE_POST";
 export const loginSuccess = 'LOGIN_SUCCESS';
 export const loginError = 'LOGIN_ERROR';
 export const logOut = 'SIGNOUT_SUCCESS';
-
-//export each action in an Interface format
-export interface RemovePostAction {
-  type: typeof REMOVE_POST;
-  id: string;
-}
-
-export interface CreatePostAction {
-  type: typeof CREATE_POST;
-  post: IPost;
-}
+export const LIGHTS_FETCH = 'LIGHTS_FETCH';
+export const UPDATE_LIGHT = 'UPDATE_LIGHT';
 
 export interface ILoginSuccessAction {
-  type: typeof loginSuccess;
-  user: IUser
+    type: typeof loginSuccess;
+    user: IUser
 }
 
 export interface ILoginErrorAction {
-  type: typeof loginError,
-  user: IUser
+    type: typeof loginError,
+    user: IUser
 }
 
- export interface ISignOutAction {
-  type: typeof logOut
+export interface ISignOutAction {
+    type: typeof logOut
+}
+
+export interface IFetchLightsAction {
+    type: typeof LIGHTS_FETCH;
+    lights: ILights
+}
+
+export interface IUpdateLightsAction {
+    type: typeof UPDATE_LIGHT;
+    isOn: boolean;
+    id: string;
+    brightnessValue: number;
 }
 
 export type ActionTypes =
-  | RemovePostAction
-  | CreatePostAction
-  | ILoginSuccessAction
-  | ILoginErrorAction
-  | ISignOutAction
+    | ILoginSuccessAction
+    | ILoginErrorAction
+    | ISignOutAction
+    | IFetchLightsAction
+    | IUpdateLightsAction
 
 export type AppActions = ActionTypes;

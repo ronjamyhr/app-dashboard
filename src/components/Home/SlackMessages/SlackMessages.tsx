@@ -10,12 +10,6 @@ interface IState {
     interval: any;
 }
 
-interface IStateSlack {
-    slackUsername: string;
-    slackMessage: string;
-    id: string;
-}
-
 interface IStateUser {
     id: string;
     name: string;

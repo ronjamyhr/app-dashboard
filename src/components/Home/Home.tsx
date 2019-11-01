@@ -5,6 +5,7 @@ import SlackMessages from './SlackMessages/SlackMessages';
 import { compose, bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Footer from './Footer/Footer';
+import PhilipsLight from './PhilipsLight/PhilipsLight';
 
 class Home extends React.Component {
 	render() {
@@ -13,6 +14,7 @@ class Home extends React.Component {
 				<h1>Dashboard</h1>
 				<Message />
 				<SlackMessages />
+				<PhilipsLight />
 				<Footer />
 			</div>
 
