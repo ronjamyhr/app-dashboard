@@ -1,4 +1,0 @@
-const tokenUrl = 'xoxp-792193837511-792193838567-790348609296-fe8b004399385c4d19d05843fabd2729';
-
-export default tokenUrl;
-
