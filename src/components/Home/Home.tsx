@@ -1,25 +1,22 @@
-import React from 'react';
-import './home.scss';
-import Message from './Message/Message';
-import SlackMessages from './SlackMessages/SlackMessages';
-import { compose, bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import Footer from './Footer/Footer';
-import PhilipsLight from './PhilipsLight/PhilipsLight';
+import React from 'react'
+import './home.scss'
+import Message from './Message/Message'
+import SlackMessages from './SlackMessages/SlackMessages'
+import Footer from './Footer/Footer'
+import AllPhilipsLights from './AllPhilipsLights/AllPhilipsLights'
 
 class Home extends React.Component {
-	render() {
-		return (
-			<div className="home-container">
-				<h1>Dashboard</h1>
-				<Message />
-				<SlackMessages />
-				<PhilipsLight />
-				<Footer />
-			</div>
-
-		);
-	}
+  render() {
+    return (
+      <div className="home-container">
+        <h1>Dashboard</h1>
+        <Message />
+        <SlackMessages />
+        <AllPhilipsLights />
+        <Footer />
+      </div>
+    )
+  }
 }
 
-export default Home;
+export default Home
