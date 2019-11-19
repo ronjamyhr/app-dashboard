@@ -1,204 +1,211 @@
-@import "./../../../variables.scss";
+@import './../../../variables.scss';
 
 .styles_modal__gNwvD {
-    background-color: $primary-color-medium;
-    width: 400px;
-    min-height: 400px;
+  background-color: $primary-color-light;
+  width: 400px;
+  min-height: 400px;
 }
 
 .styles_closeButton__20ID4 {
-    outline: none;
-    cursor: pointer;
+  outline: none;
+  cursor: pointer;
 }
 
 .styles_closeButton__20ID4:hover {
-    opacity: .5;
+  opacity: 0.5;
 }
 
 .message-container {
-    background-color: $primary-color-medium;
-    width: 300px;
-    height: 290px;
+  background-color: $primary-color-light;
+  width: 300px;
+  height: 290px;
 
-    .message-loading-spinner {
-        padding-top: 3em;
-        text-align: center;
+  .message-loading-spinner {
+    padding-top: 3em;
+    text-align: center;
 
-        .bounce1 {
-            -webkit-animation-delay: -0.32s;
-            animation-delay: -0.32s;
-        }
-
-        .bounce2 {
-            -webkit-animation-delay: -0.16s;
-            animation-delay: -0.16s;
-        }
+    .bounce1 {
+      -webkit-animation-delay: -0.32s;
+      animation-delay: -0.32s;
     }
 
-    .message-loading-spinner>div {
-        width: 10px;
-        height: 10px;
-        background-color: #ffffff;
-        border-radius: 100%;
-        display: inline-block;
-        -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
-        animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+    .bounce2 {
+      -webkit-animation-delay: -0.16s;
+      animation-delay: -0.16s;
+    }
+  }
+
+  .message-loading-spinner > div {
+    width: 10px;
+    height: 10px;
+    background-color: $primary-color-dark;
+    border-radius: 100%;
+    display: inline-block;
+    -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+    animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+  }
+
+  @-webkit-keyframes sk-bouncedelay {
+    0%,
+    80%,
+    100% {
+      -webkit-transform: scale(0);
     }
 
-    @-webkit-keyframes sk-bouncedelay {
+    40% {
+      -webkit-transform: scale(1);
+    }
+  }
 
-        0%,
-        80%,
-        100% {
-            -webkit-transform: scale(0)
-        }
-
-        40% {
-            -webkit-transform: scale(1.0)
-        }
+  @keyframes sk-bouncedelay {
+    0%,
+    80%,
+    100% {
+      -webkit-transform: scale(0);
+      transform: scale(0);
     }
 
-    @keyframes sk-bouncedelay {
-
-        0%,
-        80%,
-        100% {
-            -webkit-transform: scale(0);
-            transform: scale(0);
-        }
-
-        40% {
-            -webkit-transform: scale(1.0);
-            transform: scale(1.0);
-        }
+    40% {
+      -webkit-transform: scale(1);
+      transform: scale(1);
     }
+  }
 
-    .message-posts-container {
-        height: 200px;
-        overflow: scroll;
+  // to always show the scroll
+  ::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 7px;
+  }
+  ::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
+  }
 
-        .message-card-container {
-            padding: 1em 0;
+  .message-posts-container {
+    height: 200px;
+    overflow: scroll;
 
-            ul {
-                list-style: none;
-                padding: 0;
+    .message-card-container {
+      padding: 1em 0;
 
-                li {
-                    display: flex;
-                    flex-direction: row;
-                    justify-content: center;
-                    align-items: center;
-                    margin-bottom: 5em;
+      ul {
+        list-style: none;
+        padding: 0;
 
-                    .message-message-wrapper {
-                        width: 200px;
+        li {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          margin-bottom: 5em;
 
-                        %message-text-style {
-                            color: #ffffff;
-                            font-weight: 100;
-                            font-family: $body_font;
-                        }
+          .message-message-wrapper {
+            width: 200px;
 
-                        .message-message-text {
-                            @extend %message-text-style;
-                            font-size: 1rem;
-                        }
-
-                        .message-message-name {
-                            @extend %message-text-style;
-                            font-size: 0.8rem;
-                            margin-bottom: 0;
-                        }
-
-                        .message-message-date {
-                            @extend %message-text-style;
-                            color: #646464;
-                            font-size: 0.7rem;
-                            margin-top: 0;
-                        }
-
-                    }
-
-                    .message-delete-wrapper {
-
-                        .message-message-button {
-                            background: none;
-                            border: none;
-
-                            .message-message-button-icon {
-                                cursor: pointer;
-                                font-size: 0.8rem;
-                                color: #646464;
-                                transition-duration: 0.4s;
-                            }
-
-                            .message-message-button-icon:hover {
-                                color: #ffffff;
-                            }
-                        }
-                    }
-                }
+            %message-text-style {
+              color: $text-color-dark;
+              font-weight: 100;
+              font-family: $body_font;
             }
-        }
-    }
 
-    .message-heading-container {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-        padding: 1em;
-
-        .message-heading-button {
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: .8rem;
-            color: #646464;
-            font-weight: 100;
-            font-family: $body_font;
-            transition-duration: 0.4s;
-
-            .message-heading-button-icon {
-                font-size: 1rem;
-                padding-right: .3em;
+            .message-message-text {
+              @extend %message-text-style;
+              font-size: 1rem;
+              font-weight: 400;
             }
-        }
 
-        .message-heading-button:hover {
-            color: #ffffff;
-        }
+            .message-message-name {
+              @extend %message-text-style;
+              font-size: 0.8rem;
+              margin-bottom: 0;
+            }
 
-        .message-heading-button:focus {
-            outline: none;
-        }
+            .message-message-date {
+              @extend %message-text-style;
+              color: #646464;
+              font-size: 0.7rem;
+              margin-top: 0;
+            }
+          }
 
-        .message-heading {
-            color: #ffffff;
-            font-family: $headers-font;
-            font-weight: 300;
-            font-size: 1.2rem;
-            margin: 0;
-        }
+          .message-delete-wrapper {
+            .message-message-button {
+              background: none;
+              border: none;
 
-        .message-heading-line {
-            width: 60px;
-            margin-right: 0;
-            border: 0;
-            height: 0;
-            border-bottom: 1px solid rgb(255, 255, 255);
+              .message-message-button-icon {
+                cursor: pointer;
+                font-size: 0.8rem;
+                color: #646464;
+                transition-duration: 0.4s;
+              }
 
+              .message-message-button-icon:hover {
+                color: $text-color-light;
+              }
+            }
+          }
         }
+      }
+    }
+  }
+
+  .message-heading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 1em;
+
+    .message-heading-button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 0.8rem;
+      color: #646464;
+      font-weight: 100;
+      font-family: $body_font;
+      transition-duration: 0.4s;
+
+      .message-heading-button-icon {
+        font-size: 1rem;
+        padding-right: 0.3em;
+      }
     }
 
-    .no-messages-card {
-        padding: 1em;
-
-        .message-message-no-text {
-            color: #646464;
-            font-weight: 100;
-            font-family: $body_font;
-            font-size: 1rem;
-        }
+    .message-heading-button:hover {
+      color: $text-color-light;
     }
+
+    .message-heading-button:focus {
+      outline: none;
+    }
+
+    .message-heading {
+      color: $text-color-dark;
+      font-family: $headers-font;
+      font-weight: 400;
+      font-size: 1.2rem;
+      margin: 0;
+    }
+
+    .message-heading-line {
+      width: 60px;
+      margin-right: 0;
+      border: 0;
+      height: 0;
+      border-bottom: 1px solid rgb(00, 00, 00);
+    }
+  }
+
+  .no-messages-card {
+    padding: 1em;
+
+    .message-message-no-text {
+      color: #646464;
+      font-weight: 100;
+      font-family: $body_font;
+      font-size: 1rem;
+    }
+  }
 }

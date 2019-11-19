@@ -1,0 +1,95 @@
+@import './../../../variables.scss';
+
+.philipsLight-container {
+  background-color: #f6f5f5; //$primary-color-light;
+  width: 300px;
+  height: 200px;
+
+  .philipsLight-content-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40%;
+
+    .lightItem-switch {
+      display: flex;
+      flex-direction: row;
+
+      .onoff-text {
+        font-family: $body-font;
+        margin-top: 1em;
+        font-size: 1em;
+        color: black;
+      }
+
+      .switch {
+        margin: 0.5em 0.1em 0 0.1em;
+
+        .MuiSwitch-colorSecondary.Mui-checked {
+          color: white;
+          font-size: 200px;
+        }
+
+        .MuiSwitch-colorSecondary.Mui-checked + .MuiSwitch-track {
+          background-color: grey;
+        }
+
+        .MuiSwitch-colorSecondary.Mui-checked:hover {
+          background-color: rgba(0, 0, 0, 0.2);
+        }
+
+        .MuiSwitch-switchBase {
+          color: #000000;
+        }
+      }
+    }
+  }
+
+  .philipsLight-heading-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    text-align: right;
+    padding: 1em;
+
+    .philipsLight-link {
+      font-family: $body-font;
+      font-size: 0.8em;
+      color: white;
+      text-decoration: none;
+      min-width: 100px;
+
+      .philipsLight-button {
+        background-color: $detail-color;
+        border: none;
+        outline: none;
+        padding: 0.7em 1em;
+        font-family: $headers-font;
+        width: 80px;
+        cursor: pointer;
+        transition-duration: 0.4s;
+        margin-bottom: 2em;
+      }
+
+      .philipsLight-button:hover {
+        background-color: lighten($detail-color, 10%);
+      }
+    }
+
+    .philipsLight-heading-line {
+      width: 80px;
+      margin-right: 0;
+      border: 0;
+      height: 0;
+      border-bottom: 1px solid black;
+    }
+
+    .philipsLight-heading {
+      color: #000000;
+      font-family: $headers-font;
+      font-weight: 300;
+      font-size: 1.2rem;
+      margin: 0;
+    }
+  }
+}

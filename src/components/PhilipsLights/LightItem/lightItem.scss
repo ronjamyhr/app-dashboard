@@ -1,87 +1,83 @@
-@import "./../../../variables.scss";
+@import './../../../variables.scss';
 
 .lightItem-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 200px;
+  background-color: $primary-color-light;
+  margin: 1em 0;
+  padding: 1em;
+
+  .lightItem-header-wrapper {
+    height: 80px;
+
+    .lightItem-header-name {
+      font-family: $headers-font;
+      font-size: 1em;
+      margin-top: 2em;
+      color: $text-color-dark;
+    }
+  }
+
+  .lightItem-error-message {
+    font-family: $body-font;
+    font-size: 0.8em;
+  }
+
+  .lightItem-buttons-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 200px;
-    background-color: #F6F5F5;
-    margin: 1em 0;
-    padding: 1em;
-    // border: 3px solid green;
 
-    .lightItem-header-wrapper {
-        height: 80px;
+    .lightItem-switch {
+      display: flex;
+      flex-direction: row;
+      margin-bottom: 2em;
 
-        .lightItem-header-name {
-            font-family: $headers-font;
-            font-weight: 300;
-            font-size: 1em;
-            margin-top: 2em;
-            color: #000000;
-        }
-    }
-
-    .lightItem-error-message {
+      .onoff-text {
         font-family: $body-font;
+        margin-top: 1em;
         font-size: 0.8em;
+      }
 
-    }
+      .switch {
+        margin: 0 0.1em;
 
-    .lightItem-buttons-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-        .lightItem-switch {
-            display: flex;
-            flex-direction: row;
-            margin-bottom: 2em;
-
-            .onoff-text {
-                font-family: $body-font;
-                margin-top: 1em;
-                font-size: 0.8em;
-            }
-
-            .switch {
-                margin: 0 .1em;
-
-                .MuiSwitch-colorSecondary.Mui-checked {
-                    color: white;
-                }
-
-                .MuiSwitch-colorSecondary.Mui-checked+.MuiSwitch-track {
-                    background-color: grey;
-                }
-
-                .MuiSwitch-colorSecondary.Mui-checked:hover {
-                    background-color: rgba(0, 0, 0, 0.2);
-                }
-
-                .MuiSwitch-switchBase {
-                    color: #000000;
-                }
-            }
+        .MuiSwitch-colorSecondary.Mui-checked {
+          color: #5e9596;
         }
 
-        .lightItem-slider {
-            height: 150px;
-
-            .slider {
-                color: #2C2C2C;
-
-                .MuiSlider-thumb.Mui-focusVisible,
-                .MuiSlider-thumb:hover {
-                    box-shadow: 0px 0px 0px 8px rgba(00, 00, 00, 0.16);
-                }
-
-                .MuiSlider-thumb.Mui-focusVisible,
-                .MuiSlider-thumb:active {
-                    box-shadow: 0px 0px 0px 15px rgba(232, 118, 99, 0.16);
-                }
-
-            }
+        .MuiSwitch-colorSecondary.Mui-checked + .MuiSwitch-track {
+          background-color: rgba(94, 149, 150, 0.8);
         }
+
+        .MuiSwitch-colorSecondary.Mui-checked:hover {
+          background-color: rgba(94, 149, 150, 0.2);
+        }
+
+        .MuiSwitch-switchBase {
+          color: $text-color-dark;
+        }
+      }
     }
+
+    .lightItem-slider {
+      height: 150px;
+
+      .slider {
+        color: #2c2c2c;
+
+        .MuiSlider-thumb.Mui-focusVisible,
+        .MuiSlider-thumb:hover {
+          box-shadow: 0px 0px 0px 8px rgba(00, 00, 00, 0.16);
+        }
+
+        .MuiSlider-thumb.Mui-focusVisible,
+        .MuiSlider-thumb:active {
+          box-shadow: 0px 0px 0px 15px rgba(232, 118, 99, 0.16);
+        }
+      }
+    }
+  }
 }

@@ -1,127 +1,137 @@
-import React from 'react';
-import './philipsLights.scss';
-import LightItem from './LightItem/LightItem';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { compose } from 'redux';
-import { ILights } from '../../types/Light';
-import { AppState } from '../..';
-import { startFetchLights, startUpdateLight } from '../../actions/lights';
-import { bindActionCreators } from 'redux';
-import { AppActions } from "../../types/actions";
-import { ThunkDispatch } from 'redux-thunk';
+import React from 'react'
+import './philipsLights.scss'
+import { LightItem } from './LightItem/LightItem'
+import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { compose } from 'redux'
+import { ILights } from '../../types/Light'
+import { AppState } from '../../index'
+import { startFetchLights, startUpdateLight } from '../../actions/lights'
+import { bindActionCreators } from 'redux'
+import { AppActions } from '../../types/actions'
+import { ThunkDispatch } from 'redux-thunk'
 
 interface IState {
-    interval: any;
+  interval: any
 }
 
-type IProps = LinkStateProps & LinkDispatchProps;
+type IProps = LinkStateProps & LinkDispatchProps
 
 class PhilipsLights extends React.Component<IProps, IState> {
+  constructor(props: IProps) {
+    super(props)
 
-    constructor(props: IProps) {
-        super(props);
-
-        this.state = {
-            interval: ''
-        }
-
-        this.updateLight = this.updateLight.bind(this);
-        this.mapPhilipsLights = this.mapPhilipsLights.bind(this);
-        this.scrollUpButton = this.scrollUpButton.bind(this);
+    this.state = {
+      interval: '',
     }
 
-    componentDidMount() {
-        this.props.fetchLights();
+    this.updateLight = this.updateLight.bind(this)
+    this.mapPhilipsLights = this.mapPhilipsLights.bind(this)
+    this.scrollUpButton = this.scrollUpButton.bind(this)
+  }
 
-        // Execute the function every 30 seconds
-        const interval = setInterval(this.props.fetchLights, 30000);
+  componentDidMount() {
+    this.props.fetchLights()
 
-        this.setState({
-            interval: interval
-        });
-    }
+    // Execute the function every 30 seconds
+    const interval = setInterval(this.props.fetchLights, 30000)
 
-    componentWillUnmount() {
-        clearInterval(this.state.interval);
-    }
+    this.setState({
+      interval: interval,
+    })
+  }
 
-    updateLight(id: string, isOn: boolean, brightnessValue: number) {
-        this.props.updateLight(id, isOn, brightnessValue);
-    }
+  componentWillUnmount() {
+    clearInterval(this.state.interval)
+  }
 
-    mapPhilipsLights() {
+  updateLight(id: string, isOn: boolean, brightnessValue: number) {
+    this.props.updateLight(id, isOn, brightnessValue)
+  }
 
-        const data = this.props.lights;
-        const lightItems: any = [];
+  mapPhilipsLights() {
+    const data = this.props.lights
+    return Object.keys(data).map(id => (
+      <LightItem
+        key={id}
+        id={id}
+        name={data[id].name}
+        isOn={data[id].state.on}
+        bri={data[id].state.bri}
+        reachable={data[id].state.reachable}
+        updateLight={this.updateLight}
+      />
+    ))
+  }
 
-        Object.keys(data).map(id => {
+  scrollUpButton() {
+    window.scroll({ top: 0, left: 0, behavior: 'smooth' })
+  }
 
-            const item = data[id];
+  public render() {
+    const lightItems = this.mapPhilipsLights()
 
-            const light = <LightItem key={id} id={id} name={data[id].name}
-                isOn={item.state.on} bri={item.state.bri}
-                reachable={item.state.reachable}
-                updateLight={this.updateLight} />
+    return (
+      <div className="philipsLights-container">
+        <div className="philipsLights-header-container">
+          <div className="philipsLights-header-box animate fade-in-left one"></div>
+          <h1 className="philipsLights-header animate fade-in-down two">
+            lights.
+          </h1>
+          <Link
+            className="philipsLights-link animate fade-in-right three"
+            to="/"
+          >
+            <button className="philipsLights-button">home</button>
+          </Link>
+        </div>
 
-            return lightItems.push(light);
-        });
+        <div className="philipsLights-lights-wrapper">{lightItems}</div>
 
-        return lightItems;
-    }
-
-    scrollUpButton() {
-        window.scroll({ top: 0, left: 0, behavior: 'smooth' });
-    }
-
-    public render() {
-
-        const lightItems = this.mapPhilipsLights();
-
-        return (
-            <div className="philipsLights-container">
-                <div className="philipsLights-header-box animate fade-in-left one"></div>
-                <h1 className="philipsLights-header animate fade-in-down two">lights.</h1>
-                <Link className="philipsLights-link animate fade-in-right three" to="/"><button className="philipsLights-button">home</button></Link>
-
-                <div className="philipsLights-square-background"></div>
-
-                <div className="philipsLights-square"></div>
-
-                <div className="philipsLights-lights-wrapper">
-                    <div className="philipsLights-circle"></div>
-                    {lightItems}
-                </div>
-
-                <div className="philipsLights-button-wrapper">
-                    <button className="philipsLights-button-up" onClick={this.scrollUpButton}>up.</button>
-                </div>
-            </div>
-        );
-    }
+        <div className="philipsLights-button-wrapper">
+          <button
+            className="philipsLights-button-up"
+            onClick={this.scrollUpButton}
+          >
+            <i className="button-up-icon fas fa-angle-up"></i>
+          </button>
+        </div>
+      </div>
+    )
+  }
 }
 
 interface LinkStateProps {
-    lights: ILights;
+  lights: ILights
 }
 
 interface LinkDispatchProps {
-    fetchLights: () => void;
-    updateLight: (id: string, isOn: boolean, brightnessValue: number) => void;
+  fetchLights: () => void
+  updateLight: (id: string, isOn: boolean, brightnessValue: number) => void
 }
 
-const mapDispatchToProps = (dispatch: ThunkDispatch<any, any, AppActions>, ownProps: PhilipsLights): LinkDispatchProps => {
-    return {
-        fetchLights: bindActionCreators(startFetchLights, dispatch),
-        updateLight: bindActionCreators(startUpdateLight, dispatch),
-    }
+const mapDispatchToProps = (
+  dispatch: ThunkDispatch<any, any, AppActions>,
+  ownProps: PhilipsLights
+): LinkDispatchProps => {
+  return {
+    fetchLights: bindActionCreators(startFetchLights, dispatch),
+    updateLight: bindActionCreators(startUpdateLight, dispatch),
+  }
 }
 
-const mapStateToProps = (state: AppState, ownProps: PhilipsLights): LinkStateProps => {
-    return {
-        lights: state.lights
-    }
+const mapStateToProps = (
+  state: AppState,
+  ownProps: PhilipsLights
+): LinkStateProps => {
+  return {
+    lights: state.lights,
+  }
 }
 
 export default compose<any>(
-    connect(mapStateToProps, mapDispatchToProps))(PhilipsLights);
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )
+)(PhilipsLights)
