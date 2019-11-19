@@ -27,8 +27,8 @@ class App extends React.Component<IProps, {}> {
                 <Navbar />
                 <Switch>
                     <Route exact path='/'> {this.props.currentlyLogged ? <Home /> : <Login />}</Route>
-                    <Route path='/lights' component={PhilipsLights} />
-                    <Route path='/sonosplayers' component={Sonos} />
+                    <Route exact path='/lights'> {this.props.currentlyLogged ? <PhilipsLights /> : <Login />}</Route>
+                    <Route exact path='/sonosplayers'> {this.props.currentlyLogged ? <Sonos /> : <Login />}</Route>
                     <Route component={NotFound} />
                 </Switch>
                 <Footer />

@@ -25,7 +25,7 @@ export class Navbar extends React.Component<{}, INavbarState> {
     return (<>
       <div className="navbar-container">
 
-        <div onClick={this.showNavbar} className={this.state.condition ? "hamburger sonos" : "x"}>
+        <div onClick={this.showNavbar} className={this.state.condition ? "hamburger" : "x"}>
           <div className="bar1"></div>
           <div className="bar2"></div>
           <div className="bar3 "></div>
