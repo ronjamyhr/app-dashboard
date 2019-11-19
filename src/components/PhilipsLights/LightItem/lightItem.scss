@@ -5,20 +5,18 @@
   flex-direction: column;
   align-items: center;
   width: 200px;
-  background-color: #f6f5f5;
+  background-color: $primary-color-light;
   margin: 1em 0;
   padding: 1em;
-  // border: 3px solid green;
 
   .lightItem-header-wrapper {
     height: 80px;
 
     .lightItem-header-name {
       font-family: $headers-font;
-      font-weight: 300;
       font-size: 1em;
       margin-top: 2em;
-      color: #000000;
+      color: $text-color-dark;
     }
   }
 
@@ -47,19 +45,19 @@
         margin: 0 0.1em;
 
         .MuiSwitch-colorSecondary.Mui-checked {
-          color: white;
+          color: #5e9596;
         }
 
         .MuiSwitch-colorSecondary.Mui-checked + .MuiSwitch-track {
-          background-color: grey;
+          background-color: rgba(94, 149, 150, 0.8);
         }
 
         .MuiSwitch-colorSecondary.Mui-checked:hover {
-          background-color: rgba(0, 0, 0, 0.2);
+          background-color: rgba(94, 149, 150, 0.2);
         }
 
         .MuiSwitch-switchBase {
-          color: #000000;
+          color: $text-color-dark;
         }
       }
     }

@@ -1,6 +1,6 @@
 import React from 'react'
 import './philipsLights.scss'
-import LightItem from './LightItem/LightItem'
+import { LightItem } from './LightItem/LightItem'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
@@ -73,29 +73,27 @@ class PhilipsLights extends React.Component<IProps, IState> {
 
     return (
       <div className="philipsLights-container">
-        <div className="philipsLights-header-box animate fade-in-left one"></div>
-        <h1 className="philipsLights-header animate fade-in-down two">
-          lights.
-        </h1>
-        <Link className="philipsLights-link animate fade-in-right three" to="/">
-          <button className="philipsLights-button">home</button>
-        </Link>
-
-        <div className="philipsLights-square-background"></div>
-
-        <div className="philipsLights-square"></div>
-
-        <div className="philipsLights-lights-wrapper">
-          <div className="philipsLights-circle"></div>
-          {lightItems}
+        <div className="philipsLights-header-container">
+          <div className="philipsLights-header-box animate fade-in-left one"></div>
+          <h1 className="philipsLights-header animate fade-in-down two">
+            lights.
+          </h1>
+          <Link
+            className="philipsLights-link animate fade-in-right three"
+            to="/"
+          >
+            <button className="philipsLights-button">home</button>
+          </Link>
         </div>
+
+        <div className="philipsLights-lights-wrapper">{lightItems}</div>
 
         <div className="philipsLights-button-wrapper">
           <button
             className="philipsLights-button-up"
             onClick={this.scrollUpButton}
           >
-            up.
+            <i className="button-up-icon fas fa-angle-up"></i>
           </button>
         </div>
       </div>

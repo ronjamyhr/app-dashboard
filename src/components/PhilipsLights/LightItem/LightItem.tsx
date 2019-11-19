@@ -12,59 +12,52 @@ interface IProps {
   updateLight(id: string, isOn: boolean, brightnessValue: number): void
 }
 
-class LightItem extends React.Component<IProps, {}> {
-  public render() {
-    return (
-      <div className="lightItem-container">
-        <div className="lightItem-header-wrapper">
-          <h2 className="lightItem-header-name">{this.props.name}</h2>
-        </div>
-        {this.props.reachable ? (
-          <div className="lightItem-buttons-container">
-            <div className="lightItem-switch">
-              <p className="onoff-text">off</p>
-              <Switch
-                checked={this.props.isOn}
-                onChange={(event: any, newValue: any) =>
-                  this.props.updateLight(
-                    this.props.id,
-                    newValue,
-                    this.props.bri
-                  )
-                }
-                className="switch"
-                value={this.props.isOn}
-                disabled={!this.props.reachable}
-              />
-              <p className="onoff-text">on</p>
-            </div>
-
-            {this.props.bri && (
-              <div className="lightItem-slider">
-                <Slider
-                  orientation="vertical"
-                  min={0}
-                  max={255}
-                  step={1}
-                  value={this.props.bri}
-                  className="slider"
-                  onChange={(event: any, newValue: any) =>
-                    this.props.updateLight(
-                      this.props.id,
-                      this.props.isOn,
-                      newValue
-                    )
-                  }
-                />
-              </div>
-            )}
-          </div>
-        ) : (
-          <p className="lightItem-error-message">This light is not reachable</p>
-        )}
+export const LightItem = ({
+  name,
+  id,
+  isOn,
+  bri,
+  reachable,
+  updateLight,
+}: IProps) => {
+  return (
+    <div className="lightItem-container">
+      <div className="lightItem-header-wrapper">
+        <h2 className="lightItem-header-name">{name}</h2>
       </div>
-    )
-  }
-}
+      {reachable ? (
+        <div className="lightItem-buttons-container">
+          <div className="lightItem-switch">
+            <p className="onoff-text">off</p>
+            <Switch
+              checked={isOn}
+              onChange={(event: any, newValue: any) =>
+                updateLight(id, newValue, bri)
+              }
+              className="switch"
+              value={isOn}
+              disabled={!reachable}
+            />
+            <p className="onoff-text">on</p>
+          </div>
 
-export default LightItem
+          <div className="lightItem-slider">
+            <Slider
+              orientation="vertical"
+              min={0}
+              max={255}
+              step={1}
+              value={bri}
+              className="slider"
+              onChange={(event: any, newValue: any) =>
+                updateLight(id, isOn, newValue)
+              }
+            />
+          </div>
+        </div>
+      ) : (
+        <p className="lightItem-error-message">This light is not reachable</p>
+      )}
+    </div>
+  )
+}

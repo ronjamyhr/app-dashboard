@@ -1,280 +1,153 @@
 @import './../../variables.scss';
 
 .philipsLights-container {
-    width: 100vw;
-    // min-height: 200vh;
-    // overflow: hidden;
-    // z-index: -1;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background: linear-gradient(
+    to right,
+    gainsboro 60%,
+    $primary-color-medium 40%
+  );
+
+  .animate {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+  }
+
+  .one {
+    animation-delay: 1.7s;
+  }
+
+  .two {
+    animation-delay: 2.3s;
+  }
+
+  .three {
+    animation-delay: 3.3s;
+  }
+
+  @keyframes fade-in-down {
+    from {
+      opacity: 0;
+      transform: translate3d(0, -100%, 0);
+    }
+
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  .fade-in-down {
+    animation-name: fade-in-down;
+  }
+
+  @keyframes fade-in-left {
+    from {
+      opacity: 0;
+      transform: translate3d(-100%, 0, 0);
+    }
+
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  .fade-in-left {
+    animation-name: fade-in-left;
+  }
+
+  @keyframes fade-in-right {
+    from {
+      opacity: 0;
+      transform: translate3d(100%, 0, 0);
+    }
+
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  .fade-in-right {
+    animation-name: fade-in-right;
+  }
+
+  .philipsLights-header-container {
+    width: 50vw;
     display: flex;
-    flex-direction: column;
-    background-color: #454545;
-    // position: relative;
-
-    .animate {
-        -webkit-animation-duration: 1s;
-        animation-duration: 1s;
-        -webkit-animation-fill-mode: both;
-        animation-fill-mode: both;
-    }
-
-    .one {
-        -webkit-animation-delay: 1.7s;
-        -moz-animation-delay: 1.7s;
-        animation-delay: 1.7s;
-    }
-
-    .two {
-        -webkit-animation-delay: 2.3s;
-        -moz-animation-delay: 2.3s;
-        animation-delay: 2.3s;
-    }
-
-    .three {
-        -webkit-animation-delay: 3.3s;
-        -moz-animation-delay: 3.3s;
-        animation-delay: 3.3s;
-    }
-
-    @-webkit-keyframes fadeIn {
-        from {
-            opacity: 0;
-        }
-
-        to {
-            opacity: 1;
-        }
-    }
-
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-        }
-
-        to {
-            opacity: 1;
-        }
-    }
-
-    .fadeIn {
-        -webkit-animation-name: fadeIn;
-        animation-name: fadeIn;
-    }
-
-    @-webkit-keyframes fade-in-down {
-        from {
-            opacity: 0;
-            -webkit-transform: translate3d(0, -100%, 0);
-            transform: translate3d(0, -100%, 0);
-        }
-
-        to {
-            opacity: 1;
-            -webkit-transform: none;
-            transform: none;
-        }
-    }
-
-    @keyframes fade-in-down {
-        from {
-            opacity: 0;
-            -webkit-transform: translate3d(0, -100%, 0);
-            transform: translate3d(0, -100%, 0);
-        }
-
-        to {
-            opacity: 1;
-            -webkit-transform: none;
-            transform: none;
-        }
-    }
-
-    .fade-in-down {
-        -webkit-animation-name: fade-in-down;
-        animation-name: fade-in-down;
-    }
-
-    @-webkit-keyframes fade-in-left {
-        from {
-            opacity: 0;
-            -webkit-transform: translate3d(-100%, 0, 0);
-            transform: translate3d(-100%, 0, 0);
-        }
-
-        to {
-            opacity: 1;
-            -webkit-transform: none;
-            transform: none;
-        }
-    }
-
-    @keyframes fade-in-left {
-        from {
-            opacity: 0;
-            -webkit-transform: translate3d(-100%, 0, 0);
-            transform: translate3d(-100%, 0, 0);
-        }
-
-        to {
-            opacity: 1;
-            -webkit-transform: none;
-            transform: none;
-        }
-    }
-
-    .fade-in-left {
-        -webkit-animation-name: fade-in-left;
-        animation-name: fade-in-left;
-    }
-
-    @-webkit-keyframes fade-in-right {
-        from {
-            opacity: 0;
-            -webkit-transform: translate3d(100%, 0, 0);
-            transform: translate3d(100%, 0, 0);
-        }
-
-        to {
-            opacity: 1;
-            -webkit-transform: none;
-            transform: none;
-        }
-    }
-
-    @keyframes fade-in-right {
-        from {
-            opacity: 0;
-            -webkit-transform: translate3d(100%, 0, 0);
-            transform: translate3d(100%, 0, 0);
-        }
-
-        to {
-            opacity: 1;
-            -webkit-transform: none;
-            transform: none;
-        }
-    }
-
-    .fade-in-right {
-        -webkit-animation-name: fade-in-right;
-        animation-name: fade-in-right;
-    }
+    align-items: flex-end;
 
     .philipsLights-header-box {
-        display: flex;
-        flex-direction: column;
-        width: 300px;
-        height: 200px;
-        background-color: #f6f5f5;
-        margin-left: 10em;
-        position: absolute;
+      width: 300px;
+      height: 200px;
+      background-color: $primary-color-light;
     }
 
     .philipsLights-header {
-        color: #000000;
-        // position: absolute;
-        font-size: 6em;
-        margin-left: 3.5em;
+      position: absolute;
+      font-size: 6em;
+      top: 0.5em;
+      margin: 0 0 0 1.5em;
     }
 
     .philipsLights-link {
-        position: absolute;
-        font-family: $body-font;
-        font-size: 0.8em;
-        color: white;
-        text-decoration: none;
-        margin: 13em 0 0 35em;
-        min-width: 100px;
+      font-family: $body-font;
+      font-size: 0.8em;
+      text-decoration: none;
+      margin: 0 0 2em 1em;
+      min-width: 100px;
 
-        .philipsLights-button {
-            background-color: $detail-color;
-            border: none;
-            outline: none;
-            padding: 0.7em 1em;
-            font-family: $headers-font;
-            width: 80px;
-            cursor: pointer;
-            transition-duration: 0.4s;
-        }
+      .philipsLights-button {
+        background-color: $detail-color;
+        border: none;
+        outline: none;
+        padding: 0.7em 1em;
+        font-family: $headers-font;
+        width: 80px;
+        cursor: pointer;
+      }
 
-        .philipsLights-button:hover {
-            background-color: lighten($detail-color, 10%);
-        }
+      .philipsLights-button:hover {
+        background-color: lighten($detail-color, 10%);
+        text-decoration: underline;
+      }
     }
+  }
 
-    .philipsLights-square-background {
-        // border: 1px solid pink;
-        background-color: #2c2c2c;
-        width: 90vw;
-        height: 960px;
-        // margin: 9em 0 0 20em;
+  .philipsLights-lights-wrapper {
+    margin-top: 2em;
+    width: 90vw;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .philipsLights-button-wrapper {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    width: 70px;
+    height: 70px;
+    background-color: $primary-color-medium;
+    bottom: 0;
+
+    .philipsLights-button-up {
+      background-color: transparent;
+      border: none;
+      outline: none;
+      font-family: $body-font;
+      cursor: pointer;
+      transition-duration: 0.4s;
+      color: $text-color-light;
+      font-size: 1.5em;
+
+      .button-up-icon {
+        font-size: 1.5em;
+      }
     }
-
-    .philipsLights-square {
-        position: absolute;
-        // position: relative;
-        // z-index: 1;
-        width: 140px;
-        height: 150px;
-        background-color: #365c81;
-        z-index: 1;
-        margin-top: 85em;
-    }
-
-    .philipsLights-lights-wrapper {
-        position: absolute;
-        // position: relative;
-        // z-index: 2;
-
-        margin-top: 20em;
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-end;
-        flex-wrap: wrap;
-
-        .philipsLights-circle {
-            // position: absolute;
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            background-color: #5f9595;
-            // z-index: 1;
-            margin-top: 21em;
-            animation: nudge 10s linear infinite alternate;
-        }
-
-        @keyframes nudge {
-            0%,
-            100% {
-                transform: translate(0, 0);
-            }
-
-            50% {
-                transform: translate(20px, 0);
-            }
-
-            80% {
-                transform: translate(-20px, 0);
-            }
-        }
-    }
-
-    .philipsLights-button-wrapper {
-        width: 70px;
-        height: 60px;
-        background-color: #2c2c2c;
-        // position: absolute;
-        // z-index: 1;
-        // margin-top: 200em;
-        bottom: 0;
-        .philipsLights-button-up {
-            background-color: transparent;
-            border: none;
-            outline: none;
-            font-family: $body-font;
-            cursor: pointer;
-            transition-duration: 0.4s;
-            color: #ffffff;
-            font-size: 1.5em;
-        }
-    }
+  }
 }

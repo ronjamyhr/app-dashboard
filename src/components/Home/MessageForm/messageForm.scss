@@ -1,80 +1,73 @@
-@import "./../../../variables.scss";
+@import './../../../variables.scss';
 
 .messageform-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .messageform-heading {
+    color: $text-color-dark;
+    font-family: $headers-font;
+    font-weight: 300;
+    padding-top: 1em;
+    text-align: center;
+    font-size: 1.5rem;
+  }
+
+  .messageform-form {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    padding: 2em;
 
-    .messageform-heading {
-        color: #ffffff;
-        font-family: $headers-font;
-        font-weight: 300;
-        padding-top: 1em;
-        text-align: center;
-        font-size: 1.5rem;
+    %messageform-form-label {
+      color: $text-color-dark;
+      font-family: $headers-font;
+      font-weight: 300;
+      margin-bottom: 0.5em;
     }
 
-    .messageform-form {
-        display: flex;
-        flex-direction: column;
-        padding: 2em;
-
-        %messageform-form-label {
-            color: #ffffff;
-            font-family: $headers-font;
-            font-weight: 300;
-            margin-bottom: .5em;
-        }
-
-        .messageform-form-label-name {
-            @extend %messageform-form-label;
-        }
-
-        .messageform-form-label-message {
-            @extend %messageform-form-label;
-            margin-top: 1em;
-        }
-
-        .messageform-form-input-name {
-            border: 0;
-            outline: 0;
-            background: transparent;
-            color: $primary-color-medium;
-            border-bottom: 1px solid #4e4e4e;
-            width: 200px;
-            padding: 2px 0;
-        }
-
-        .messageform-form-textarea-message {
-            border: 1px solid #4e4e4e;
-            background: transparent;
-            outline: none;
-            width: 200px;
-            min-height: 80px;
-            resize: none;
-        }
-
-        .messageform-form-textarea-message,
-        select,
-        .messageform-form-input-name {
-            color: #ffffff;
-            font-weight: 200;
-            font-family: $body_font;
-        }
-
-        .messageform-form-input-name::placeholder,
-        .messageform-form-textarea-message::placeholder {
-            color: #646464;
-            font-family: $body_font;
-            font-weight: 200;
-        }
-
-        .messageform-form-input-name:focus,
-        .messageform-form-textarea-message:focus {
-            border: 1px solid $detail-color;
-            color: #ffffff;
-            font-weight: 200;
-            font-family: $body_font;
-        }
+    .messageform-form-label-name {
+      @extend %messageform-form-label;
     }
+
+    .messageform-form-label-message {
+      @extend %messageform-form-label;
+      margin-top: 1em;
+    }
+
+    .messageform-form-input-name {
+      border: 0;
+      outline: 0;
+      background: transparent;
+      font-weight: 300;
+      border-bottom: 1px solid #646464;
+      width: 200px;
+      padding: 2px 0;
+    }
+
+    .messageform-form-textarea-message {
+      border: 1px solid #646464;
+      background: transparent;
+      outline: none;
+      font-weight: 300;
+      width: 200px;
+      min-height: 80px;
+      resize: none;
+    }
+
+    .messageform-form-input-name::placeholder,
+    .messageform-form-textarea-message::placeholder {
+      color: #646464;
+      font-family: $body_font;
+      font-weight: 200;
+    }
+
+    .messageform-form-input-name:focus,
+    .messageform-form-textarea-message:focus {
+      border: 1px solid $detail-color;
+      color: $text-color-dark;
+      font-weight: 200;
+      font-family: $body_font;
+    }
+  }
 }
