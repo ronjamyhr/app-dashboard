@@ -7,6 +7,12 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import Login from './components/Login/Login';
 import PhilipsLights from './components/PhilipsLights/PhilipsLights';
+import Sonos from './components/Sonos/Sonos';
+import Footer from './components/Footer/Footer';
+
+
+
+
 
 interface IProps {
     currentlyLogged: boolean
@@ -20,10 +26,12 @@ class App extends React.Component<IProps, {}> {
             <BrowserRouter>
                 <Navbar />
                 <Switch>
-                    <Route exact path='/'> {this.props.currentlyLogged ? <Home /> : <Login />}</Route> 
+                    <Route exact path='/'> {this.props.currentlyLogged ? <Home /> : <Login />}</Route>
                     <Route path='/lights' component={PhilipsLights} />
+                    <Route path='/sonosplayers' component={Sonos} />
                     <Route component={NotFound} />
                 </Switch>
+                <Footer />
             </BrowserRouter>
         );
     }
@@ -40,3 +48,5 @@ const mapStateToProps = (state: any) => {
 export default compose<any>(
     connect(mapStateToProps, null)(App)
 );
+
+

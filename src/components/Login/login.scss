@@ -1,41 +1,42 @@
-@import '../../variables.scss';
+@import '../../Styles/variables.scss';
 
 body {
-    background-color: $primary-color-dark;
+    
 
     .loginform-container {
+        background-color: black;
         height: 100vh;
         display: flex;
         align-items: center;
 
         .loginform-img {
-            flex: 1;
-            background-image: url("../../assets/loginopt2.png");
+            flex: 1.5;
+            background-image: url('../../assets/loginopt.png');
             background-size: cover;
             height: 100%;
             background-position: center;
             background-repeat: no-repeat;
         }
 
+        .login-display-title {
+            display: flex;
+            justify-content: center;
+            height: 100vh;
+        }
+
         .loginform {
             display: flex;
             flex-direction: column;
             flex: 1;
-            height: 70vh;
             align-items: center;
             justify-content: center;
 
             %loginform-text {
                 color: $text-color-medium;
                 font-family: $headers-font;
+                letter-spacing: 0.3em;
                 font-weight: lighter;
                 font-size: 0.9em;
-            }
-
-            .loginform-title {
-                @extend %loginform-text;
-                margin-bottom: 2em;
-                font-size: 2em;
             }
 
             label {
