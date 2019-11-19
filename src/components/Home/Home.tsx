@@ -3,6 +3,7 @@ import './home.scss'
 import Message from './Message/Message'
 import SlackMessages from './SlackMessages/SlackMessages'
 import AllPhilipsLights from './AllPhilipsLights/AllPhilipsLights'
+import SonosDefaultPlayer from './SonosDefaultPlayer/SonosDefaultPlayer'
 
 class Home extends React.Component {
   render() {
@@ -20,7 +21,9 @@ class Home extends React.Component {
           <div className="home-philipslight-wrapper">
             <AllPhilipsLights />
           </div>
-          <div className="home-sonosplayer-wrapper"></div>
+          <div className="home-sonosplayer-wrapper">
+            <SonosDefaultPlayer />
+          </div>
         </div>
       </div>
     )

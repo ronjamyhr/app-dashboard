@@ -1,14 +1,14 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { authLogin } from '../../actions/authAction'
-import { AppActions } from '../../types/actions'
-import { bindActionCreators, compose } from 'redux'
-import { IUser } from '../../types/authInterface'
-import { ThunkDispatch } from 'redux-thunk'
-import SubmitButton from '../SubmitButton/SubmitButton'
-import ErrorMessage from '../ErrorMessage/ErrorMessage'
+import React from 'react';
+import { connect } from 'react-redux';
+import { authLogin } from '../../actions/authAction';
+import { AppActions } from "../../types/actions";
+import { bindActionCreators, compose } from 'redux';
+import { IUser } from '../../types/authInterface';
+import { ThunkDispatch } from 'redux-thunk';
+import SubmitButton from '../SubmitButton/SubmitButton';
+import ErrorMessage from '../ErrorMessage/ErrorMessage';
 
-type IProps = ILinkStateProps & ILinkDispatchProps
+type IProps = ILinkStateProps & ILinkDispatchProps;
 
 interface ILoginFormState {
   email: string
@@ -174,12 +174,6 @@ export class LoginForm extends React.Component<IProps, ILoginFormState> {
   }
 }
 
-//passes the data from the store to this component via props
-const mapStateToProps = (state: any) => {
-  return {
-    currentlyLogged: state.firebase.auth.uid,
-  }
-}
 
 const mapDispatchToProps = (
   dispatch: ThunkDispatch<any, any, AppActions>,
@@ -193,8 +187,8 @@ const mapDispatchToProps = (
 
 //connect works as the glue between the component and the store
 export default compose<any>(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(LoginForm)
-)
+  connect(null, mapDispatchToProps)(LoginForm)
+);
+
+
+
