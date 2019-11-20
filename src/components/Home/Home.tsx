@@ -32,7 +32,7 @@ export const Home = () => {
         <div className="home-slackmessage-wrapper">
           <SlackMessages />
           <div className="home-text-animation">
-            <p className="home-text-p">P</p>
+            <p className="home-text-prototyp">prototyp</p>
           </div>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './message.scss'
 import { connect } from 'react-redux'
 import { startRemovePost } from '../../../actions/posts'
@@ -13,97 +13,80 @@ import moment from 'moment'
 import MessageForm from '../MessageForm/MessageForm'
 import Modal from 'react-responsive-modal'
 
-interface IState {
-  modalIsOpen: boolean
-}
-
 type IProps = LinkStateProps & LinkDispatchProps
 
-export class Message extends React.Component<IProps, IState> {
-  constructor(props: IProps) {
-    super(props)
+const Message = ({ posts, startRemovePost }: IProps) => {
+  const [modalIsOpen, setOpen] = useState<boolean>(false)
 
-    this.state = {
-      modalIsOpen: false,
-    }
-
-    this.openModal = this.openModal.bind(this)
-    this.closeModal = this.closeModal.bind(this)
+  const openModal = () => {
+    setOpen(true)
   }
 
-  openModal() {
-    this.setState({ modalIsOpen: true })
+  const closeModal = () => {
+    setOpen(false)
   }
 
-  closeModal() {
-    this.setState({ modalIsOpen: false })
+  const onRemove = (id: string) => {
+    startRemovePost(id)
   }
 
-  onRemove = (id: string) => {
-    this.props.startRemovePost(id)
-  }
+  return (
+    <div className="message-container">
+      <div className="message-posts-container">
+        {!isLoaded(posts) ? (
+          <div className="message-loading-spinner">
+            <div className="bounce1"></div>
+            <div className="bounce2"></div>
+            <div className="bounce3"></div>
+          </div>
+        ) : null}
 
-  render() {
-    const { posts } = this.props
-
-    return (
-      <div className="message-container">
-        <div className="message-posts-container">
-          {!isLoaded(posts) ? (
-            <div className="message-loading-spinner">
-              <div className="bounce1"></div>
-              <div className="bounce2"></div>
-              <div className="bounce3"></div>
-            </div>
-          ) : null}
-
-          {!isEmpty(posts) ? (
-            <div className="message-card-container">
-              <ul>
-                {posts &&
-                  posts.map(post => (
-                    <li key={post.id}>
-                      <div className="message-message-wrapper">
-                        <p className="message-message-text">{post.message}</p>
-                        <p className="message-message-name">- {post.name}</p>
-                        <p className="message-message-date">
-                          {moment(post.date.toDate()).format('LLLL')}
-                        </p>
-                      </div>
-                      {/* TODO: if statement = that only show the trash icon on posts you did */}
-                      <div className="message-delete-wrapper">
-                        <button
-                          className="message-message-button"
-                          onClick={() => this.onRemove(post.id)}
-                        >
-                          <i className="message-message-button-icon fas fa-trash-alt"></i>
-                        </button>
-                      </div>
-                    </li>
-                  ))}
-              </ul>
-            </div>
-          ) : (
-            <div className="no-messages-card">
-              <p className="message-message-no-text">No messages to show</p>
-            </div>
-          )}
-        </div>
-        <div className="message-heading-container">
-          <button className="message-heading-button" onClick={this.openModal}>
-            <i className="message-heading-button-icon fas fa-plus-circle"></i>
-            add post
-          </button>
-          <hr className="message-heading-line" />
-          <h2 className="message-heading">MESSAGES</h2>
-        </div>
-
-        <Modal open={this.state.modalIsOpen} onClose={this.closeModal} center>
-          <MessageForm closePopup={this.closeModal} />
-        </Modal>
+        {!isEmpty(posts) ? (
+          <div className="message-card-container">
+            <ul>
+              {posts &&
+                posts.map(post => (
+                  <li key={post.id}>
+                    <div className="message-message-wrapper">
+                      <p className="message-message-text">{post.message}</p>
+                      <p className="message-message-name">- {post.name}</p>
+                      <p className="message-message-date">
+                        {moment(post.date.toDate()).format('LLLL')}
+                      </p>
+                    </div>
+                    {/* TODO: if statement = that only show the trash icon on posts you did */}
+                    <div className="message-delete-wrapper">
+                      <button
+                        className="message-message-button"
+                        onClick={() => onRemove(post.id)}
+                      >
+                        <i className="message-message-button-icon fas fa-trash-alt"></i>
+                      </button>
+                    </div>
+                  </li>
+                ))}
+            </ul>
+          </div>
+        ) : (
+          <div className="no-messages-card">
+            <p className="message-message-no-text">No messages to show</p>
+          </div>
+        )}
       </div>
-    )
-  }
+      <div className="message-heading-container">
+        <button className="message-heading-button" onClick={() => openModal()}>
+          <i className="message-heading-button-icon fas fa-plus-circle"></i>
+          add post
+        </button>
+        <hr className="message-heading-line" />
+        <h2 className="message-heading">MESSAGES</h2>
+      </div>
+
+      <Modal open={modalIsOpen} onClose={() => closeModal()} center>
+        <MessageForm closePopup={() => closeModal()} />
+      </Modal>
+    </div>
+  )
 }
 
 interface LinkStateProps {
@@ -113,14 +96,9 @@ interface LinkDispatchProps {
   startRemovePost: (id: string) => void
 }
 
-// It connects redux state to props of react component.
 // Map our state from the store to the props in this component.
-const mapStateToProps = (
-  state: AppState,
-  ownProps: Message
-): LinkStateProps => {
+const mapStateToProps = (state: AppState, ownProps: IProps): LinkStateProps => {
   return {
-    //posts from db firestore
     posts: state.firestore.ordered.posts,
   }
 }
@@ -128,7 +106,7 @@ const mapStateToProps = (
 // Dispatch an action from the component.
 const mapDispatchToProps = (
   dispatch: ThunkDispatch<any, any, AppActions>,
-  ownProps: Message
+  ownProps: IProps
 ): LinkDispatchProps => {
   return {
     startRemovePost: bindActionCreators(startRemovePost, dispatch),

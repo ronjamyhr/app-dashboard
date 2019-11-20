@@ -1,0 +1,81 @@
+@import '../../../Styles/variables.scss';
+
+.sonosdefault-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+
+  .sonosdefault-content-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    // align-items: center;
+    height: 40%;
+    padding: 2em 1em 0 1em;
+
+    .sonosdefault-artist {
+      color: black;
+      font-size: 1.5em;
+    }
+
+    .sonosdefault-title {
+      color: black;
+      font-family: $body-font;
+      text-align: end;
+    }
+  }
+
+  //   p {
+  //     margin: 0;
+  //   }
+
+  .sonosdefault-heading-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    text-align: right;
+    padding: 1em;
+
+    .sonosdefault-link {
+      font-family: $body-font;
+      text-decoration: none;
+      min-width: 120px;
+
+      .sonosdefault-button {
+        font-size: 1em;
+        background-color: $detail-color;
+        border: none;
+        outline: none;
+        padding: 0.7em 1em;
+        font-family: $headers-font;
+        width: 120px;
+        cursor: pointer;
+        transition-duration: 0.4s;
+        color: black;
+      }
+
+      .sonosdefault-button:hover {
+        background-color: lighten($detail-color, 10%);
+        text-decoration: underline;
+      }
+    }
+
+    .sonosdefault-heading-line {
+      width: 70px;
+      margin-right: 0;
+      border: 0;
+      height: 0;
+      border-bottom: 1px solid black;
+    }
+
+    .sonosdefault-heading {
+      color: #000000;
+      font-family: $headers-font;
+      font-weight: 300;
+      font-size: 1.2em;
+      margin: 0;
+    }
+  }
+}

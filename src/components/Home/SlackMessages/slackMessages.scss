@@ -23,6 +23,7 @@
 
     .slackmessage-card-container {
       padding: 1em 0;
+      width: 70%;
 
       ul {
         list-style: none;
@@ -39,21 +40,16 @@
             margin: 16px 0;
             width: 200px;
 
-            %post-text-style {
+            .slackmessages-post-text {
               color: $text-color-dark;
               font-family: $body_font;
-            }
-
-            .slackmessages-post-text {
-              @extend %post-text-style;
-              font-size: 1rem;
+              font-size: 1em;
               font-weight: 400;
             }
 
             .slackmessages-post-user {
-              @extend %post-text-style;
-              color: #646464;
-              font-size: 0.8rem;
+              color: $text-color-dark;
+              font-size: 1em;
               margin-bottom: 0;
               font-weight: 300;
             }

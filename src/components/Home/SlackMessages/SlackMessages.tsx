@@ -56,7 +56,7 @@ class SlackMessages extends React.Component<{}, IState> {
   getSlackMessages() {
     axios
       .get(
-        `https://slack.com/api/pins.list?token=${process.env.REACT_APP_SLACK_TOKEN_URL}&channel=CNVGEMZPC`
+        `https://slack.com/api/pins.list?token=${process.env.REACT_APP_SLACK_TOKEN_URL}&channel=C07B6BWM8`
       )
       .then((result: any) => {
         this.setState({

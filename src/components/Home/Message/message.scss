@@ -99,7 +99,7 @@
           flex-direction: row;
           justify-content: space-around;
           align-items: center;
-          margin-bottom: 5em;
+          margin-bottom: 3em;
 
           .message-message-wrapper {
             width: 200px;
@@ -107,25 +107,26 @@
             %message-text-style {
               color: $text-color-dark;
               font-weight: 100;
-              font-family: $body_font;
             }
 
             .message-message-text {
               @extend %message-text-style;
-              font-size: 1rem;
+              font-family: $body_font;
+              font-size: 1em;
               font-weight: 400;
             }
 
             .message-message-name {
               @extend %message-text-style;
-              font-size: 0.8rem;
-              margin-bottom: 0;
+              font-size: 1em;
+              margin-bottom: 0.5em;
             }
 
             .message-message-date {
               @extend %message-text-style;
+              font-family: $body_font;
               color: #646464;
-              font-size: 0.7rem;
+              font-size: 0.7em;
               margin-top: 0;
             }
           }
@@ -137,13 +138,13 @@
 
               .message-message-button-icon {
                 cursor: pointer;
-                font-size: 0.8rem;
+                font-size: 1em;
                 color: #646464;
                 transition-duration: 0.4s;
               }
 
               .message-message-button-icon:hover {
-                color: $text-color-light;
+                color: white;
               }
             }
           }
@@ -159,7 +160,7 @@
       color: #646464;
       font-weight: 100;
       font-family: $body_font;
-      font-size: 1rem;
+      font-size: 1em;
     }
   }
 
@@ -173,20 +174,20 @@
       background: none;
       border: none;
       cursor: pointer;
-      font-size: 0.8rem;
+      font-size: 1em;
       color: #646464;
       font-weight: 100;
       font-family: $body_font;
       transition-duration: 0.4s;
 
       .message-heading-button-icon {
-        font-size: 1rem;
+        font-size: 1em;
         padding-right: 0.3em;
       }
     }
 
     .message-heading-button:hover {
-      color: $text-color-light;
+      color: white;
     }
 
     .message-heading-button:focus {
@@ -197,7 +198,7 @@
       color: $text-color-dark;
       font-family: $headers-font;
       font-weight: 400;
-      font-size: 1.2rem;
+      font-size: 1.2em;
       margin: 0;
     }
 

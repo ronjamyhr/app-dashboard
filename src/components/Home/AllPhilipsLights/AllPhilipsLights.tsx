@@ -67,9 +67,9 @@ class AllPhilipsLights extends React.Component<IProps, {}> {
         <div className="philipsLight-heading-container">
           <Link className="philipsLight-link" to="/lights">
             <button className="philipsLight-button">all lights</button>
-            <hr className="philipsLight-heading-line" />
-            <h2 className="philipsLight-heading">SWITCH LIGHTS</h2>
           </Link>
+          <hr className="philipsLight-heading-line" />
+          <h2 className="philipsLight-heading">SWITCH LIGHTS</h2>
         </div>
       </div>
     )
