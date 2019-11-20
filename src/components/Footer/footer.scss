@@ -1,80 +1,97 @@
 @import '../../Styles/variables.scss';
 
 footer {
-  display: flex;
-  align-items: flex-end;
+  // display: flex;
+  // align-items: flex-end;
   height: 20vh;
   width: 100%;
   position: fixed;
   z-index: 1;
   bottom: 0;
-  background-image: url('../../assets/footer.png');
-  background-size: cover;
 
-  .footer-signout-link {
-    color: yellow;
-  }
+  .footer-left-section {
+    .navbar-footer-section {
+      z-index: 2;
+      position: fixed;
+      bottom: 0;
+      height: 20vh;
+      width: 8vw;
+      background-color: black;
 
-  .navbar-footer {
-    z-index: 2;
-    position: fixed;
-    bottom: 0;
-    height: 20vh;
-    width: 8vw;
-    background-color: black;
-
-    a:link {
-      color: white;
-      margin: 1em 0em 0em 1em;
-      text-decoration: none;
-      writing-mode: vertical-lr;
-      transform: rotate(-180deg);
-      font-family: $headers-font;
-      font-size: 0.8em;
-      transition: 0.4s;
-    }
-
-    a:visited {
-      color: white;
-      text-decoration: none;
-    }
-
-    a:hover {
-      color: $detail-color;
-      font-weight: bolder;
-      transform: rotate(-90deg);
-      margin-left: 3em;
-    }
-
-    .navlink-footer-line {
-      color: white;
-      height: 25px;
-      border-left: 0.7px solid white;
-      margin: 1em;
-    }
-  }
-
-  .footer-date-container {
-    padding: 0;
-    width: 230px;
-    height: 90px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(255, 255, 255, 0.3);
-    margin-left: auto;
-
-    .footer-date-container-text {
-      width: 100%;
-      background-color: white;
-
-      .footer-date-text {
-        font-weight: bold;
-        letter-spacing: 0.3em;
-        text-transform: lowercase;
-        text-decoration: underline overline;
-        text-align: center;
+      a:link {
+        color: white;
+        margin: 1em 0em 0em 1em;
+        text-decoration: none;
+        writing-mode: vertical-lr;
+        transform: rotate(-180deg);
         font-family: $headers-font;
+        font-size: 0.8em;
+        transition: 0.4s;
+      }
+
+      a:visited {
+        color: white;
+        text-decoration: none;
+      }
+
+      a:hover {
+        color: $detail-color;
+        font-weight: bolder;
+        transform: rotate(-90deg);
+        margin-left: 3em;
+      }
+
+      .footer-signout-link {
+        z-index: 1;
+        color: white;
+        margin: 1em 0em 0em 1em;
+        text-decoration: none;
+        writing-mode: vertical-lr;
+        transform: rotate(-180deg);
+        font-family: $headers-font;
+        font-size: 0.8em;
+        transition: 0.4s;
+      }
+
+      .navlink-footer-line {
+        color: white;
+        height: 25px;
+        border-left: 0.7px solid white;
+        margin: 1em;
+      }
+    }
+  }
+
+  .footer-right-section {
+    display: flex;
+    align-items: flex-end;
+    height: 20vh;
+    width: 100vw;
+    background-image: url('../../assets/footer.png');
+    background-size: cover;
+
+    .footer-date-container {
+      padding: 0;
+      width: 230px;
+      height: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(255, 255, 255, 0.3);
+      margin-left: auto;
+
+      .footer-date-container-text {
+        width: 100%;
+        background-color: white;
+
+        .footer-date-text {
+          font-weight: bold;
+          letter-spacing: 0.3em;
+          text-transform: lowercase;
+          text-decoration: underline overline;
+          text-align: center;
+          font-family: $headers-font;
+        }
       }
     }
   }

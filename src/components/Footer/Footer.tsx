@@ -1,49 +1,73 @@
-import React from "react";
-import { connect } from 'react-redux';
-import { AppActions } from '../../types/actions';
-import { signOut } from '../../actions/authAction';
-import { compose, bindActionCreators } from 'redux';
-import { ThunkDispatch } from 'redux-thunk';
-import moment from 'moment';
-import './footer.scss';
-
+import React from 'react'
+import { connect } from 'react-redux'
+import { AppActions } from '../../types/actions'
+import { signOut } from '../../actions/authAction'
+import { compose, bindActionCreators } from 'redux'
+import { ThunkDispatch } from 'redux-thunk'
+import moment from 'moment'
+import './footer.scss'
 
 interface ILinkDispatchProps {
     signOutUser: any
 }
 
+interface IState {
+    currentlyLogged: any
+}
 
-const Footer = ({ signOutUser }: ILinkDispatchProps) => {
-const date = moment().format('DD MMM');
+const Footer = ({
+    signOutUser,
+    currentlyLogged,
+}: ILinkDispatchProps & IState) => {
+    const date = moment().format('DD MMM')
 
     return (
         <footer>
-            <div className="navbar-footer">
-                <a href="https://www.prototyp.se">prototyp</a>
-                <div className="navlink-footer-line"></div>
+            <div className="footer-left-section">
+                <div className="navbar-footer-section">
+                    {!currentlyLogged && <a href="https://www.prototyp.se">prototyp</a>}
+                    {currentlyLogged && (
+                        <div onClick={signOutUser}>
+                            <p className="footer-signout-link">logout</p>
+                        </div>
+                    )}
+
+                    <div className="navlink-footer-line"></div>
+                </div>
             </div>
-            <ul className="footer-signout-link">
-                {/* when user clicks on the link, it fires the signOutUser function, which dispatches the actioncreator signOut*/}
-                <li><div onClick={signOutUser}>logout</div></li>
-            </ul>
-            <div className="footer-date-container"><div className="footer-date-container-text"><p className="footer-date-text">{date}</p></div></div>
+
+            {currentlyLogged && (
+                <div className="footer-right-section">
+                    <div className="footer-date-container">
+                        <div className="footer-date-container-text">
+                            <p className="footer-date-text">{date}</p>
+                        </div>
+                    </div>
+                </div>
+            )}
         </footer>
-    );
+    )
 }
 
+//läser av currently logged på nav och footer
 
+const mapStateToProps = (state: any): IState => {
+    return {
+        currentlyLogged: state.firebase.auth.uid,
+    }
+}
 
 //mapDispatchToProps so that we can create this action signOut
-const mapDispatchToProps = (dispatch: ThunkDispatch<any, any, AppActions>, ownProps: any): ILinkDispatchProps => {
-
+const mapDispatchToProps = (
+    dispatch: ThunkDispatch<any, any, AppActions>,
+    ownProps: any
+): ILinkDispatchProps => {
     return {
         //signOutUser is my props-object
-        signOutUser: bindActionCreators(signOut, dispatch)
+        signOutUser: bindActionCreators(signOut, dispatch),
     }
 }
 
 export default compose<any>(
-    connect(null,
-        mapDispatchToProps)(Footer)
-);
-
+    connect(mapStateToProps, mapDispatchToProps)(Footer)
+)

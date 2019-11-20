@@ -135,7 +135,7 @@ export class LoginForm extends React.Component<IProps, ILoginFormState> {
         <div className="loginform-container">
           <div className="loginform-img"></div>
           <form className="loginform" onSubmit={this.handleSubmit}>
-            <h1 className="loginform-title">LOGIN</h1>
+
             <label>
               <i className="far fa-user-circle"></i>EMAIL
             </label>
@@ -167,6 +167,7 @@ export class LoginForm extends React.Component<IProps, ILoginFormState> {
             <SubmitButton disabled={!this.state.validatedForm}>
               LOGIN<i className="far fa-arrow-alt-circle-right"></i>
             </SubmitButton>
+            <h1 className="login-title">login.</h1>
           </form>
         </div>
       </>
