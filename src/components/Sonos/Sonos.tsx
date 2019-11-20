@@ -1,22 +1,16 @@
-import React from 'react';
+import React from 'react'
 
-import axios from 'axios';
-import './sonos.scss';
-import { Link } from 'react-router-dom';
+import axios from 'axios'
+import './sonos.scss'
+import { Link } from 'react-router-dom'
 // @ts-ignore
-import Typical from 'react-typical';
-
-
-
-
-
-
-
+import Typical from 'react-typical'
+import { Slider } from '@material-ui/core'
 
 interface ISonosState {
     currentlyPlaying: ISongsArray[]
     interval: any
-    value: string
+    // value: number
 }
 
 interface ISongsArray {
@@ -26,8 +20,8 @@ interface ISongsArray {
     volume: number
 }
 
-class Sonos extends React.Component<{}, ISonosState>{
-    getAllGroups: any;
+class Sonos extends React.Component<{}, ISonosState> {
+    getAllGroups: any
     constructor(props: any) {
         super(props)
         this.state = {
@@ -35,33 +29,30 @@ class Sonos extends React.Component<{}, ISonosState>{
                 {
                     currentTrack: {
                         artist: '',
-                        title: ''
+                        title: '',
                     },
                     playbackState: '',
                     room: '',
-                    volume: 0
-                }
+                    volume: 0,
+                },
             ],
             interval: '',
-            value: ''
+            // value: 0
         }
     }
 
-
     componentDidMount() {
-        this.getCurrentlyPlaying();
+        this.getCurrentlyPlaying()
 
-        const interval = setInterval(() => this.getCurrentlyPlaying(), 5000);
+        const interval = setInterval(() => this.getCurrentlyPlaying(), 5000)
         this.setState({
-            interval: interval
+            interval: interval,
         })
     }
-
 
     componentWillUnmount() {
         clearInterval(this.state.interval)
     }
-
 
     getCurrentlyPlaying() {
         let songs: any[] = []
@@ -71,21 +62,21 @@ class Sonos extends React.Component<{}, ISonosState>{
             return axios.get(`http://localhost:5005/${group}/state`)
         })
 
-        //perform multiple get-requests   
-        axios.all(allRequests)
+        //perform multiple get-requests
+        axios
+            .all(allRequests)
             .then((allResponses: any) => {
-
                 songs = allResponses.map((originalObject: any, index: number) => {
                     return {
                         room: rooms[index],
                         currentTrack: originalObject.data.currentTrack,
                         playbackState: originalObject.data.playbackState,
-                        volume: originalObject.data.volume
+                        volume: originalObject.data.volume,
                     }
                 })
 
                 this.setState({
-                    currentlyPlaying: songs
+                    currentlyPlaying: songs,
                 })
             })
 
@@ -94,42 +85,47 @@ class Sonos extends React.Component<{}, ISonosState>{
             })
     }
 
-
     playPause = (room: string, isPlaying: boolean) => {
         const playState = isPlaying ? 'pause' : 'play'
-        const roomIndex = this.state.currentlyPlaying.findIndex(song => song.room === room)
+        const roomIndex = this.state.currentlyPlaying.findIndex(
+            song => song.room === room
+        )
 
-        axios.get(`http://localhost:5005/${room}/${playState}`)
-            .then((res: any) => {
-                this.setState(state => {
-                    const list = state.currentlyPlaying.map((song, songIndex) => {
-
-                        if (songIndex === roomIndex) {
-                            return { ...song, playbackState: isPlaying ? 'PAUSED_PLAYBACK' : 'PLAYING' }
-                        } else {
-                            return song;
+        axios.get(`http://localhost:5005/${room}/${playState}`).then((res: any) => {
+            this.setState(state => {
+                const list = state.currentlyPlaying.map((song, songIndex) => {
+                    if (songIndex === roomIndex) {
+                        return {
+                            ...song,
+                            playbackState: isPlaying ? 'PAUSED_PLAYBACK' : 'PLAYING',
                         }
-                    });
-                    return {
-                        currentlyPlaying: list
-                    };
-                });
+                    } else {
+                        return song
+                    }
+                })
+                return {
+                    currentlyPlaying: list,
+                }
             })
+        })
     }
 
+    changeVolume = (e: any, newValue: any, displayedSongs: any) => {
+        e.preventDefault()
 
-    changeVolume = (e: any) => {
-        e.preventDefault();
-        const { id } = e.target
-        //Hårdkodade värden tillsvidare
-        const newValue = 60
-        const previousValue = 50
+        const id = displayedSongs.room
+        const previousValue = displayedSongs.volume
         const diff = newValue - previousValue
+
+        console.log('mitt id', id)
+        console.log('tidigare volym', previousValue)
+        console.log('ändringen', newValue)
+
         const sign = diff > 0 ? '+' : '-'
 
-        axios.get(`http://localhost:5005/${id}/volume/${sign}${Math.abs(diff)}`)
-            .then((res: any) => {
-            })
+        axios
+            .get(`http://localhost:5005/${id}/volume/${sign}${Math.abs(diff)}`)
+            .then((res: any) => { })
     }
 
     public render() {
@@ -146,39 +142,54 @@ class Sonos extends React.Component<{}, ISonosState>{
                 </div>
 
                 <div className="sonos-wrapper">
-                    <p>prototyp are  {' '}</p>
-                    <Typical
-                        steps={['[a code lab]', 3000, '[fearless generalists]', 3000, '[an academy for tech wizards]', 3000,]}
-                        loop={Infinity}
-                        wrapper="sonos-wrapper"
-                    />
                     <ul className="sonos-container">
-
-
                         {displaySongs.map(displayedSongs => (
-
                             <li className="sonos-single-container" key={displayedSongs.room}>
+                                <p className="artist-heading">{displayedSongs.currentTrack.artist}</p>
+                                <div className="container-current-song">
 
-                                <p>{displayedSongs.currentTrack.artist}</p>
-                                <p>{displayedSongs.currentTrack.title}</p>
-                                <p>{displayedSongs.volume}</p>
-                                <button className="button" type="submit" onClick={() => this.playPause(displayedSongs.room, displayedSongs.playbackState === 'PLAYING')}>{displayedSongs.playbackState === 'PLAYING' ? 'pause' : 'play'}</button>
-                                <input className="volume" type="text" value={this.state.value} id={displayedSongs.room} onChange={this.changeVolume}></input>
-                                <hr className="sonos-heading-line" />
-                                <p className="sonos-text-room">{displayedSongs.room}</p>
+
+                                    <p className="songtitle-heading">-{displayedSongs.currentTrack.title}</p>
+                                    <button
+                                        className="music-button"
+                                        type="submit"
+                                        onClick={() =>
+                                            this.playPause(
+                                                displayedSongs.room,
+                                                displayedSongs.playbackState === 'PLAYING'
+                                            )
+
+                                        }
+                                    >
+                                        {displayedSongs.playbackState === 'PLAYING' ? (
+                                            <i className="far fa-pause-circle"></i>
+                                        ) : (
+                                                <i className="far fa-play-circle"></i>
+                                            )}
+                                    </button>
+                                </div>
+                                <div className="slider-box"> <Slider
+                                    min={0}
+                                    max={100}
+                                    step={1}
+                                    value={displayedSongs.volume}
+                                    className="sonos-volume"
+                                    onChange={(e: any, newValue: any) =>
+                                        this.changeVolume(e, newValue, displayedSongs)
+                                    }
+                                />{' '}
+                                    <i className="volume-icon fas fa-volume-up"></i></div>
+                                <div className="sonos-heading-container">
+                                    <hr className="sonos-heading-line" />
+                                    <p className="room-heading">{displayedSongs.room}</p>
+                                </div>
                             </li>
-                        
-
                         ))}
-
                     </ul>
-
-
                 </div>
-
             </div>
-        );
+        )
     }
 }
 
-export default Sonos;	
+export default Sonos

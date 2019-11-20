@@ -56,8 +56,8 @@ export const LightItem = ({
           </div>
         </div>
       ) : (
-        <p className="lightItem-error-message">This light is not reachable</p>
-      )}
+          <p className="lightItem-error-message">This light is not reachable</p>
+        )}
     </div>
   )
 }
