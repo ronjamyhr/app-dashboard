@@ -1,9 +1,10 @@
 @import '../../../Styles/variables.scss';
 
 .philipsLight-container {
-  background-color: #f6f5f5; //$primary-color-light;
-  width: 300px;
-  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
 
   .philipsLight-content-container {
     display: flex;
@@ -60,7 +61,7 @@
       min-width: 100px;
 
       .philipsLight-button {
-        background-color: $detail-color;
+        background-color: $primary-color-medium;
         border: none;
         outline: none;
         padding: 0.7em 1em;
@@ -69,10 +70,12 @@
         cursor: pointer;
         transition-duration: 0.4s;
         margin-bottom: 2em;
+        color: $text-color-light;
       }
 
       .philipsLight-button:hover {
         background-color: lighten($detail-color, 10%);
+        text-decoration: underline;
       }
     }
 
