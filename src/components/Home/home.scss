@@ -11,13 +11,51 @@
     width: 70%;
 
     .home-message-wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       width: 50%;
       background-color: gainsboro;
+
+      .home-text-animation {
+        height: 40%;
+        background-color: #2c2c2c;
+        text-align: right;
+        font-size: 1.2em;
+        color: white;
+        padding: 1.1em;
+        font-family: 'Special Elite', cursive;
+
+        .home-text-heading {
+          font-size: 0.8em;
+          text-decoration: underline;
+        }
+      }
     }
 
     .home-slackmessage-wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       width: 50%;
       background-color: #ffffff;
+
+      .home-text-animation {
+        display: flex;
+        align-items: center;
+        height: 40%;
+        background-color: #2c2c2c;
+        padding: 1.1em;
+
+        .home-text-p {
+          margin: 0;
+          font-family: 'Playfair Display SC', serif;
+
+          // writing-mode: vertical-lr;
+          // transform: rotate(-180deg);
+          font-size: 6em;
+        }
+      }
     }
   }
 
@@ -33,7 +71,7 @@
     }
     .home-sonosplayer-wrapper {
       height: 60%;
-      background-color: #2c2c2c;
+      background-color: gainsboro;
     }
   }
 }
