@@ -145,29 +145,29 @@ class Sonos extends React.Component<{}, ISonosState> {
                     <ul className="sonos-container">
                         {displaySongs.map(displayedSongs => (
                             <li className="sonos-single-container" key={displayedSongs.room}>
+
+                                <button
+                                    className="music-button"
+                                    type="submit"
+                                    onClick={() =>
+                                        this.playPause(
+                                            displayedSongs.room,
+                                            displayedSongs.playbackState === 'PLAYING'
+                                        )
+
+                                    }
+                                >
+                                    {displayedSongs.playbackState === 'PLAYING' ? (
+                                        <i className="icon far fa-pause-circle"></i>
+                                    ) : (
+                                            <i className="icon far fa-play-circle"></i>
+                                        )}
+                                </button>
+
                                 <p className="artist-heading">{displayedSongs.currentTrack.artist}</p>
-                                <div className="container-current-song">
 
+                                <p className="songtitle-heading">-{displayedSongs.currentTrack.title}</p>
 
-                                    <p className="songtitle-heading">-{displayedSongs.currentTrack.title}</p>
-                                    <button
-                                        className="music-button"
-                                        type="submit"
-                                        onClick={() =>
-                                            this.playPause(
-                                                displayedSongs.room,
-                                                displayedSongs.playbackState === 'PLAYING'
-                                            )
-
-                                        }
-                                    >
-                                        {displayedSongs.playbackState === 'PLAYING' ? (
-                                            <i className="far fa-pause-circle"></i>
-                                        ) : (
-                                                <i className="far fa-play-circle"></i>
-                                            )}
-                                    </button>
-                                </div>
                                 <div className="slider-box"> <Slider
                                     min={0}
                                     max={100}

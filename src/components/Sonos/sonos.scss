@@ -24,7 +24,6 @@
     }
 
     .sonos-header {
-      // font-family: display-font;
       position: absolute;
       font-size: 6em;
       top: 0.5em;
@@ -85,39 +84,37 @@
         transition: all 1s;
         font-weight: 300;
         text-align: end;
+        font-family: $headers-font;
 
         .artist-heading {
-          font-size: 1.5em;
-          font-family: $headers-font;
+          font-size: 0.7em;
+          margin: 0;
+          letter-spacing: 0.1em;
+
+          font-weight: bold;
+
+          text-transform: uppercase;
         }
 
-        .container-current-song {
-          display: flex;
-          justify-content: flex-end;
-          align-items: center;
-          text-align: end;
-          margin-right: 0;
-          width: 100%;
-          .songtitle-heading {
-            font-family: $single-paragraph;
-            font-weight: bold;
-            font-size: 1.2em;
-            text-transform: lowercase;
-          }
+        .songtitle-heading {
+          font-size: 1.5em;
+          text-transform: lowercase;
+          margin: 0;
+        }
 
-          .music-button {
-            z-index: 2;
-            background-color: transparent;
-            border: none;
-            outline: none;
-            padding-right: 0;
-            cursor: pointer;
-            transition-duration: 0.4s;
-            font-size: 1.5em;
-            .button-up-icon {
-              font-size: 1.5em;
-            }
+        .music-button {
+          align-self: flex-start;
+          z-index: 1;
+          background-color: transparent;
+          border: none;
+          outline: none;
+
+          .icon {
+            font-size: 1.2em;
           }
+          cursor: pointer;
+          transition-duration: 0.4s;
+          font-size: 1.5em;
         }
 
         &:after,
@@ -157,14 +154,13 @@
         }
 
         .slider-box {
-          border: 1px solid grey;
           display: flex;
           width: 100%;
           align-items: center;
           justify-content: flex-end;
 
           .sonos-volume {
-            color: #2c2c2c;
+            color: grey;
             width: 80%;
           }
 
@@ -187,26 +183,14 @@
             border-bottom: 1px solid #2c2c2c;
           }
           .room-heading {
-            color: $text-color-dark;
             font-family: $headers-font;
-
             text-transform: lowercase;
-
             font-size: 1em;
             margin: 0;
             text-align: end;
+            color: grey;
           }
         }
-        // .sonos-heading-line {
-        //   width: 100px;
-        //   margin: 0;
-        //   border-top: 1px solid #2c2c2c;
-        // }
-
-        // .sonos-text-room {
-        //   margin: 0;
-        //   text-transform: lowercase;
-        // }
       }
     }
   }
