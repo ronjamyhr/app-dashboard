@@ -16,9 +16,10 @@
 }
 
 .message-container {
-  background-color: $primary-color-light;
-  width: 300px;
-  height: 290px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
 
   .message-loading-spinner {
     padding-top: 3em;
@@ -83,7 +84,7 @@
   }
 
   .message-posts-container {
-    height: 200px;
+    height: 80%;
     overflow: scroll;
 
     .message-card-container {
@@ -96,7 +97,7 @@
         li {
           display: flex;
           flex-direction: row;
-          justify-content: center;
+          justify-content: space-around;
           align-items: center;
           margin-bottom: 5em;
 
@@ -151,6 +152,17 @@
     }
   }
 
+  .no-messages-card {
+    padding: 1em;
+
+    .message-message-no-text {
+      color: #646464;
+      font-weight: 100;
+      font-family: $body_font;
+      font-size: 1rem;
+    }
+  }
+
   .message-heading-container {
     display: flex;
     flex-direction: column;
@@ -195,17 +207,6 @@
       border: 0;
       height: 0;
       border-bottom: 1px solid rgb(00, 00, 00);
-    }
-  }
-
-  .no-messages-card {
-    padding: 1em;
-
-    .message-message-no-text {
-      color: #646464;
-      font-weight: 100;
-      font-family: $body_font;
-      font-size: 1rem;
     }
   }
 }

@@ -2,6 +2,7 @@
 
 .philipsLights-container {
   width: 100vw;
+  margin-bottom: 20vh;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -96,16 +97,16 @@
 
     .philipsLights-link {
       font-family: $body-font;
-      font-size: 0.8em;
       text-decoration: none;
-      margin: 0 0 2em 1em;
+      margin: 0 0 1em 0.5em;
       min-width: 100px;
 
       .philipsLights-button {
+        font-size: 1em;
         background-color: $detail-color;
         border: none;
         outline: none;
-        padding: 0.7em 1em;
+        padding: 0.5em 1em;
         font-family: $headers-font;
         width: 80px;
         cursor: pointer;
@@ -139,7 +140,6 @@
       background-color: transparent;
       border: none;
       outline: none;
-      font-family: $body-font;
       cursor: pointer;
       transition-duration: 0.4s;
       color: $text-color-light;
@@ -147,6 +147,21 @@
 
       .button-up-icon {
         font-size: 1.5em;
+        animation: fade_move_up 3s ease-in-out infinite;
+      }
+
+      @keyframes fade_move_up {
+        0% {
+          transform: translate(0, 10px);
+          opacity: 0;
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          transform: translate(0, -10px);
+          opacity: 0;
+        }
       }
     }
   }
