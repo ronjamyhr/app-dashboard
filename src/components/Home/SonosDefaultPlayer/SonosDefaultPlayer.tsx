@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import './sonosDefaultPlayer.scss';
+//import './sonosDefaultPlayer.scss';
 
 //create interface for state
 interface ISonosDeafultPlayerState {
@@ -134,7 +134,7 @@ class SonosDefaultPlayer extends React.Component<{}, ISonosDeafultPlayerState> {
             <button type="submit" onClick={() => this.playPause(songToRender.room, songToRender.playbackState === 'PLAYING')}>{songToRender.playbackState === 'PLAYING' ? 'pause' : 'play'}</button>
             <input type="text" value={this.state.value} id={songToRender.room} onChange={this.changeVolume}></input>
             <Link to="/sonosplayers">Show all Sonos players</Link>
-        </>) : null 
+        </>) : null
     }
 }
 
