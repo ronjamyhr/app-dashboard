@@ -105,15 +105,9 @@ class Sonos extends React.Component<{}, ISonosState> {
 
   changeVolume = (e: any, newValue: any, displayedSongs: any) => {
     e.preventDefault()
-
     const id = displayedSongs.room
     const previousValue = displayedSongs.volume
     const diff = newValue - previousValue
-
-    console.log('mitt id', id)
-    console.log('tidigare volym', previousValue)
-    console.log('ändringen', newValue)
-
     const sign = diff > 0 ? '+' : '-'
     const roomIndex = this.state.currentlyPlaying.findIndex(
       song => song.room === id
