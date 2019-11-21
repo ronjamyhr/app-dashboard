@@ -1,12 +1,11 @@
-import React from "react";
-import "./notFound.scss";
+import React from 'react'
+import './notFound.scss'
 
-class NotFound extends React.Component<{}, {}> {
-  public render() {
-    return <React.Fragment>
-      <h1>Not found</h1>
-    </React.Fragment>;
-  }
+export const NotFound = () => {
+  return (
+    <div className="notfound-container">
+      <h1>404</h1>
+      <h2>PAGE NOT FOUND</h2>
+    </div>
+  )
 }
-
-export default NotFound;
