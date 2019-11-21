@@ -105,17 +105,35 @@ class SonosDefaultPlayer extends React.Component<{}, ISonosDeafultPlayerState> {
     })
   }
 
-  changeVolume = (e: any) => {
-    e.preventDefault()
-    const { id } = e.target
-    //Hårdkodade värden tillsvidare
-    const newValue = 60
-    const previousValue = 50
+  changeVolume = (e: any, newValue: any, songToRender: any) => {
+
+    const id = songToRender.room
+    const previousValue = songToRender.volume
     const diff = newValue - previousValue
     const sign = diff > 0 ? '+' : '-'
+    const roomIndex = this.state.allSongs.findIndex(
+      song => song.room === id
+    )
+
+    this.setState(state => {
+      const list = state.allSongs.map((song, songIndex) => {
+        if (songIndex === roomIndex) {
+          return {
+            ...song,
+            volume: newValue,
+          }
+        } else {
+          return song
+        }
+      })
+      return {
+        allSongs: list,
+      }
+    })
+
     axios
       .get(`http://localhost:5005/${id}/volume/${sign}${Math.abs(diff)}`)
-      .then((res: any) => {})
+      .then((res: any) => { })
   }
 
   public render() {
@@ -137,24 +155,24 @@ class SonosDefaultPlayer extends React.Component<{}, ISonosDeafultPlayerState> {
           <p className="sonosdefault-title">
             {songToRender.currentTrack.title}
           </p>
-          {/* <p>{songToRender.volume}</p>
-          <p>{songToRender.playbackState}</p> */}
+
           <div className="slider-box">
-            {/* <Slider
+            <Slider
               min={0}
               max={100}
               step={1}
-              value={displayedSongs.volume}
+              value={songToRender.volume}
               className="sonos-volume"
               onChange={(e: any, newValue: any) =>
-                this.changeVolume(e, newValue, displayedSongs)
+                this.changeVolume(e, newValue, songToRender)
               }
-            /> */}
+            />
             <i className="volume-icon fas fa-volume-up"></i>
           </div>
 
           <p className="sonosdefault-room">{songToRender.room}</p>
-          {/* <button
+          <button
+            className="music-button"
             type="submit"
             onClick={() =>
               this.playPause(
@@ -163,14 +181,12 @@ class SonosDefaultPlayer extends React.Component<{}, ISonosDeafultPlayerState> {
               )
             }
           >
-            {songToRender.playbackState === 'PLAYING' ? 'pause' : 'play'}
+            {songToRender.playbackState === 'PLAYING' ? (
+              <i className="icon far fa-pause-circle"></i>
+            ) : (
+                <i className="icon far fa-play-circle"></i>
+              )}
           </button>
-          <input
-            type="text"
-            value={this.state.value}
-            id={songToRender.room}
-            onChange={this.changeVolume}
-          ></input> */}
         </div>
         <div className="sonosdefault-heading-container">
           <Link className="sonosdefault-link" to="/sonosplayers">

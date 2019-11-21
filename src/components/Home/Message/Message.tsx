@@ -53,6 +53,7 @@ const Message = ({ posts, startRemovePost }: IProps) => {
                       <p className="message-message-date">
                         {moment(post.date.toDate()).format('LLLL')}
                       </p>
+                      <hr />
                     </div>
                     {/* TODO: if statement = that only show the trash icon on posts you did */}
                     <div className="message-delete-wrapper">
@@ -68,10 +69,10 @@ const Message = ({ posts, startRemovePost }: IProps) => {
             </ul>
           </div>
         ) : (
-          <div className="no-messages-card">
-            <p className="message-message-no-text">No messages to show</p>
-          </div>
-        )}
+            <div className="no-messages-card">
+              <p className="message-message-no-text">No messages to show</p>
+            </div>
+          )}
       </div>
       <div className="message-heading-container">
         <button className="message-heading-button" onClick={() => openModal()}>
