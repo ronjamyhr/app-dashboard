@@ -8,11 +8,16 @@ import { Slider } from '@material-ui/core'
 interface ISonosState {
   currentlyPlaying: ISongsArray[]
   interval: any
-  // value: number
+  value: string
+
 }
 
 interface ISongsArray {
-  currentTrack: any
+  currentTrack: {
+    artist: string
+    title: string
+  }
+
   playbackState: string
   room: string
   volume: number
@@ -23,19 +28,9 @@ class Sonos extends React.Component<{}, ISonosState> {
   constructor(props: any) {
     super(props)
     this.state = {
-      currentlyPlaying: [
-        {
-          currentTrack: {
-            artist: '',
-            title: '',
-          },
-          playbackState: '',
-          room: '',
-          volume: 0,
-        },
-      ],
+      currentlyPlaying: [],
       interval: '',
-      // value: 0
+      value: '',
     }
   }
 
