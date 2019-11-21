@@ -37,6 +37,7 @@ const Footer = ({
             </div>
 
             {currentlyLogged && (
+
                 <div className="footer-right-section">
                     <div className="footer-date-container">
                         <div className="footer-date-container-text">
@@ -49,7 +50,7 @@ const Footer = ({
     )
 }
 
-//läser av currently logged på nav och footer
+
 
 const mapStateToProps = (state: any): IState => {
     return {
