@@ -154,8 +154,8 @@ class Sonos extends React.Component<{}, ISonosState> {
       <div className="content">
         <div className="sonos-header-wrapper">
           <div className="sonos-header-box animate fade-in-left one"></div>
-          <h1 className="sonos-header animate expand-header two">sounds.</h1>
-          <Link className="sonos-link animate fade-in-right three" to="/">
+          <h1 className="sonos-header animate expand-header three">sounds.</h1>
+          <Link className="sonos-link animate fade-in-down two" to="/">
             <button className="sonos-button">home</button>
           </Link>
         </div>

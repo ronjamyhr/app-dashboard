@@ -2,8 +2,8 @@
 .lightItem-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  width: 200px;
+  align-items: flex-end;
+  width: 300px;
   background-color: $primary-color-light;
   margin: 1em;
   padding: 1em;
@@ -21,14 +21,14 @@
   &:before {
     bottom: -1px;
     right: -1px;
-    border-bottom: 3px solid black;
-    border-right: 3px solid black;
+    border-bottom: 4px solid black;
+    border-right: 4px solid black;
   }
   &:after {
     top: -1px;
     left: -1px;
-    border-top: 3px solid black;
-    border-left: 3px solid black;
+    border-top: 4px solid black;
+    border-left: 4px solid black;
   }
   &:hover {
     border-top-right-radius: 0px;
@@ -43,12 +43,16 @@
 
   .lightItem-header-wrapper {
     height: 80px;
+    align-items: flex-start;
 
     .lightItem-header-name {
       font-family: $headers-font;
-      font-size: 1.1em;
+      font-weight: bold;
+      text-align: end;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 0.9em;
       margin-top: 2em;
-      color: $text-color-dark;
     }
   }
 
@@ -56,60 +60,65 @@
     font-size: 0.8em;
   }
 
-  .lightItem-buttons-container {
+  .lightItem-switch {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
+    margin-bottom: 0.5em;
+    z-index: 2;
 
-    .lightItem-switch {
-      display: flex;
-      flex-direction: row;
-      margin-bottom: 2em;
-      z-index: 2;
+    .onoff-text {
+      font-size: 1em;
+    }
 
-      .onoff-text {
-        margin-top: 1;
-        font-size: 1em;
+    .switch {
+      margin: 0 0.1em;
+
+      .MuiSwitch-colorSecondary.Mui-checked {
+        color: grey;
       }
 
-      .switch {
-        margin: 0 0.1em;
+      .MuiSwitch-colorSecondary.Mui-checked + .MuiSwitch-track {
+        background-color: rgba(94, 149, 150, 0.8);
+      }
 
-        .MuiSwitch-colorSecondary.Mui-checked {
-          color: #5e9596;
-        }
+      .MuiSwitch-colorSecondary.Mui-checked:hover {
+        background-color: rgba(94, 149, 150, 0.2);
+      }
 
-        .MuiSwitch-colorSecondary.Mui-checked + .MuiSwitch-track {
-          background-color: rgba(94, 149, 150, 0.8);
-        }
+      .MuiSwitch-switchBase {
+        color: $text-color-dark;
+      }
+    }
+  }
 
-        .MuiSwitch-colorSecondary.Mui-checked:hover {
-          background-color: rgba(94, 149, 150, 0.2);
-        }
+  .lightItem-slider {
+    align-items: center;
+    justify-content: flex-end;
+    display: flex;
+    width: 100%;
+    z-index: 2;
+    margin-bottom: 1em;
 
-        .MuiSwitch-switchBase {
-          color: $text-color-dark;
-        }
+    .slider {
+      color: grey;
+      width: 80%;
+
+      .MuiSlider-thumb.Mui-focusVisible,
+      .MuiSlider-thumb:hover {
+        box-shadow: 0px 0px 0px 8px rgba(00, 00, 00, 0.16);
+      }
+
+      .MuiSlider-thumb.Mui-focusVisible,
+      .MuiSlider-thumb:active {
+        box-shadow: 0px 0px 0px 15px rgba(94, 149, 150, 0.16);
       }
     }
 
-    .lightItem-slider {
-      height: 150px;
-      z-index: 2;
-
-      .slider {
-        color: #2c2c2c;
-
-        .MuiSlider-thumb.Mui-focusVisible,
-        .MuiSlider-thumb:hover {
-          box-shadow: 0px 0px 0px 8px rgba(00, 00, 00, 0.16);
-        }
-
-        .MuiSlider-thumb.Mui-focusVisible,
-        .MuiSlider-thumb:active {
-          box-shadow: 0px 0px 0px 15px rgba(232, 118, 99, 0.16);
-        }
-      }
+    .brightness-icon {
+      color: rgb(102, 100, 100);
+      padding-left: 1em;
+      font-size: 1.3em;
     }
   }
 }

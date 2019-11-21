@@ -23,7 +23,6 @@
 
     .slackmessage-card-container {
       padding: 1em 0;
-      width: 70%;
 
       ul {
         list-style: none;
@@ -34,13 +33,14 @@
           flex-direction: row;
           justify-content: center;
           align-items: center;
-          margin-bottom: 5em;
+          margin-bottom: 3em;
 
           .slackmessages-post-wrapper {
-            margin: 16px 0;
-            width: 200px;
+            margin: 1em 0;
+            width: 300px;
 
             .slackmessages-post-text {
+              word-wrap: break-word;
               color: $text-color-dark;
               font-family: $body_font;
               font-size: 1em;

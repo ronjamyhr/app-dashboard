@@ -26,7 +26,7 @@ export const LightItem = ({
         <h2 className="lightItem-header-name">{name}</h2>
       </div>
       {reachable ? (
-        <div className="lightItem-buttons-container">
+        <>
           <div className="lightItem-switch">
             <p className="onoff-text">off</p>
             <Switch
@@ -43,7 +43,6 @@ export const LightItem = ({
 
           <div className="lightItem-slider">
             <Slider
-              orientation="vertical"
               min={0}
               max={255}
               step={1}
@@ -53,11 +52,12 @@ export const LightItem = ({
                 updateLight(id, isOn, newValue)
               }
             />
+            <i className="brightness-icon fas fa-sun"></i>
           </div>
-        </div>
+        </>
       ) : (
-          <p className="lightItem-error-message">This light is not reachable</p>
-        )}
+        <p className="lightItem-error-message">This light is not reachable</p>
+      )}
     </div>
   )
 }

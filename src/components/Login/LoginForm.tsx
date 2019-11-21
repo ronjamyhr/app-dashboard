@@ -1,14 +1,14 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { authLogin } from '../../actions/authAction';
-import { AppActions } from "../../types/actions";
-import { bindActionCreators, compose } from 'redux';
-import { IUser } from '../../types/authInterface';
-import { ThunkDispatch } from 'redux-thunk';
-import SubmitButton from '../SubmitButton/SubmitButton';
-import ErrorMessage from '../ErrorMessage/ErrorMessage';
+import React from 'react'
+import { connect } from 'react-redux'
+import { authLogin } from '../../actions/authAction'
+import { AppActions } from '../../types/actions'
+import { bindActionCreators, compose } from 'redux'
+import { IUser } from '../../types/authInterface'
+import { ThunkDispatch } from 'redux-thunk'
+import SubmitButton from '../SubmitButton/SubmitButton'
+import ErrorMessage from '../ErrorMessage/ErrorMessage'
 
-type IProps = ILinkStateProps & ILinkDispatchProps;
+type IProps = ILinkStateProps & ILinkDispatchProps
 
 interface ILoginFormState {
   email: string
@@ -131,50 +131,54 @@ export class LoginForm extends React.Component<IProps, ILoginFormState> {
   public render() {
     const { currentlyLogged } = this.props
     return (
-      <>
-        <div className="loginform-container">
-          <div className="loginform-img"></div>
-          <form className="loginform" onSubmit={this.handleSubmit}>
+      <div className="loginform-container">
+        <div className="loginform-img"></div>
+        <div className="loginform-right-section">
+          <div className="login-top">
+            <form className="loginform" onSubmit={this.handleSubmit}>
+              <label>
+                <i className="far fa-user-circle"></i>EMAIL
+              </label>
+              <input
+                type="text"
+                name="username"
+                id="email"
+                onChange={this.handleEmailChange}
+                placeholder="name@prototyp.se"
+                required
+              />
+              {this.state.errorMsgEmail.length > 0 ? (
+                <ErrorMessage>{this.state.errorMsgEmail}</ErrorMessage>
+              ) : null}
+              <label>
+                <i className="fas fa-lock"></i>PASSWORD
+              </label>
+              <input
+                type="password"
+                name="password"
+                id="password"
+                onChange={this.handlePasswordChange}
+                placeholder="••••••"
+              />
+              {this.state.errorMsgPassword.length > 0 ? (
+                <ErrorMessage>{this.state.errorMsgPassword}</ErrorMessage>
+              ) : null}
 
-            <label>
-              <i className="far fa-user-circle"></i>EMAIL
-            </label>
-            <input
-              type="text"
-              name="username"
-              id="email"
-              onChange={this.handleEmailChange}
-              placeholder="name@prototyp.se"
-              required
-            />
-            {this.state.errorMsgEmail.length > 0 ? (
-              <ErrorMessage>{this.state.errorMsgEmail}</ErrorMessage>
-            ) : null}
-            <label>
-              <i className="fas fa-lock"></i>PASSWORD
-            </label>
-            <input
-              type="password"
-              name="password"
-              id="password"
-              onChange={this.handlePasswordChange}
-              placeholder="******"
-            />
-            {this.state.errorMsgPassword.length > 0 ? (
-              <ErrorMessage>{this.state.errorMsgPassword}</ErrorMessage>
-            ) : null}
-
-            <SubmitButton disabled={!this.state.validatedForm}>
-              LOGIN<i className="far fa-arrow-alt-circle-right"></i>
-            </SubmitButton>
-            <h1 className="login-title">login.</h1>
-          </form>
+              <SubmitButton disabled={!this.state.validatedForm}>
+                LOGIN<i className="far fa-arrow-alt-circle-right"></i>
+              </SubmitButton>
+            </form>
+          </div>
+          <div className="login-bottom">
+            <div className="login-box">
+              <h1 className="login-title">login.</h1>
+            </div>
+          </div>
         </div>
-      </>
+      </div>
     )
   }
 }
-
 
 const mapDispatchToProps = (
   dispatch: ThunkDispatch<any, any, AppActions>,
@@ -188,8 +192,8 @@ const mapDispatchToProps = (
 
 //connect works as the glue between the component and the store
 export default compose<any>(
-  connect(null, mapDispatchToProps)(LoginForm)
-);
-
-
-
+  connect(
+    null,
+    mapDispatchToProps
+  )(LoginForm)
+)

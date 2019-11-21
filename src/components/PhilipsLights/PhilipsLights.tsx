@@ -75,13 +75,10 @@ class PhilipsLights extends React.Component<IProps, IState> {
       <div className="philipsLights-container">
         <div className="philipsLights-header-container">
           <div className="philipsLights-header-box animate fade-in-left one"></div>
-          <h1 className="philipsLights-header animate fade-in-down two">
+          <h1 className="philipsLights-header animate expand-header three">
             lights.
           </h1>
-          <Link
-            className="philipsLights-link animate fade-in-right three"
-            to="/"
-          >
+          <Link className="philipsLights-link animate fade-in-down two" to="/">
             <button className="philipsLights-button">home</button>
           </Link>
         </div>

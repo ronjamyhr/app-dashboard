@@ -1,74 +1,92 @@
 @import '../../Styles/variables.scss';
 
-body {
-  .loginform-container {
-    background-color: white;
-    height: 100vh;
+.loginform-container {
+  background-color: white;
+  height: 100vh;
+  display: flex;
+
+  .loginform-img {
+    flex: 1;
+    background-image: url('../../assets/loginopt.png');
+    background-size: cover;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+
+  .loginform-right-section {
     display: flex;
-    align-items: flex-end;
+    flex-direction: column;
+    justify-content: flex-end;
+    flex: 1;
 
-    .loginform-img {
-      flex: 0.5;
-      background-image: url('../../assets/loginopt.png');
-      background-size: cover;
+    .login-top {
       height: 100%;
-      background-position: center;
-      background-repeat: no-repeat;
-    }
-
-    .login-title {
-      width: 100%;
-      font-size: 6em;
-      align-items: flex-end;
-      margin: 0 auto;
-      bottom: 0;
-      //   text-align: right;
-      border: 2px solid grey;
       display: flex;
-      justify-content: flex-end;
-    }
-
-    .loginform {
-      display: flex;
-      flex-direction: column;
-      flex: 1;
       align-items: center;
       justify-content: center;
 
-      %loginform-text {
-        font-family: $headers-font;
-        letter-spacing: 0.3em;
-        font-weight: lighter;
-        font-size: 0.9em;
-      }
+      .loginform {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
 
-      label {
-        @extend %loginform-text;
-        width: 200px;
-        padding: 1.7em;
+        %loginform-text {
+          font-family: $headers-font;
+          letter-spacing: 0.3em;
+          font-size: 0.9em;
+        }
 
-        i {
-          margin-right: 0.5em;
+        label {
+          @extend %loginform-text;
+          width: 200px;
+          padding: 1.7em;
+          font-weight: 400;
+
+          i {
+            margin-right: 0.5em;
+          }
+        }
+
+        input {
+          @extend %loginform-text;
+          font-weight: lighter;
+          font-size: 0.8em;
+          border: 0;
+          background: transparent;
+          outline: 0;
+          border-bottom: 1px solid #4e4e4e;
+          width: 200px;
+          padding: 1em 0;
+        }
+
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover,
+        input:-webkit-autofill:focus,
+        input:-webkit-autofill:active {
+          -webkit-transition: 'color 9999s ease-out, background-color 9999s ease-out';
+          -webkit-transition-delay: 9999s;
         }
       }
+    }
 
-      input {
-        @extend %loginform-text;
-        font-size: 0.8em;
-        border: 0;
-        background: transparent;
-        outline: 0;
-        border-bottom: 1px solid #4e4e4e;
-        width: 200px;
-        padding: 1em 0;
+    .login-bottom {
+      width: 100%;
+      display: flex;
+      justify-content: flex-start;
+      position: absolute;
+
+      .login-box {
+        width: 400px;
+        background-color: gainsboro;
       }
 
-      input:-webkit-autofill,
-      input:-webkit-autofill:hover,
-      input:-webkit-autofill:focus,
-      input:-webkit-autofill:active {
-        -webkit-transition: 'color 9999s ease-out, background-color 9999s ease-out';
-        -webkit-transition-delay: 9999s;
+      .login-title {
+        font-size: 6em;
+        margin: 0 0 0 3em;
+        z-index: 1;
       }
     }
   }
