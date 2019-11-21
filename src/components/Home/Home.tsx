@@ -31,7 +31,7 @@ export const Home = () => {
         </div>
         <div className="home-slackmessage-wrapper">
           <SlackMessages />
-          <div className="home-text-animation">
+          <div className="home-bottom-animation">
             <p className="home-text-prototyp">prototyp</p>
           </div>
         </div>

@@ -40,7 +40,7 @@
       width: 50%;
       background-color: #ffffff;
 
-      .home-text-animation {
+      .home-bottom-animation {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -50,22 +50,23 @@
 
         .home-text-prototyp {
           margin: 0;
+          font-family: $display-font;
           font-size: 6em;
           color: white;
-          animation: expand 5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite
-            alternate both;
+          animation: expand 5s infinite alternate both;
         }
 
         @keyframes expand {
           0% {
-            letter-spacing: -0.5em;
+            letter-spacing: -0.6em;
             opacity: 0;
           }
-          40% {
-            opacity: 0.6;
+          50% {
+            opacity: 0.5;
           }
           100% {
             opacity: 1;
+            letter-spacing: 0.2em;
           }
         }
       }
