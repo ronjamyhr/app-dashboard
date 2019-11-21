@@ -1,10 +1,8 @@
 import React from 'react'
-
 import axios from 'axios'
 import './sonos.scss'
 import { Link } from 'react-router-dom'
 // @ts-ignore
-import Typical from 'react-typical'
 import { Slider } from '@material-ui/core'
 
 interface ISonosState {
@@ -144,11 +142,12 @@ class Sonos extends React.Component<{}, ISonosState> {
 
     axios
       .get(`http://localhost:5005/${id}/volume/${sign}${Math.abs(diff)}`)
-      .then((res: any) => {})
+      .then((res: any) => { })
   }
 
   public render() {
     const displaySongs = this.state.currentlyPlaying
+
 
     return (
       <div className="content">
@@ -177,8 +176,8 @@ class Sonos extends React.Component<{}, ISonosState> {
                   {displayedSongs.playbackState === 'PLAYING' ? (
                     <i className="icon far fa-pause-circle"></i>
                   ) : (
-                    <i className="icon far fa-play-circle"></i>
-                  )}
+                      <i className="icon far fa-play-circle"></i>
+                    )}
                 </button>
 
                 <p className="artist-heading">
