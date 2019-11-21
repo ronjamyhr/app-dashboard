@@ -84,23 +84,25 @@ class Sonos extends React.Component<{}, ISonosState> {
       song => song.room === room
     )
 
-    axios.get(`http://localhost:5005/${room}/${playState}`).then((res: any) => {
-      this.setState(state => {
-        const list = state.currentlyPlaying.map((song, songIndex) => {
-          if (songIndex === roomIndex) {
-            return {
-              ...song,
-              playbackState: isPlaying ? 'PAUSED_PLAYBACK' : 'PLAYING',
-            }
-          } else {
-            return song
+    this.setState(state => {
+      const list = state.currentlyPlaying.map((song, songIndex) => {
+        if (songIndex === roomIndex) {
+          return {
+            ...song,
+            playbackState: isPlaying ? 'PAUSED_PLAYBACK' : 'PLAYING',
           }
-        })
-        return {
-          currentlyPlaying: list,
+        } else {
+          return song
         }
       })
+      return {
+        currentlyPlaying: list,
+      }
     })
+
+    axios.get(`http://localhost:5005/${room}/${playState}`)
+      .then((res: any) => { })
+
   }
 
   changeVolume = (e: any, newValue: any, displayedSongs: any) => {
