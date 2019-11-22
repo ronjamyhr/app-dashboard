@@ -61,7 +61,6 @@ class SlackMessages extends React.Component<{}, IState> {
         })
       })
       .catch((error: any) => {
-        //TODO: do something here?
       })
   }
 
@@ -76,7 +75,6 @@ class SlackMessages extends React.Component<{}, IState> {
         })
       })
       .catch((error: any) => {
-        //TODO: do something here?
       })
   }
 
@@ -126,12 +124,12 @@ class SlackMessages extends React.Component<{}, IState> {
               </ul>
             </div>
           ) : (
-            <div className="no-messages-card">
-              <p className="slackmessages-no-text">
-                No pinned messages to show
+              <div className="no-messages-card">
+                <p className="slackmessages-no-text">
+                  No pinned messages to show
               </p>
-            </div>
-          )}
+              </div>
+            )}
         </div>
 
         <div className="slackmessages-heading-container">

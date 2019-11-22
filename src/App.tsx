@@ -40,7 +40,6 @@ class App extends React.Component<IProps, {}> {
   }
 }
 
-//passes the data from the store to this component via props
 const mapStateToProps = (state: any) => {
   return {
     currentlyLogged: state.firebase.auth.uid,
