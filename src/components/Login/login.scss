@@ -1,6 +1,7 @@
 @import '../../Styles/variables.scss';
 
 .loginform-container {
+  width: 100vw;
   background-color: white;
   height: 100vh;
   display: flex;
@@ -73,7 +74,7 @@
     }
 
     .login-bottom {
-      width: 100%;
+      width: 50%;
       display: flex;
       justify-content: flex-start;
       position: absolute;
