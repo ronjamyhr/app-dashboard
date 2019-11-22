@@ -2,7 +2,7 @@ import React from 'react';
 import './navbar.scss';
 import { connect } from 'react-redux'
 import { compose, bindActionCreators } from 'redux'
-
+import { Link } from 'react-router-dom'
 
 interface IProps {
   currentlyLogged: boolean
@@ -32,7 +32,7 @@ export class Navbar extends React.Component<IProps, INavbarState> {
 
 
   public render() {
-    return (<>
+    return (
       <div className="navbar-container">
         <div onClick={this.showNavbar} className={this.state.condition ? "hamburger" : "x"}>
           <div className="bar1"></div>
@@ -41,11 +41,11 @@ export class Navbar extends React.Component<IProps, INavbarState> {
         </div>
         {!this.state.condition ? (
           <div className="navbar">
-            <div className="navbar-div">
-              <p className="navbar-login-text">{!this.props.currentlyLogged ? 'login' : ''}</p>
-              {window.location.pathname == "/" && <p className="navbar-login-text">home</p>}
-              {window.location.pathname == "/sonosplayers" && <p className="navbar-login-text">sonos</p>}
-              {window.location.pathname == "/lights" && <p className="navbar-login-text">lights</p>}
+            <div className="navlinks-container">
+              {!this.props.currentlyLogged ?
+                <p className="navbar-login-text">login</p> : (
+                  <div className="navlinks"><Link to="/">home</Link><Link to="/sonosplayers">music</Link><Link to="/lights">lights</Link></div>
+                )}
               <div className="navlink-line"></div>
             </div>
           </div>
@@ -54,7 +54,7 @@ export class Navbar extends React.Component<IProps, INavbarState> {
           )}
       </div>
 
-    </>);
+    );
   }
 }
 

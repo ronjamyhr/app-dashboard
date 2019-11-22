@@ -9,14 +9,17 @@ import Login from './components/Login/Login'
 import PhilipsLights from './components/PhilipsLights/PhilipsLights'
 import Sonos from './components/Sonos/Sonos'
 import Footer from './components/Footer/Footer'
+import './app.scss'
 
 interface IProps {
   currentlyLogged: boolean
 }
 
 class App extends React.Component<IProps, {}> {
-  render() {
+  public render() {
+    console.log("hello", this.props.currentlyLogged)
     return (
+
       <BrowserRouter>
         <Navbar />
         <Switch>
