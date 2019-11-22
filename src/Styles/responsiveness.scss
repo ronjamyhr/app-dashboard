@@ -1,7 +1,7 @@
 /* Responsiveness breakpoints */
 
 $xl: 1920px; //max for bigger screen
-$lg: 1280px; //max for desktop
+$lg: 1440px; //max for desktop
 
 @mixin responsive($query) {
   @media (max-width: $query) {
