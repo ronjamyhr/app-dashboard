@@ -70,10 +70,10 @@ const Message = ({ posts, startRemovePost }: IProps) => {
             </ul>
           </div>
         ) : (
-          <div className="no-messages-card">
-            <p className="message-message-no-text">No messages to show</p>
-          </div>
-        )}
+            <div className="no-messages-card">
+              <p className="message-message-no-text">No messages to show</p>
+            </div>
+          )}
       </div>
       <div className="message-heading-container">
         <button className="message-heading-button" onClick={() => openModal()}>
@@ -98,14 +98,12 @@ interface LinkDispatchProps {
   startRemovePost: (id: string) => void
 }
 
-// Map our state from the store to the props in this component.
 const mapStateToProps = (state: AppState, ownProps: IProps): LinkStateProps => {
   return {
     posts: state.firestore.ordered.posts,
   }
 }
 
-// Dispatch an action from the component.
 const mapDispatchToProps = (
   dispatch: ThunkDispatch<any, any, AppActions>,
   ownProps: IProps

@@ -1,83 +1,91 @@
-import React from 'react';
-import { shallow, mount } from 'enzyme';
-import { MessageForm } from './MessageForm';
+import React from 'react'
+import { shallow, mount } from 'enzyme'
+import { MessageForm } from './MessageForm'
 
-describe ('MessageForm component', () => {
+describe('MessageForm component', () => {
+  it('should throw error if nameinput is invalid', () => {
+    //render messageform component
+    const messageForm = mount(<MessageForm />)
 
-    it('should throw error if nameinput is invalid', () => {
-        //render messageform component
-        const messageForm = mount(<MessageForm />)
+    //find correct input-field
+    const input = messageForm.find('.messageform-form-input-name')
 
-        //find correct input-field
-        const input = messageForm.find('.messageform-form-input-name')
+    //user types inValid input
+    input.simulate('change', {
+      target: { name: 'name', value: '%&hj' },
+      preventDefault: () => {},
+    })
 
-        //user types inValid input
-        input.simulate('change', { target: { name: 'name', value: '%&hj' },preventDefault:() => {}})
+    //everytime we expect the page to re-render we need the update-function
+    messageForm.update()
 
-        //everytime we expect the page to re-render we need the update-function
-        messageForm.update()
+    //find correct error message
+    const error = messageForm.find('.error-message')
 
-        //find correct error message
-        const error = messageForm.find('.error-message')
+    //expect error message to show up in component
+    expect(error.text()).toEqual(
+      'name must only contain letters and whitespaces'
+    )
+  })
 
-        // console.log(error.text(), error.html())
-        //expect error message to show up in component
-        expect(error.text()).toEqual('name must only contain letters and whitespaces')
-    });
+  it('should throw error if name input is empty', () => {
+    const messageForm = mount(<MessageForm />)
+    const input = messageForm.find('.messageform-form-input-name')
 
-    it('should throw error if name input is empty', () => {
+    input.simulate('change', {
+      target: { name: 'name', value: '' },
+      preventDefault: () => {},
+    })
 
-        const messageForm = mount(<MessageForm />);
-        const input = messageForm.find('.messageform-form-input-name');
+    messageForm.update()
 
-        input.simulate('change', { target: { name: 'name', value: '' },preventDefault:() => {}});
+    const error = messageForm.find('.error-message')
 
-        messageForm.update();
+    expect(error.text()).toEqual('name is empty or contains only spaces')
+  })
 
-        const error = messageForm.find('.error-message');
+  it('should throw error if message input is empty', () => {
+    const messageForm = mount(<MessageForm />)
+    const input = messageForm.find('.messageform-form-textarea-message')
 
-        expect(error.text()).toEqual('name is empty or contains only spaces');
-    });
+    input.simulate('change', {
+      target: { name: 'message', value: '' },
+      preventDefault: () => {},
+    })
 
+    messageForm.update()
 
-    it('should throw error if message input is empty', () => {
+    const error = messageForm.find('.error-message')
 
-        const messageForm = mount(<MessageForm />);
-        const input = messageForm.find('.messageform-form-textarea-message');
+    expect(error.text()).toEqual('message is empty or contains only spaces')
+  })
 
-        input.simulate('change', { target: { name: 'message', value: '' }, preventDefault: () => {}});
+  it('should not throw error messages if input is valid', () => {
+    const messageForm = shallow(<MessageForm />)
+    const inputName = messageForm.find('.messageform-form-input-name')
+    const inputMessage = messageForm.find('.messageform-form-textarea-message')
 
-        messageForm.update();
+    // expect the isValid state to be false
+    expect(messageForm.state().isValid).toEqual(false)
 
-        const error = messageForm.find('.error-message');
+    // simulate input change and the input values are correct
+    inputName.simulate('change', {
+      target: { name: 'name', value: 'Lars' },
+      preventDefault: () => {},
+    })
+    inputMessage.simulate('change', {
+      target: { name: 'message', value: 'Ett meddelande' },
+      preventDefault: () => {},
+    })
 
-        expect(error.text()).toEqual('message is empty or contains only spaces');
+    messageForm.update()
 
-    });
+    const error = messageForm.find('.error-message')
 
-    it('should not throw error messages if input is valid', () => {
+    // expect that error messages are non-existent
+    expect(error.exists()).toBeFalsy()
 
-        const messageForm = shallow(<MessageForm />);
-        const inputName = messageForm.find('.messageform-form-input-name');
-        const inputMessage = messageForm.find('.messageform-form-textarea-message');
-
-        // expect the isValid state to be false
-        expect(messageForm.state().isValid).toEqual(false);
-
-        // simulate input change and the input values are correct 
-        inputName.simulate('change', { target: { name: 'name', value: 'Lars' },preventDefault:() => {}});
-        inputMessage.simulate('change', { target: { name: 'message', value: 'Ett meddelande' }, preventDefault: () => {}});
-
-        messageForm.update();
-
-        const error = messageForm.find('.error-message');
-
-        // expect that error messages don't exists 
-        expect(error.exists()).toBeFalsy();
-
-        // then expect the isValid state is true
-        expect(messageForm.state().isValid).toEqual(true);
-
-    });
-});
-
+    // then expect the isValid state to be true
+    expect(messageForm.state().isValid).toEqual(true)
+  })
+})
