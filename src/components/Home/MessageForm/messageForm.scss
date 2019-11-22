@@ -2,8 +2,15 @@
 @import '../../../Styles/responsiveness.scss';
 
 .messageform-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 
   .messageform-heading {
@@ -19,7 +26,12 @@
   }
 
   .messageform-form {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
     padding: 2em;
 
@@ -68,6 +80,50 @@
       @include greater_than($lg) {
         width: 300px;
         padding: 4px 0;
+      }
+    }
+
+    .messageform-form-input-name::-webkit-input-placeholder,
+    .messageform-form-textarea-message::-webkit-input-placeholder {
+      color: #646464;
+      font-family: $body_font;
+      font-weight: 200;
+
+      @include greater_than($lg) {
+        font-size: 1.1em;
+      }
+    }
+
+    .messageform-form-input-name::-moz-placeholder,
+    .messageform-form-textarea-message::-moz-placeholder {
+      color: #646464;
+      font-family: $body_font;
+      font-weight: 200;
+
+      @include greater_than($lg) {
+        font-size: 1.1em;
+      }
+    }
+
+    .messageform-form-input-name:-ms-input-placeholder,
+    .messageform-form-textarea-message:-ms-input-placeholder {
+      color: #646464;
+      font-family: $body_font;
+      font-weight: 200;
+
+      @include greater_than($lg) {
+        font-size: 1.1em;
+      }
+    }
+
+    .messageform-form-input-name::-ms-input-placeholder,
+    .messageform-form-textarea-message::-ms-input-placeholder {
+      color: #646464;
+      font-family: $body_font;
+      font-weight: 200;
+
+      @include greater_than($lg) {
+        font-size: 1.1em;
       }
     }
 

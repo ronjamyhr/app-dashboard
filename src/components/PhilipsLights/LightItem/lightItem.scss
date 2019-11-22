@@ -1,14 +1,23 @@
 @import '../../../Styles/variables.scss';
 
 .lightItem-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-align: end;
+  -ms-flex-align: end;
   align-items: flex-end;
   width: 300px;
   background-color: $primary-color-light;
   margin: 1em;
   padding: 1em;
   position: relative;
+  -webkit-transition: all 1s;
+  -o-transition: all 1s;
   transition: all 1s;
   border-top-right-radius: 11px;
   border-bottom-left-radius: 11px;
@@ -16,9 +25,11 @@
   &:after,
   &:before {
     content: ' ';
-    width: 40px; //längden långsida
-    height: 40px; //längden kortsida
+    width: 40px;
+    height: 40px;
     position: absolute;
+    -webkit-transition: all 1s;
+    -o-transition: all 1s;
     transition: all 1s;
   }
   &:before {
@@ -46,6 +57,8 @@
 
   .lightItem-header-wrapper {
     height: 80px;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
     align-items: flex-start;
 
     .lightItem-header-name {
@@ -64,8 +77,15 @@
   }
 
   .lightItem-switch {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
     flex-direction: row;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     margin-bottom: 0.5em;
     z-index: 2;
@@ -96,8 +116,14 @@
   }
 
   .lightItem-slider {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
     justify-content: flex-end;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     width: 100%;
     z-index: 2;
@@ -109,11 +135,13 @@
 
       .MuiSlider-thumb.Mui-focusVisible,
       .MuiSlider-thumb:hover {
+        -webkit-box-shadow: 0px 0px 0px 8px rgba(00, 00, 00, 0.16);
         box-shadow: 0px 0px 0px 8px rgba(00, 00, 00, 0.16);
       }
 
       .MuiSlider-thumb.Mui-focusVisible,
       .MuiSlider-thumb:active {
+        -webkit-box-shadow: 0px 0px 0px 15px rgba(94, 149, 150, 0.16);
         box-shadow: 0px 0px 0px 15px rgba(94, 149, 150, 0.16);
       }
     }

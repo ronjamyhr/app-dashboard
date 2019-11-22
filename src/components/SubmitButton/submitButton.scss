@@ -18,6 +18,8 @@
     border-radius: 27px;
   }
   cursor: pointer;
+  -webkit-transition-duration: 0.4s;
+  -o-transition-duration: 0.4s;
   transition-duration: 0.4s;
 
   i {
