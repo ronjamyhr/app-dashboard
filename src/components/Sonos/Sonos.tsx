@@ -51,7 +51,7 @@ class Sonos extends React.Component<{}, ISonosState> {
     const rooms = ['Sjöglimt', 'Myshörnan', 'Bangården', 'Kök', 'Femman']
     //map through all the requests
     const allRequests = rooms.map(group => {
-      return axios.get(`http://localhost:5005/${group}/state`)
+      return axios.get(`http://192.168.1.14:5005/${group}/state`)
     })
 
     //perform multiple get-requests
@@ -101,7 +101,7 @@ class Sonos extends React.Component<{}, ISonosState> {
 
     axios
       .get(`http://localhost:5005/${room}/${playState}`)
-      .then((res: any) => {})
+      .then((res: any) => { })
   }
 
   changeVolume = (e: any, newValue: any, displayedSongs: any) => {
@@ -132,7 +132,7 @@ class Sonos extends React.Component<{}, ISonosState> {
 
     axios
       .get(`http://localhost:5005/${id}/volume/${sign}${Math.abs(diff)}`)
-      .then((res: any) => {})
+      .then((res: any) => { })
   }
 
   scrollUpButton = () => {
@@ -169,8 +169,8 @@ class Sonos extends React.Component<{}, ISonosState> {
                   {displayedSongs.playbackState === 'PLAYING' ? (
                     <i className="icon far fa-pause-circle"></i>
                   ) : (
-                    <i className="icon far fa-play-circle"></i>
-                  )}
+                      <i className="icon far fa-play-circle"></i>
+                    )}
                 </button>
 
                 <p className="artist-heading">

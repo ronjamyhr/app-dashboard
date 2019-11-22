@@ -1,27 +1,39 @@
 @import '../../Styles/variables.scss';
+@import '../../Styles/responsiveness.scss';
 
 .submit-button {
-    margin-top: 2em;
-    background-color: $detail-color;
-    border: none;
-    border-radius: 20px;
-    outline: none;
-    padding: .7em 1em;
-    font-family: $headers-font;
-    width: 80px;
-    cursor: pointer;
-    transition-duration: 0.4s;
+  margin-top: 2em;
+  background-color: $detail-color;
+  border: none;
+  border-radius: 20px;
+  outline: none;
+  padding: 0.7em 1em;
+  font-family: $headers-font;
+  width: 80px;
 
-    i {
-        padding: 0.2em;
+  @include greater_than($lg) {
+    width: 130px;
+    padding: 0.8em 1.2em;
+    font-size: 16px;
+    border-radius: 27px;
+  }
+  cursor: pointer;
+  transition-duration: 0.4s;
+
+  i {
+    padding: 0.2em;
+
+    @include greater_than($lg) {
+      font-size: 1.2em;
     }
+  }
 }
 
 .submit-button:hover {
-    background-color: lighten($detail-color, 10%);
+  background-color: lighten($detail-color, 10%);
 }
 
 .submit-button:disabled {
-    cursor: not-allowed;
-    opacity: 0.5;
+  cursor: not-allowed;
+  opacity: 0.5;
 }

@@ -2,7 +2,7 @@
 @import '../../Styles/responsiveness.scss';
 
 .loginform-container {
-  width: 100vw;
+  max-width: 100vw;
   background-color: white;
   height: 100vh;
   display: flex;
@@ -41,7 +41,7 @@
           font-size: 0.9em;
 
           @include greater_than($lg) {
-            font-size: 1.2em;
+            font-size: 1.3em;
           }
         }
 
@@ -72,7 +72,7 @@
           padding: 1em 0;
 
           @include greater_than($lg) {
-            font-size: 1.1em;
+            font-size: 1.2em;
           }
 
           @include greater_than($lg) {
@@ -99,12 +99,20 @@
       .login-box {
         width: 400px;
         background-color: gainsboro;
+
+        @include greater_than($lg) {
+          width: 500px;
+        }
       }
 
       .login-title {
         font-size: 6em;
         margin: 0 0 0 3em;
         z-index: 1;
+
+        @include greater_than($lg) {
+          font-size: 7em;
+        }
       }
     }
   }

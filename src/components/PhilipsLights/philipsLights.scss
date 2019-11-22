@@ -1,7 +1,7 @@
 @import '../../Styles/variables.scss';
 
 .philipsLights-container {
-  width: 100vw;
+  max-width: 100vw;
   margin-bottom: 20vh;
   display: flex;
   align-items: center;

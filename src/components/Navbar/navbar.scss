@@ -1,4 +1,5 @@
 @import '../../Styles/variables.scss';
+@import '../../Styles/responsiveness.scss';
 
 .navbar-container {
   display: flex;
@@ -70,10 +71,15 @@
         transform: rotate(-180deg);
         font-family: $headers-font;
         font-size: 0.8em;
+
+        @include greater_than($lg) {
+          font-size: 1.2em;
+          margin: 1.2em 0 0 0.8em;
+        }
       }
 
       .navlinks {
-        margin: 1em 0em 0em 1em;
+        margin: 1em 0em 0em 0.8em;
         @extend .navbar-login-text;
 
         a:link {
@@ -100,6 +106,11 @@
         height: 35px;
         border-left: 0.7px solid white;
         margin: 1em;
+
+        @include greater_than($lg) {
+          height: 45px;
+          margin-left: 1.7em;
+        }
       }
     }
   }

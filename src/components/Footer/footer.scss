@@ -1,4 +1,5 @@
 @import '../../Styles/variables.scss';
+@import '../../Styles/responsiveness.scss';
 
 footer {
   height: 20vh;
@@ -26,6 +27,11 @@ footer {
         font-family: $headers-font;
         font-size: 0.8em;
         transition: 0.4s;
+
+        @include greater_than($lg) {
+          font-size: 1.2em;
+          margin: 1.2em 0 0 0.6em;
+        }
       }
 
       a:visited {
@@ -49,6 +55,11 @@ footer {
         font-family: $headers-font;
         font-size: 0.8em;
         transition: 0.4s;
+
+        @include greater_than($lg) {
+          font-size: 1.2em;
+          margin: 1.5em 0.8em;
+        }
       }
 
       .footer-signout-link:hover {
@@ -61,6 +72,11 @@ footer {
         height: 25px;
         border-left: 0.7px solid white;
         margin: 1em;
+
+        @include greater_than($lg) {
+          height: 50px;
+          margin-left: 1.6em;
+        }
       }
     }
   }
