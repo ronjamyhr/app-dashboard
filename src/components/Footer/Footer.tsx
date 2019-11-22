@@ -31,7 +31,6 @@ const Footer = ({
               <p className="footer-signout-link">logout</p>
             </div>
           )}
-
           <div className="navlink-footer-line"></div>
         </div>
       </div>
@@ -55,13 +54,11 @@ const mapStateToProps = (state: any): IState => {
   }
 }
 
-//mapDispatchToProps so that we can create this action signOut
 const mapDispatchToProps = (
   dispatch: ThunkDispatch<any, any, AppActions>,
   ownProps: any
 ): ILinkDispatchProps => {
   return {
-    //signOutUser is my props-object
     signOutUser: bindActionCreators(signOut, dispatch),
   }
 }

@@ -4,14 +4,12 @@ import axios from 'axios'
 import './sonosDefaultPlayer.scss'
 import { Slider } from '@material-ui/core'
 
-//create interface for state
 interface ISonosDeafultPlayerState {
   allSongs: ISong[]
   interval: any
   value: string
 }
 
-//interface for the array
 interface ISong {
   currentTrack: {
     artist: string
@@ -51,15 +49,12 @@ class SonosDefaultPlayer extends React.Component<{}, ISonosDeafultPlayerState> {
     clearInterval(this.state.interval)
   }
 
-  //function to loop through the axios requests
   getAllCurrentlyPlaying() {
-    //create empty array
     let songs: any = []
-    //map through the requests
     const zones = ['Sjöglimt', 'Myshörnan', 'Bangården', 'Kök', 'Femman']
-    //map through the original array zones, each loop creates variable speaker
+    //map through the original array [zones], each loop creates variable speaker
     const allRequests = zones.map(speaker => {
-      return axios.get(`http://192.168.1.14:5005/${speaker}/state`)
+      return axios.get(`http://localhost:5005/${speaker}/state`)
     })
 
     //perform multiple get requests on the new array

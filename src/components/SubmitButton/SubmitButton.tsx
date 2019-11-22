@@ -7,11 +7,10 @@ interface IProps {
 
 }
 
+class SubmitButton extends React.Component<IProps, {}>{
 
-class SubmitButton extends React.Component<IProps, {} >{
-   
 
-     render() {
+    render() {
         return (
             <button disabled={this.props.disabled} className="submit-button" type="submit">{this.props.children}</button>
         )

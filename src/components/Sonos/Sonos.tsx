@@ -49,9 +49,8 @@ class Sonos extends React.Component<{}, ISonosState> {
   getCurrentlyPlaying() {
     let songs: any[] = []
     const rooms = ['Sjöglimt', 'Myshörnan', 'Bangården', 'Kök', 'Femman']
-    //map through all the requests
     const allRequests = rooms.map(group => {
-      return axios.get(`http://192.168.1.14:5005/${group}/state`)
+      return axios.get(`http://localhost:5005/${group}/state`)
     })
 
     //perform multiple get-requests

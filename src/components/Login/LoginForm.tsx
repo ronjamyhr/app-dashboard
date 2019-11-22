@@ -57,7 +57,6 @@ export class LoginForm extends React.Component<IProps, ILoginFormState> {
     const validEmail = regexEmail.test(value)
     let errorMsgForMail = this.state.errorMsgEmail
     let errors: any = this.state.hasErrors
-    //e.target.id === 'email'
     //this condition will always run as soon as user starts typing inside email-input
     if (id === 'email') {
       errors.email = false
@@ -129,7 +128,6 @@ export class LoginForm extends React.Component<IProps, ILoginFormState> {
   }
 
   public render() {
-    const { currentlyLogged } = this.props
     return (
       <div className="loginform-container">
         <div className="loginform-img"></div>
@@ -190,7 +188,6 @@ const mapDispatchToProps = (
   }
 }
 
-//connect works as the glue between the component and the store
 export default compose<any>(
   connect(
     null,

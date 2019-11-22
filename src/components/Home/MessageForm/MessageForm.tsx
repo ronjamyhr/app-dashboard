@@ -115,11 +115,9 @@ export class MessageForm extends Component<IProps, IState> {
 
   validate() {
     let validForm = false
-    //check for input errors
     if (!this.state.hasErrors.name && !this.state.hasErrors.message) {
       validForm = true
     }
-    //check if any input field is empty
     if (this.state.name === '' || this.state.message === '') {
       validForm = false
     }
@@ -189,7 +187,6 @@ interface LinkDispatchProps {
   startCreatePost: (postData: any) => void
 }
 
-// Dispatch an action from the component.
 const mapDispatchToProps = (
   dispatch: ThunkDispatch<any, any, AppActions>,
   ownProps: MessageForm

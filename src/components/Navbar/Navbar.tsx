@@ -23,7 +23,6 @@ export class Navbar extends React.Component<IProps, INavbarState> {
   }
 
   showNavbar = (e: any) => {
-    e.preventDefault();
     this.setState({
       condition: !this.state.condition
     })
@@ -44,7 +43,7 @@ export class Navbar extends React.Component<IProps, INavbarState> {
             <div className="navlinks-container">
               {!this.props.currentlyLogged ?
                 <p className="navbar-login-text">login</p> : (
-                  <div className="navlinks"><Link to="/">home</Link><Link to="/sonosplayers">music</Link><Link to="/lights">lights</Link></div>
+                  <div className="navlinks"><Link onClick={this.showNavbar} to="/">home</Link><Link onClick={this.showNavbar} to="/sonosplayers">music</Link><Link onClick={this.showNavbar} to="/lights">lights</Link></div>
                 )}
               <div className="navlink-line"></div>
             </div>
