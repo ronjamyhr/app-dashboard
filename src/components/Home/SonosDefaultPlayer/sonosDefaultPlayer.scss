@@ -10,25 +10,80 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    // align-items: center;
+    align-items: flex-start;
     height: 40%;
-    padding: 2em 1em 0 1em;
+    padding: 2em 1em 0 3em;
 
-    .sonosdefault-artist {
-      color: black;
-      font-size: 1.5em;
+    .sonosdefault-top {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+
+      .sonosdefault-artist {
+        font-size: 1.2em;
+        margin: 0;
+        letter-spacing: 0.1em;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+
+      .music-button {
+        justify-self: flex-end;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        transition-duration: 0.4s;
+        font-size: 1.5em;
+
+        .icon {
+          font-size: 1.2em;
+        }
+      }
+    }
+
+    .slider-box {
+      display: flex;
+      align-items: center;
+      width: 100%;
+
+      .sonos-volume {
+        color: grey;
+        width: 80%;
+
+        .MuiSlider-thumb.Mui-focusVisible,
+        .MuiSlider-thumb:hover {
+          box-shadow: 0px 0px 0px 8px rgba(00, 00, 00, 0.16);
+        }
+        .MuiSlider-thumb.Mui-focusVisible,
+        .MuiSlider-thumb:active {
+          box-shadow: 0px 0px 0px 15px rgba(94, 149, 150, 0.16);
+        }
+      }
+
+      .volume-icon {
+        color: rgba(94, 149, 150, 0.8);
+        padding-left: 1em;
+        font-size: 1.3em;
+      }
     }
 
     .sonosdefault-title {
-      color: black;
-      font-family: $body-font;
+      font-family: 'Roboto Mono', monospace;
       text-align: end;
+      font-size: 0.8em;
+      text-transform: lowercase;
+    }
+
+    .sonosdefault-room {
+      align-self: flex-end;
+      margin: 1em 0 0 0;
+      font-family: $headers-font;
+      text-transform: lowercase;
+      font-size: 1em;
+      color: grey;
     }
   }
-
-  //   p {
-  //     margin: 0;
-  //   }
 
   .sonosdefault-heading-container {
     display: flex;
@@ -36,7 +91,7 @@
     justify-content: flex-end;
     align-items: flex-end;
     text-align: right;
-    padding: 1em;
+    padding: 0 1em 1em 1em;
 
     .sonosdefault-link {
       font-family: $body-font;
@@ -53,7 +108,6 @@
         width: 120px;
         cursor: pointer;
         transition-duration: 0.4s;
-        color: black;
       }
 
       .sonosdefault-button:hover {
@@ -73,7 +127,6 @@
     .sonosdefault-heading {
       color: #000000;
       font-family: $headers-font;
-      font-weight: 300;
       font-size: 1.2em;
       margin: 0;
     }

@@ -1,4 +1,5 @@
 @import '../../../Styles/variables.scss';
+
 .lightItem-container {
   display: flex;
   flex-direction: column;
@@ -9,6 +10,8 @@
   padding: 1em;
   position: relative;
   transition: all 1s;
+  border-top-right-radius: 11px;
+  border-bottom-left-radius: 11px;
 
   &:after,
   &:before {
@@ -87,7 +90,7 @@
       }
 
       .MuiSwitch-switchBase {
-        color: $text-color-dark;
+        color: black;
       }
     }
   }

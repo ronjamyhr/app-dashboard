@@ -6,7 +6,6 @@
   align-items: center;
 
   .messageform-heading {
-    color: $text-color-dark;
     font-family: $headers-font;
     font-weight: 300;
     padding-top: 1em;
@@ -20,7 +19,6 @@
     padding: 2em;
 
     %messageform-form-label {
-      color: $text-color-dark;
       font-family: $headers-font;
       font-weight: 300;
       margin-bottom: 0.5em;
@@ -65,7 +63,6 @@
     .messageform-form-input-name:focus,
     .messageform-form-textarea-message:focus {
       border: 1px solid $detail-color;
-      color: $text-color-dark;
       font-weight: 200;
       font-family: $body_font;
     }

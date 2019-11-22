@@ -31,10 +31,6 @@ class SlackMessages extends React.Component<{}, IState> {
       users: [],
       interval: '',
     }
-
-    this.getSlackMessages = this.getSlackMessages.bind(this)
-    this.getSlackUsers = this.getSlackUsers.bind(this)
-    this.pinnedSlackPost = this.pinnedSlackPost.bind(this)
   }
 
   componentDidMount() {
@@ -53,7 +49,8 @@ class SlackMessages extends React.Component<{}, IState> {
     clearInterval(this.state.interval)
   }
 
-  getSlackMessages() {
+  // The current channel is the sth-office
+  getSlackMessages = () => {
     axios
       .get(
         `https://slack.com/api/pins.list?token=${process.env.REACT_APP_SLACK_TOKEN_URL}&channel=C07B6BWM8`
@@ -68,7 +65,7 @@ class SlackMessages extends React.Component<{}, IState> {
       })
   }
 
-  getSlackUsers() {
+  getSlackUsers = () => {
     axios
       .get(
         `https://slack.com/api/users.list?token=${process.env.REACT_APP_SLACK_TOKEN_URL}`
@@ -84,7 +81,7 @@ class SlackMessages extends React.Component<{}, IState> {
   }
 
   //Get the message and the user from two diffrent api and create a array with messages and usernames
-  pinnedSlackPost() {
+  pinnedSlackPost = () => {
     const { messages, users } = this.state
 
     const list = messages.map(singleMessage => {
@@ -111,17 +108,20 @@ class SlackMessages extends React.Component<{}, IState> {
               <ul>
                 {pinnedSlackMessages &&
                   pinnedSlackMessages.map(post => (
-                    <li key={post.id}>
-                      <div className="slackmessages-post-wrapper">
-                        <Emoji
-                          className="slackmessages-post-text"
-                          text={post.slackMessage}
-                        />
-                        <p className="slackmessages-post-user">
-                          - {post.slackUsername}
-                        </p>
-                      </div>
-                    </li>
+                    <div key={post.id}>
+                      <li>
+                        <div className="slackmessages-post-wrapper">
+                          <Emoji
+                            className="slackmessages-post-text"
+                            text={post.slackMessage.replace(/[<>]/g, '')}
+                          />
+                          <p className="slackmessages-post-user">
+                            - {post.slackUsername}
+                          </p>
+                        </div>
+                      </li>
+                      <hr className="slackmessage-line" />
+                    </div>
                   ))}
               </ul>
             </div>

@@ -9,7 +9,6 @@ interface ISonosState {
   currentlyPlaying: ISongsArray[]
   interval: any
   value: string
-
 }
 
 interface ISongsArray {
@@ -100,9 +99,9 @@ class Sonos extends React.Component<{}, ISonosState> {
       }
     })
 
-    axios.get(`http://localhost:5005/${room}/${playState}`)
-      .then((res: any) => { })
-
+    axios
+      .get(`http://localhost:5005/${room}/${playState}`)
+      .then((res: any) => {})
   }
 
   changeVolume = (e: any, newValue: any, displayedSongs: any) => {
@@ -133,12 +132,15 @@ class Sonos extends React.Component<{}, ISonosState> {
 
     axios
       .get(`http://localhost:5005/${id}/volume/${sign}${Math.abs(diff)}`)
-      .then((res: any) => { })
+      .then((res: any) => {})
+  }
+
+  scrollUpButton = () => {
+    window.scroll({ top: 0, left: 0, behavior: 'smooth' })
   }
 
   public render() {
     const displaySongs = this.state.currentlyPlaying
-
 
     return (
       <div className="content">
@@ -167,8 +169,8 @@ class Sonos extends React.Component<{}, ISonosState> {
                   {displayedSongs.playbackState === 'PLAYING' ? (
                     <i className="icon far fa-pause-circle"></i>
                   ) : (
-                      <i className="icon far fa-play-circle"></i>
-                    )}
+                    <i className="icon far fa-play-circle"></i>
+                  )}
                 </button>
 
                 <p className="artist-heading">
@@ -199,6 +201,12 @@ class Sonos extends React.Component<{}, ISonosState> {
               </li>
             ))}
           </ul>
+        </div>
+
+        <div className="sonos-button-wrapper">
+          <button className="sonos-button-up" onClick={this.scrollUpButton}>
+            <i className="button-up-icon fas fa-angle-up"></i>
+          </button>
         </div>
       </div>
     )

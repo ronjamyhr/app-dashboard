@@ -28,27 +28,31 @@
         list-style: none;
         padding: 0;
 
+        .slackmessage-line {
+          width: 80%;
+          border: 0;
+          height: 0;
+          border-bottom: 1px solid rgb(201, 200, 200);
+        }
+
         li {
           display: flex;
           flex-direction: row;
           justify-content: center;
           align-items: center;
-          margin-bottom: 3em;
+          margin-bottom: 1em;
 
           .slackmessages-post-wrapper {
             margin: 1em 0;
-            width: 300px;
+            width: 350px;
 
             .slackmessages-post-text {
+              font-family: 'Roboto Mono', monospace;
               word-wrap: break-word;
-              color: $text-color-dark;
-              font-family: $body_font;
-              font-size: 1em;
-              font-weight: 400;
+              font-size: 0.8em;
             }
 
             .slackmessages-post-user {
-              color: $text-color-dark;
               font-size: 1em;
               margin-bottom: 0;
               font-weight: 300;
@@ -81,11 +85,10 @@
       margin-right: 0;
       border: 0;
       height: 0;
-      border-bottom: 1px solid $text-color-dark;
+      border-bottom: 1px solid black;
     }
 
     .slackmessages-heading {
-      color: $text-color-dark;
       font-family: $headers-font;
       font-weight: 300;
       font-size: 1.2rem;

@@ -94,36 +94,36 @@
         list-style: none;
         padding: 0;
 
+        .message-line {
+          width: 80%;
+          border: 0;
+          height: 0;
+          border-bottom: 1px solid rgb(160, 159, 159);
+        }
+
         li {
           display: flex;
           flex-direction: row;
           justify-content: space-around;
           align-items: center;
-          margin-bottom: 3em;
+          margin-bottom: 1em;
 
           .message-message-wrapper {
-            width: 200px;
-
-            %message-text-style {
-              color: $text-color-dark;
-              font-weight: 100;
-            }
+            width: 300px;
 
             .message-message-text {
-              @extend %message-text-style;
-              font-family: $body_font;
-              font-size: 1em;
-              font-weight: 400;
+              font-family: 'Roboto Mono', monospace;
+              font-size: 0.8em;
             }
 
             .message-message-name {
-              @extend %message-text-style;
+              font-weight: 200;
               font-size: 1em;
               margin-bottom: 0.5em;
             }
 
             .message-message-date {
-              @extend %message-text-style;
+              font-weight: 200;
               font-family: $body_font;
               color: #646464;
               font-size: 0.7em;
@@ -158,7 +158,7 @@
 
     .message-message-no-text {
       color: #646464;
-      font-weight: 100;
+      font-weight: 200;
       font-family: $body_font;
       font-size: 1em;
     }
@@ -195,9 +195,7 @@
     }
 
     .message-heading {
-      color: $text-color-dark;
       font-family: $headers-font;
-      font-weight: 400;
       font-size: 1.2em;
       margin: 0;
     }

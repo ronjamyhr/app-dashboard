@@ -102,19 +102,17 @@ class SonosDefaultPlayer extends React.Component<{}, ISonosDeafultPlayerState> {
       }
     })
 
-    axios.get(`http://localhost:5005/${room}/${playState}`)
-      .then((res: any) => { })
+    axios
+      .get(`http://localhost:5005/${room}/${playState}`)
+      .then((res: any) => {})
   }
 
   changeVolume = (e: any, newValue: any, songToRender: any) => {
-
     const id = songToRender.room
     const previousValue = songToRender.volume
     const diff = newValue - previousValue
     const sign = diff > 0 ? '+' : '-'
-    const roomIndex = this.state.allSongs.findIndex(
-      song => song.room === id
-    )
+    const roomIndex = this.state.allSongs.findIndex(song => song.room === id)
 
     this.setState(state => {
       const list = state.allSongs.map((song, songIndex) => {
@@ -134,7 +132,7 @@ class SonosDefaultPlayer extends React.Component<{}, ISonosDeafultPlayerState> {
 
     axios
       .get(`http://localhost:5005/${id}/volume/${sign}${Math.abs(diff)}`)
-      .then((res: any) => { })
+      .then((res: any) => {})
   }
 
   public render() {
@@ -150,9 +148,27 @@ class SonosDefaultPlayer extends React.Component<{}, ISonosDeafultPlayerState> {
     return songToRender ? (
       <div className="sonosdefault-container">
         <div className="sonosdefault-content-container">
-          <p className="sonosdefault-artist">
-            {songToRender.currentTrack.artist}
-          </p>
+          <div className="sonosdefault-top">
+            <p className="sonosdefault-artist">
+              {songToRender.currentTrack.artist}
+            </p>
+            <button
+              className="music-button"
+              type="submit"
+              onClick={() =>
+                this.playPause(
+                  songToRender.room,
+                  songToRender.playbackState === 'PLAYING'
+                )
+              }
+            >
+              {songToRender.playbackState === 'PLAYING' ? (
+                <i className="icon far fa-pause-circle"></i>
+              ) : (
+                <i className="icon far fa-play-circle"></i>
+              )}
+            </button>
+          </div>
           <p className="sonosdefault-title">
             {songToRender.currentTrack.title}
           </p>
@@ -170,24 +186,7 @@ class SonosDefaultPlayer extends React.Component<{}, ISonosDeafultPlayerState> {
             />
             <i className="volume-icon fas fa-volume-up"></i>
           </div>
-
           <p className="sonosdefault-room">{songToRender.room}</p>
-          <button
-            className="music-button"
-            type="submit"
-            onClick={() =>
-              this.playPause(
-                songToRender.room,
-                songToRender.playbackState === 'PLAYING'
-              )
-            }
-          >
-            {songToRender.playbackState === 'PLAYING' ? (
-              <i className="icon far fa-pause-circle"></i>
-            ) : (
-                <i className="icon far fa-play-circle"></i>
-              )}
-          </button>
         </div>
         <div className="sonosdefault-heading-container">
           <Link className="sonosdefault-link" to="/sonosplayers">

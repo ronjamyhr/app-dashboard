@@ -46,33 +46,34 @@ const Message = ({ posts, startRemovePost }: IProps) => {
             <ul>
               {posts &&
                 posts.map(post => (
-                  <li key={post.id}>
-                    <div className="message-message-wrapper">
-                      <p className="message-message-text">{post.message}</p>
-                      <p className="message-message-name">- {post.name}</p>
-                      <p className="message-message-date">
-                        {moment(post.date.toDate()).format('LLLL')}
-                      </p>
-                      <hr />
-                    </div>
-                    {/* TODO: if statement = that only show the trash icon on posts you did */}
-                    <div className="message-delete-wrapper">
-                      <button
-                        className="message-message-button"
-                        onClick={() => onRemove(post.id)}
-                      >
-                        <i className="message-message-button-icon fas fa-trash-alt"></i>
-                      </button>
-                    </div>
-                  </li>
+                  <div key={post.id}>
+                    <li>
+                      <div className="message-message-wrapper">
+                        <p className="message-message-text">{post.message}</p>
+                        <p className="message-message-name">- {post.name}</p>
+                        <p className="message-message-date">
+                          {moment(post.date.toDate()).format('LLLL')}
+                        </p>
+                      </div>
+                      <div className="message-delete-wrapper">
+                        <button
+                          className="message-message-button"
+                          onClick={() => onRemove(post.id)}
+                        >
+                          <i className="message-message-button-icon fas fa-trash-alt"></i>
+                        </button>
+                      </div>
+                    </li>
+                    <hr className="message-line" />
+                  </div>
                 ))}
             </ul>
           </div>
         ) : (
-            <div className="no-messages-card">
-              <p className="message-message-no-text">No messages to show</p>
-            </div>
-          )}
+          <div className="no-messages-card">
+            <p className="message-message-no-text">No messages to show</p>
+          </div>
+        )}
       </div>
       <div className="message-heading-container">
         <button className="message-heading-button" onClick={() => openModal()}>

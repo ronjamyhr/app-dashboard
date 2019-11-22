@@ -24,10 +24,6 @@ class PhilipsLights extends React.Component<IProps, IState> {
     this.state = {
       interval: '',
     }
-
-    this.updateLight = this.updateLight.bind(this)
-    this.mapPhilipsLights = this.mapPhilipsLights.bind(this)
-    this.scrollUpButton = this.scrollUpButton.bind(this)
   }
 
   componentDidMount() {
@@ -45,11 +41,11 @@ class PhilipsLights extends React.Component<IProps, IState> {
     clearInterval(this.state.interval)
   }
 
-  updateLight(id: string, isOn: boolean, brightnessValue: number) {
+  updateLight = (id: string, isOn: boolean, brightnessValue: number) => {
     this.props.updateLight(id, isOn, brightnessValue)
   }
 
-  mapPhilipsLights() {
+  mapPhilipsLights = () => {
     const data = this.props.lights
     return Object.keys(data).map(id => (
       <LightItem
@@ -64,7 +60,7 @@ class PhilipsLights extends React.Component<IProps, IState> {
     ))
   }
 
-  scrollUpButton() {
+  scrollUpButton = () => {
     window.scroll({ top: 0, left: 0, behavior: 'smooth' })
   }
 

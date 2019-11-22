@@ -1,8 +1,8 @@
-//@import '../../Styles/responsiveness.scss';
 @import '../../Styles/variables.scss';
 
 .content {
   width: 100vw;
+  margin-bottom: 20vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -25,23 +25,23 @@
 
     .sonos-header {
       position: absolute;
-      font-size: 5em;
+      font-size: 6em;
       top: 0.5em;
       margin: 0 0 0 1.5em;
     }
 
     .sonos-link {
       font-family: $body-font;
-      font-size: 0.8em;
       text-decoration: none;
-      margin: 0 0 2em 1em;
+      margin: 0 0 1em 0.5em;
       min-width: 100px;
 
       .sonos-button {
+        font-size: 1em;
         background-color: $detail-color;
         border: none;
         outline: none;
-        padding: 0.7em 1em;
+        padding: 0.5em 1em;
         font-family: $headers-font;
         width: 80px;
         cursor: pointer;
@@ -58,8 +58,7 @@
     position: relative;
 
     .sonos-container {
-      margin-top: 2em;
-      margin-bottom: 20vh;
+      margin: 2em 0;
       width: 90vw;
       display: flex;
       flex-wrap: wrap;
@@ -162,6 +161,7 @@
           .sonos-volume {
             color: grey;
             width: 80%;
+
             .MuiSlider-thumb.Mui-focusVisible,
             .MuiSlider-thumb:hover {
               box-shadow: 0px 0px 0px 8px rgba(00, 00, 00, 0.16);
@@ -198,6 +198,45 @@
             text-align: end;
             color: grey;
           }
+        }
+      }
+    }
+  }
+
+  .sonos-button-wrapper {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    width: 70px;
+    height: 60px;
+    background-color: $primary-color-medium;
+    bottom: 0;
+
+    .sonos-button-up {
+      background-color: transparent;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      transition-duration: 0.4s;
+      color: $text-color-light;
+      font-size: 1.5em;
+
+      .button-up-icon {
+        font-size: 1.5em;
+        animation: fade_move_up 3s ease-in-out infinite;
+      }
+
+      @keyframes fade_move_up {
+        0% {
+          transform: translate(0, 10px);
+          opacity: 0;
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          transform: translate(0, -10px);
+          opacity: 0;
         }
       }
     }

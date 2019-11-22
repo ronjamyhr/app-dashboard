@@ -129,7 +129,7 @@
   }
 
   .philipsLights-lights-wrapper {
-    margin-top: 2em;
+    margin: 2em 0;
     width: 90vw;
     display: flex;
     justify-content: center;
@@ -141,7 +141,7 @@
     justify-content: center;
     align-content: center;
     width: 70px;
-    height: 70px;
+    height: 60px;
     background-color: $primary-color-medium;
     bottom: 0;
 

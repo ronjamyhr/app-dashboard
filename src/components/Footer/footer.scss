@@ -35,8 +35,6 @@ footer {
       a:hover {
         color: $detail-color;
         font-weight: bolder;
-        transform: rotate(-90deg);
-        margin-left: 3em;
       }
 
       .footer-signout-link {
@@ -50,6 +48,11 @@ footer {
         font-family: $headers-font;
         font-size: 0.8em;
         transition: 0.4s;
+      }
+
+      .footer-signout-link:hover {
+        color: $detail-color;
+        font-weight: bolder;
       }
 
       .navlink-footer-line {
