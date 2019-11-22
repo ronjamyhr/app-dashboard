@@ -78,8 +78,8 @@ export class LoginForm extends React.Component<IProps, ILoginFormState> {
   }
 
   handlePasswordChange = (e: any) => {
-    //Password expression. Password must be between 6 and 10 digits long and include at least one numeric digit.
-    const regExPassword = /^(?=.*\d).{6,10}$/
+    //Password expression. Password must be between 6 and 100 digits long and include at least one numeric digit.
+    const regExPassword = /^(?=.*\d).{6,100}$/
     const { id, value } = e.target
     const validPassword = regExPassword.test(value)
     let errorMsgForPassword = this.state.errorMsgPassword
@@ -92,7 +92,7 @@ export class LoginForm extends React.Component<IProps, ILoginFormState> {
       if (!validPassword) {
         errors.password = true
         errorMsgForPassword =
-          'password must be between 6 and 10 digits long and include at least one numeric digit.'
+          'password must be between 6 and 100 digits long and include at least one numeric digit.'
       }
     }
 
