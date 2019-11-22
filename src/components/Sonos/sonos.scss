@@ -1,7 +1,7 @@
 @import '../../Styles/variables.scss';
 
 .content {
-  width: 100vw;
+  max-width: 100vw;
   margin-bottom: 20vh;
   display: flex;
   flex-direction: column;
@@ -73,7 +73,7 @@
         justify-content: space-between;
         background-color: white;
         margin: 1em;
-        min-height: 200px;
+        min-height: 170px;
         min-width: 500px;
         object-fit: cover;
         padding: 1.5em;

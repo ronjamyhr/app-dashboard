@@ -1,9 +1,10 @@
 @import '../../Styles/variables.scss';
+@import '../../Styles/responsiveness.scss';
 
 .home-container {
   display: flex;
   height: 80vh;
-  width: 100vw;
+  max-width: 100vw;
 
   .home-left-section {
     display: flex;
@@ -25,9 +26,17 @@
         padding: 1.1em;
         font-family: 'Special Elite', cursive;
 
+        @include greater_than($lg) {
+          font-size: 2em;
+        }
+
         .home-text-heading {
           font-size: 0.8em;
           text-decoration: underline;
+
+          @include greater_than($lg) {
+            font-size: 0.9em;
+          }
         }
       }
     }
@@ -52,7 +61,11 @@
           font-family: $display-font;
           font-size: 6em;
           color: white;
-          animation: expand 7s infinite alternate both;
+          animation: expand 6s infinite alternate both;
+
+          @include greater_than($lg) {
+            font-size: 7em;
+          }
         }
 
         @keyframes expand {

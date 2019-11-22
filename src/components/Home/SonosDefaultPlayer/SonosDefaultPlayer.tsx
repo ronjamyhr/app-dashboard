@@ -59,7 +59,7 @@ class SonosDefaultPlayer extends React.Component<{}, ISonosDeafultPlayerState> {
     const zones = ['Sjöglimt', 'Myshörnan', 'Bangården', 'Kök', 'Femman']
     //map through the original array zones, each loop creates variable speaker
     const allRequests = zones.map(speaker => {
-      return axios.get(`http://localhost:5005/${speaker}/state`)
+      return axios.get(`http://192.168.1.14:5005/${speaker}/state`)
     })
 
     //perform multiple get requests on the new array
@@ -104,7 +104,7 @@ class SonosDefaultPlayer extends React.Component<{}, ISonosDeafultPlayerState> {
 
     axios
       .get(`http://localhost:5005/${room}/${playState}`)
-      .then((res: any) => {})
+      .then((res: any) => { })
   }
 
   changeVolume = (e: any, newValue: any, songToRender: any) => {
@@ -132,7 +132,7 @@ class SonosDefaultPlayer extends React.Component<{}, ISonosDeafultPlayerState> {
 
     axios
       .get(`http://localhost:5005/${id}/volume/${sign}${Math.abs(diff)}`)
-      .then((res: any) => {})
+      .then((res: any) => { })
   }
 
   public render() {
@@ -165,8 +165,8 @@ class SonosDefaultPlayer extends React.Component<{}, ISonosDeafultPlayerState> {
               {songToRender.playbackState === 'PLAYING' ? (
                 <i className="icon far fa-pause-circle"></i>
               ) : (
-                <i className="icon far fa-play-circle"></i>
-              )}
+                  <i className="icon far fa-play-circle"></i>
+                )}
             </button>
           </div>
           <p className="sonosdefault-title">

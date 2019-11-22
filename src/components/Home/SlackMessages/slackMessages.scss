@@ -1,4 +1,5 @@
 @import '../../../Styles/variables.scss';
+@import '../../../Styles/responsiveness.scss';
 
 .slackmessage-container {
   height: 100%;
@@ -50,12 +51,20 @@
               font-family: 'Roboto Mono', monospace;
               word-wrap: break-word;
               font-size: 0.8em;
+
+              @include greater_than($lg) {
+                font-size: 1.1em;
+              }
             }
 
             .slackmessages-post-user {
               font-size: 1em;
               margin-bottom: 0;
               font-weight: 300;
+
+              @include greater_than($lg) {
+                font-size: 1.1em;
+              }
             }
           }
         }

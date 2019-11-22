@@ -1,9 +1,15 @@
 @import '../../../Styles/variables.scss';
+@import '../../../Styles/responsiveness.scss';
 
 .styles_modal__gNwvD {
   background-color: $primary-color-light;
   width: 400px;
   min-height: 400px;
+
+  @include greater_than($lg) {
+    width: 600px;
+    min-height: 600px;
+  }
 }
 
 .styles_closeButton__20ID4 {
@@ -111,15 +117,26 @@
           .message-message-wrapper {
             width: 300px;
 
+            @include greater_than($lg) {
+              width: 350px;
+            }
+
             .message-message-text {
               font-family: 'Roboto Mono', monospace;
               font-size: 0.8em;
+
+              @include greater_than($lg) {
+                font-size: 1.1em;
+              }
             }
 
             .message-message-name {
               font-weight: 200;
               font-size: 1em;
               margin-bottom: 0.5em;
+              @include greater_than($lg) {
+                font-size: 1.1em;
+              }
             }
 
             .message-message-date {
@@ -128,6 +145,10 @@
               color: #646464;
               font-size: 0.7em;
               margin-top: 0;
+
+              @include greater_than($lg) {
+                font-size: 0.8em;
+              }
             }
           }
 
@@ -141,6 +162,10 @@
                 font-size: 1em;
                 color: #646464;
                 transition-duration: 0.4s;
+
+                @include greater_than($lg) {
+                  font-size: 1.1em;
+                }
               }
 
               .message-message-button-icon:hover {
